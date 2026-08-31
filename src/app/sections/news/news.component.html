@@ -1,0 +1,33 @@
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Новости</h1>
+  </div>
+</section>
+<section class="services fade-in" [class.show]="isVisible">
+
+  <div class="container">
+    <div class="news-grid">
+      @for (n of news; track n) {
+        <div class="news-card" [routerLink]="['/news', n.id]">
+          <div class="image">
+            <img [src]="n.image" alt="" />
+          </div>
+          <div class="content">
+            <div class="date">
+              <span class="icon">📅</span>
+              <span>{{ n.date }}</span>
+            </div>
+            <h3>{{ n.title }}</h3>
+            <p class="preview">
+              {{ n.preview }}
+            </p>
+            <div class="read-more">
+              Читать далее →
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,239 @@
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* ===== СОСТОЯНИЯ ===== */
+
+/* главная (hero) */
+header.top {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+}
+
+/* при скролле и на других страницах */
+header.scrolled {
+  background: white;
+  color: #0c3c60;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== ЛЕЙАУТ ===== */
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== LOGO ===== */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  height: 50px;
+}
+
+/* ===== MENU ===== */
+
+.menu {
+  display: flex;
+  gap: 25px;
+}
+
+.menu a {
+  text-decoration: none;
+  font-weight: 500;
+  color: inherit;
+  position: relative;
+  transition: 0.2s;
+}
+
+/* hover */
+.menu a:hover {
+  opacity: 0.7;
+}
+
+/* активный пункт */
+.menu a.active {
+  border-bottom: 2px solid #2b6cb0;
+  padding-bottom: 3px;
+}
+
+/* ===== RIGHT ===== */
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* языки */
+.lang button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: inherit;
+  transition: 0.2s;
+}
+
+.lang button:hover {
+  opacity: 0.7;
+}
+
+/* ===== BURGER ===== */
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+
+  .menu {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+  }
+}
+
+/* мобильное меню */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+
+  background: rgba(0, 0, 0, 0.95);
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+/* ===== ФИКС ПОД HEADER ===== */
+body {
+  padding-top: 70px;
+}
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+
+  &:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+  padding: 10px 0;
+  min-width: 200px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.2s;
+
+  a {
+    display: block;
+    padding: 10px 15px;
+    color: #0f172a;
+    text-decoration: none;
+
+    &:hover {
+      background: #f1f5f9;
+    }
+  }
+}
+.mobile-menu {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 70px);
+
+  background: #0f172a;
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 0;
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+}
+
+/* 🔥 заголовок группы */
+.mobile-group {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #94a3b8;
+  text-transform: uppercase;
+}
+.login-btn {
+  margin-left: 15px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #2c7be5;
+  color: #2c7be5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.login-btn:hover {
+  background: #2c7be5;
+  color: #fff;
+}
+
+/* мобильная */
+.mobile-login {
+  margin-top: 10px;
+  display: block;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}

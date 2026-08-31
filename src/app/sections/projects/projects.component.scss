@@ -1,0 +1,165 @@
+
+.reception-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.reception-table th {
+  background: #1f3c88;
+  color: #fff;
+  padding: 14px;
+  text-align: left;
+}
+
+.reception-table td {
+  padding: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.reception-table tr:hover {
+  background: #f5f7fb;
+}
+
+.reception-info {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 15px;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* когда активен */
+.fade-in.show {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projects {
+  padding: 80px 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.project-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-image {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 10px;
+}
+
+.bar {
+  height: 5px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.fill {
+  height: 100%;
+  background: #2b6cb0;
+}
+
+.project-content {
+  padding: 20px;
+}
+
+.status {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  background: #e6f0ff;
+  color: #2b6cb0;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.status.done {
+  background: #e6fffa;
+  color: #2f855a;
+}
+
+.meta {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.monitoring-section {
+  padding: 80px 0;
+  background: #f7fafc;
+}
+
+.monitoring-section h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.note {
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 30px;
+}
+
+.map-wrapper {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 700px;
+  border: none;
+}

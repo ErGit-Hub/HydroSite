@@ -1,0 +1,64 @@
+<section class="projects">
+
+  <div class="container">
+
+    <h2>Проекты</h2>
+
+    <div class="projects-grid">
+
+      @for (p of projects; track p) {
+        <div class="project-card">
+          <div class="project-image">
+            <img [src]="p.image" alt="">
+            @if (p.progress > 0) {
+              <div class="progress">
+                <span>{{ p.progress }}%</span>
+                <div class="bar">
+                  <div class="fill" [style.width.%]="p.progress"></div>
+                </div>
+              </div>
+            }
+          </div>
+          <div class="project-content">
+            <span class="status" [class.done]="p.status === 'Завершен'">
+              {{ p.status }}
+            </span>
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.description }}</p>
+            <div class="meta">
+              <span>📍 {{ p.location }}</span>
+              <span>📅 {{ p.period }}</span>
+            </div>
+          </div>
+        </div>
+      }
+
+    </div>
+
+  </div>
+
+</section>
+<section class="monitoring-section">
+
+  <div class="container">
+
+    <h2>Система мониторинга уровня и расхода воды</h2>
+
+    <p class="subtitle">
+      Демонстрационная карта мониторинга (г. Шымкент)
+    </p>
+
+    <p class="note">
+      * Данные тестовые. Отображение, структура и логика соответствуют реальной системе.
+    </p>
+
+    <div class="map-wrapper">
+      <iframe
+        [src]="safeUrl"
+        loading="lazy"
+      ></iframe>
+    </div>
+
+  </div>
+
+</section>

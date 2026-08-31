@@ -1,0 +1,78 @@
+<section class="page-hero">
+  <div class="container">
+    <h1>Структура</h1>
+    <p>Организационная структура предприятия</p>
+  </div>
+</section>
+
+<section class="structure fade-in" [class.show]="isVisible">
+
+  <div class="container">
+
+    <h2>Структура</h2>
+
+    <img
+      src="assets/images/structure.png"
+      alt="Структура организации"
+      class="structure-img"
+      />
+
+  </div>
+
+</section>
+
+<section class="leaders fade-in" [class.show]="isVisible">
+
+  <div class="container">
+
+    <h2>Руководство</h2>
+    <p class="subtitle">Нажмите на карточку для просмотра подробной информации</p>
+
+    <div class="leaders-grid">
+
+      <div class="leader-card" (click)="selectLeader('bekniyaz')">
+        <img src="assets/images/leader/leader1.jpeg" alt="">
+        <h3>Бекнияз Болат Қабыкенұлы</h3>
+        <p>Председатель Правления</p>
+      </div>
+
+      <div class="leader-card" (click)="selectLeader('ibraev')">
+        <img src="assets/images/leader/leader2.png" alt="">
+        <h3>Ибраев Даир Зарапович</h3>
+        <p>Первый заместитель</p>
+      </div>
+
+      <div class="leader-card" (click)="selectLeader('mykan')">
+        <img src="assets/images/leader/leader5.png" alt="">
+        <h3>Мықан Қаракөз Еламанқызы</h3>
+        <p>Заместитель</p>
+      </div>
+
+      <div class="leader-card" (click)="selectLeader('vakasova')">
+        <img src="assets/images/leader/leader6.png" alt="">
+        <h3>Вакасова Гульданам Туглукжановна</h3>
+        <p>Заместитель</p>
+      </div>
+
+    </div>
+
+    <!-- ДЕТАЛИ -->
+    @if (selectedLeader) {
+      <div class="leader-details fade-in show">
+        <div class="leader-details-grid">
+          <img [src]="selectedLeader.image" alt="">
+          <div>
+            <h3>{{ selectedLeader.name }}</h3>
+            <p class="position">{{ selectedLeader.position }}</p>
+            <pre class="bio">
+              {{ selectedLeader.description }}
+            </pre>
+          </div>
+        </div>
+      </div>
+    }
+
+  </div>
+
+
+</section>

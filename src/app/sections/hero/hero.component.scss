@@ -1,0 +1,121 @@
+.hero {
+  position: relative;
+  padding: 80px 20px;
+  min-height: 60vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: url('/assets/images/hero-bg2.png') center/cover no-repeat;
+
+  color: white;
+  text-align: center;
+}
+
+/* затемнение */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+/* сетка */
+.hero-grid {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* текст */
+.hero-text {
+  text-align: left;
+  max-width: 500px;
+}
+
+.hero-sub {
+  margin-top: 15px;
+  font-size: 16px;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+/* заголовки */
+h1 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 20px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+/* кнопка */
+.btn {
+  padding: 12px 24px;
+  font-size: 15px;
+}
+
+/* АНИМАЦИЯ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 МОБИЛКА */
+@media (max-width: 768px) {
+
+  .hero {
+    padding: 40px 15px;
+    min-height: auto; /* 🔥 фикс скролла */
+    background-position: center;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,84 @@
+<header
+  [class.scrolled]="isScrolled || !isHomePage()"
+  [class.top]="!isScrolled && isHomePage()">
+
+  <div class="container header-inner">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="assets/images/logo.svg" alt="KazHydro" />
+    </div>
+
+    <nav class="menu">
+
+      <a routerLink="/home">Главная</a>
+      <div class="dropdown">
+        <span>О компании ▾</span>
+
+        <div class="dropdown-menu">
+          <a routerLink="/about">О предприятии</a>
+          <a routerLink="/activity">Направления деятельности</a>
+          <a routerLink="/govement">Государственный уровень</a>
+          <a routerLink="/anti-corruption">Антикоррупционный комплаенс</a>
+          <a routerLink="/ombucmen">Корпоративный омбудсмен</a>
+        </div>
+      </div>
+
+      <a routerLink="/services">Услуги</a>
+
+      <!-- DROPDOWN -->
+      <div class="dropdown">
+        <span>Деятельность ▾</span>
+
+        <div class="dropdown-menu">
+          <a routerLink="/structure">Структура</a>
+          <a routerLink="/projects">Проекты</a>
+          <a routerLink="/reception">Прием граждан</a>
+          <a routerLink="/news">Новости</a>
+          <a routerLink="/vacancies">Вакансии</a>
+        </div>
+      </div>
+
+      <a routerLink="/contacts">Контакты</a>
+
+    </nav>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+      <div class="lang">
+        <button (click)="setLang('ru')">RU</button>
+        <button (click)="setLang('kz')">KZ</button>
+        <button (click)="setLang('en')">EN</button>
+      </div>
+      <a class="login-btn" href="https://data.hydrogeo.kz/">
+        Вход
+      </a>
+      <button class="burger" (click)="toggleMenu()">☰</button>
+
+    </div>
+
+  </div>
+
+  <!-- MOBILE -->
+  @if (isMenuOpen) {
+    <div class="mobile-menu">
+      <a routerLink="/home" (click)="toggleMenu()">Главная</a>
+      <div class="mobile-group">О компании</div>
+      <a routerLink="/about" (click)="toggleMenu()">О предприятии</a>
+      <a routerLink="/activity" (click)="toggleMenu()">Направления деятельности</a>
+      <a routerLink="/anti-corruption" (click)="toggleMenu()">Антикоррупционный комплаенс</a>
+      <a routerLink="/ombucmen" (click)="toggleMenu()">Корпоративный омбудсмен</a>
+      <a routerLink="/services" (click)="toggleMenu()">Услуги</a>
+      <!-- ГРУППА -->
+      <div class="mobile-group">Деятельность</div>
+      <a routerLink="/structure" (click)="toggleMenu()">Структура</a>
+      <a routerLink="/projects" (click)="toggleMenu()">Проекты</a>
+      <a routerLink="/reception" (click)="toggleMenu()">Прием граждан</a>
+      <a routerLink="/news" (click)="toggleMenu()">Новости</a>
+      <a routerLink="/vacancies" (click)="toggleMenu()">Вакансии</a>
+      <a routerLink="/contacts" (click)="toggleMenu()">Контакты</a>
+    </div>
+  }
+
+</header>

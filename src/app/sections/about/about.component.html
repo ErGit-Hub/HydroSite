@@ -1,0 +1,53 @@
+
+<section class="page-hero">
+  <div class="container">
+    <h1>{{ 'ABOUT.TITLE' | translate }}</h1>
+    <p>{{ 'ABOUT.SUBTITLE' | translate }}</p>
+  </div>
+</section>
+  <section class="services fade-in" [class.show]="isVisible">
+  <div class="container">
+
+<p class="about-text">
+  {{ 'ABOUT.TEXT' | translate }}
+</p>
+    <div class="about-grid">
+
+  <div class="about-card" >
+  <h3>50+</h3>
+  <p>лет опыта в гидрогеологии</p>
+</div>
+
+<div class="about-card" >
+  <h3>Вся страна</h3>
+  <p>работа по территории Казахстана</p>
+</div>
+
+<div class="about-card" >
+  <h3>Гос. уровень</h3>
+  <p>участие в государственных проектах</p>
+</div>
+    </div>
+
+  </div>
+
+
+  <div class="container about-details-grid">
+
+    <div class="about-text-block">
+      <h2>{{ 'ABOUT_DETAILS.TITLE' | translate }}</h2>
+
+    <p>{{ 'ABOUT_DETAILS.TEXT_1' | translate }}</p>
+<p>{{ 'ABOUT_DETAILS.TEXT_2' | translate }}</p>
+<p class="mt-2">{{ 'ABOUT_DETAILS.TEXT_3' | translate }}</p>
+<pre class="list">{{ 'ABOUT_DETAILS.TEXT_4' | translate }}</pre>
+    </div>
+
+    <div class="about-image">
+      <img src="assets/images/water.png" alt="Водные ресурсы" />
+    </div>
+
+  </div>
+
+
+</section>

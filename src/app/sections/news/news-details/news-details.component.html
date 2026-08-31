@@ -1,0 +1,26 @@
+<section class="page-hero">
+  <div class="container">
+    <h1>Новости</h1>
+  </div>
+</section>
+
+@if (newsItem) {
+  <section class="news-detail">
+    <div class="container">
+      <!-- 📸 Картинка -->
+      <div class="hero-image">
+        <img [src]="newsItem.image" alt="" />
+        <!-- 🔥 Дата поверх картинки -->
+        <div class="date-badge">
+          📅 {{ newsItem.date | date:'d MMMM y' }}
+        </div>
+      </div>
+      <!-- 📄 Контент -->
+      <div class="content">
+        <h1>{{ newsItem.title }}</h1>
+        <div class="article" [innerHTML]="newsItem.fullContent"></div>
+        <a routerLink="/news" class="back">← Назад к новостям</a>
+      </div>
+    </div>
+  </section>
+}

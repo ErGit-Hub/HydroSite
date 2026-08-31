@@ -1,0 +1,19 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" width="180" height="40">
+	<style>
+		tspan { white-space:pre } 
+		.s0 { fill: #3aa0c8 } 
+		.s1 { fill: none;stroke: #ffffff;stroke-width: 1.5 } 
+		.s2 { fill: none;stroke: #ffffff } 
+		.t3 { font-size: 16px;fill: #0c3c60;font-family: "Segoe  UI" } 
+		.t4 { font-size: 19px;fill: #0c3c60;font-family: "Segoe  UI" } 
+	</style>
+	<path class="s0" d="m20 5c0 0-10 13-10 20 0 2.65 1.05 5.2 2.93 7.07 1.87 1.88 4.42 2.93 7.07 2.93 2.65 0 5.2-1.05 7.07-2.93 1.88-1.87 2.93-4.42 2.93-7.07 0-7-10-20-10-20z"/>
+	<path class="s1" d="m14 25q6-3 12 0"/>
+	<path class="s2" d="m15 28q5-2 10 0"/>
+	<text id="
+    KazHydro
+  " transform="translate(31,5)">
+		<tspan x="0" y="22.8" class="t3">    </tspan><tspan  y="22.8" class="t4">HydroGeo</tspan><tspan  y="22.8" class="t4">
+</tspan>
+	</text>
+</svg>

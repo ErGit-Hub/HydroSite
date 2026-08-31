@@ -1,0 +1,12 @@
+{
+  "HEADER": {
+    "HOME": "Home",
+    "ABOUT": "About",
+    "SERVICES": "Services",
+    "CONTACTS": "Contacts"
+  },
+  "HERO": {
+    "TITLE": "National Hydrogeological Service",
+    "SUBTITLE": "Kazhydrogeology"
+  }
+}

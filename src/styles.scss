@@ -1,0 +1,111 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f7fa;
+  color: #0c3c60; /* 👈 ВАЖНО */
+}
+
+/* чтобы header не перекрывал */
+app-root {
+  display: block;
+  padding-top: 80px;
+}
+
+/* ===== КОНТЕЙНЕР ===== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== КНОПКИ ===== */
+
+.btn {
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: white;
+  color: #0c3c60;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+/* ===== СЕКЦИИ ===== */
+
+section {
+  scroll-margin-top: 90px; /* чтобы якоря не прятались под header */
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+  will-change: opacity, transform;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: 
+  translateY(0);
+}
+/* ===== МОБИЛКА ===== */
+@media (max-width: 768px) {
+
+  /* HERO */
+  h1 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* CONTACTS */
+  .contacts-grid {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contacts-actions {
+    justify-content: center;
+  }
+
+  .contact-card {
+    width: 100px;
+    height: 120px;
+  }
+
+  /* HEADER */
+  .header-inner {
+    padding: 10px 0;
+  }
+.logo img {
+  height: 36px;
+}
+}

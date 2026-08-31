@@ -1,0 +1,115 @@
+.contacts {
+  padding: 80px 0;
+}
+
+.contacts h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contacts-grid {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contacts-info {
+  min-width: 250px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.contacts-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 300px;
+}
+
+
+.contacts-form input,
+.contacts-form textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+.contacts-form textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+.contacts-form button {
+  align-self: flex-start;
+}
+.contacts-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.contacts-actions .btn {
+  text-decoration: none;
+}
+.map-link {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #0c3c60;
+  font-weight: 500;
+}
+
+.map-link:hover {
+  text-decoration: underline;
+}
+.contacts-actions {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.contact-card {
+  width: 120px;
+  height: 140px;
+  background: white;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #0c3c60;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.contacts {
+  min-height: 500px;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* когда активен */
+.fade-in.show {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
