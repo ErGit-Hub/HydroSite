@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActivityComponent } from './anti-corruption.component';
+import { AntiCorruptionComponent } from './anti-corruption.component';
 
-describe('ActivityComponent', () => {
-  let component: ActivityComponent;
-  let fixture: ComponentFixture<ActivityComponent>;
+describe('AntiCorruptionComponent', () => {
+  let component: AntiCorruptionComponent;
+  let fixture: ComponentFixture<AntiCorruptionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ActivityComponent]
+      imports: [AntiCorruptionComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ActivityComponent);
+    fixture = TestBed.createComponent(AntiCorruptionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { provideTranslateService } from '@ngx-translate/core';
 
 import { GovementComponent } from './govement.component';
 
@@ -8,7 +10,8 @@ describe('GovementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GovementComponent]
+      imports: [GovementComponent],
+      providers: [provideTranslateService(), provideRouter([])]
     })
     .compileComponents();
 

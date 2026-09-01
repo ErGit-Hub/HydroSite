@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { provideTranslateService } from '@ngx-translate/core';
 
 import { ActivityComponent } from './activity.component';
 
@@ -8,7 +10,8 @@ describe('ActivityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ActivityComponent]
+      imports: [ActivityComponent],
+      providers: [provideTranslateService(), provideRouter([])]
     })
     .compileComponents();
 
