@@ -110,8 +110,32 @@ lang>` разъедется с содержимым.
 графики приёма тоже лежат в i18n — компоненты хранят только ключ (`PROJECTS.ITEMS.<key>`,
 `LEADERS.<key>.POSITION`).
 
-> `ru.json` и `en.json` совпадают ключ в ключ (197 строк). `kz.json` заполнен
-> частично — недостающее подставляется из `ru.json` по `fallbackLang`.
+> `ru.json` и `en.json` совпадают ключ в ключ. `kz.json` заполнен частично —
+> недостающее подставляется из `ru.json` по `fallbackLang`.
+
+### Статус казахского
+
+`kz.json` собран из двух источников, и это важно при правках:
+
+| Раздел | Откуда текст |
+| --- | --- |
+| `RECEPTION`, `LEADERS`, `CONTACTS.ADDRESS` | официальные формулировки заказчика |
+| `OMBUDSMAN` — должность, `ABOUT_1`, `ABOUT_2`, `NAME` | официальные формулировки заказчика |
+| `OMBUDSMAN.SUBTITLE`, `ABOUT_TITLE`, `DOC_TITLE`, `DOC_LINK` | **черновик, нужна вычитка** |
+| `HEADER`, `FOOTER`, `HERO`, `NEWS`, `STRUCTURE`, `VACANCIES`, `CONTACTS` (кроме адреса) | **черновик, нужна вычитка** |
+
+Разделы с содержательными текстами — `ABOUT`, `ABOUT_DETAILS`, `ACTIVITIES`,
+`GOV`, `SERVICES`, `PROJECTS`, `ANTI_CORRUPTION`, `FEATURES`, `AUDIENCE`,
+`ADVANTAGES`, `MODULES` — на казахский ещё не переводились и показываются
+по-русски через фолбэк.
+
+Сверить покрытие:
+
+```bash
+node -e "const r=require('./src/assets/i18n/ru.json'),k=require('./src/assets/i18n/kz.json');
+const f=(o,p='')=>Object.entries(o).flatMap(([a,b])=>typeof b==='object'&&!Array.isArray(b)?f(b,p+a+'.'):[p+a]);
+const m=f(r).filter(x=>!f(k).includes(x)); console.log(m.length+' ключей без казахского'); console.log(m.join('\n'))"
+```
 >
 > В i18n не вынесены данные: статьи новостей (`news.data.ts`) и биографии
 > руководителей (`structure.component.ts`). Они остаются русскими на всех языках —
