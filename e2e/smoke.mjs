@@ -232,6 +232,15 @@ try {
     // остаётся сообщение об ошибке — его и покажет проверка
   }
   check('язык переключается с мобильного', mobileLang, 'en');
+
+  // карточка с почтой омбудсмена длиннее телефонной и легко вылезает за экран
+  await mobile.goto(BASE + '/ombucmen', { waitUntil: 'networkidle' });
+  await mobile.waitForTimeout(400);
+  const overflow = await mobile.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth
+  );
+  check('/ombucmen — нет горизонтальной прокрутки', overflow <= 0, true);
+
   await mobile.close();
 
   console.log('\nКонсоль');

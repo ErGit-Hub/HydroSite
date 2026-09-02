@@ -130,4 +130,14 @@
   .contact-box {
     flex-direction: column;
   }
+
+  /* адрес почты длиннее номера и на 20px в узкий экран не влезает */
+  .contact-item {
+    min-width: 0;
+  }
+
+  .contact-item a {
+    font-size: 17px;
+    overflow-wrap: anywhere;
+  }
 }
