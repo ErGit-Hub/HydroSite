@@ -61,15 +61,50 @@ header.scrolled {
   transition: 0.2s;
 }
 
-/* hover */
 .menu a:hover {
   opacity: 0.7;
 }
 
-/* активный пункт */
-.menu a.active {
-  border-bottom: 2px solid #2b6cb0;
-  padding-bottom: 3px;
+/* ===== ВЫПАДАЮЩИЕ МЕНЮ РАЗДЕЛОВ ===== */
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+
+  &:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+  padding: 10px 0;
+  min-width: 200px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: 0.2s;
+
+  a {
+    display: block;
+    padding: 10px 15px;
+    color: #0f172a;
+    text-decoration: none;
+
+    &:hover {
+      background: #f1f5f9;
+    }
+  }
 }
 
 /* ===== RIGHT ===== */
@@ -80,9 +115,24 @@ header.scrolled {
   gap: 10px;
 }
 
-/* языки */
 .desktop-lang {
   display: block;
+}
+
+.login-btn {
+  margin-left: 15px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #2c7be5;
+  color: #2c7be5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.login-btn:hover {
+  background: #2c7be5;
+  color: #fff;
 }
 
 /* ===== BURGER ===== */
@@ -114,71 +164,6 @@ header.scrolled {
   }
 }
 
-/* мобильное меню */
-.mobile-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-
-  background: rgba(0, 0, 0, 0.95);
-  padding: 20px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.mobile-menu a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-}
-
-/* ===== ФИКС ПОД HEADER ===== */
-body {
-  padding-top: 70px;
-}
-
-.dropdown {
-  position: relative;
-  cursor: pointer;
-
-  &:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-
-  padding: 10px 0;
-  min-width: 200px;
-
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: 0.2s;
-
-  a {
-    display: block;
-    padding: 10px 15px;
-    color: #0f172a;
-    text-decoration: none;
-
-    &:hover {
-      background: #f1f5f9;
-    }
-  }
-}
 .mobile-menu {
   position: fixed;
   top: 70px;
@@ -207,37 +192,14 @@ body {
     font-size: 18px;
     padding: 10px 0;
 
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
-/* 🔥 заголовок группы */
+/* заголовок группы */
 .mobile-group {
   margin-top: 15px;
   font-size: 14px;
   color: #94a3b8;
   text-transform: uppercase;
-}
-.login-btn {
-  margin-left: 15px;
-  padding: 6px 14px;
-  border-radius: 6px;
-  border: 1px solid #2c7be5;
-  color: #2c7be5;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.2s;
-}
-
-.login-btn:hover {
-  background: #2c7be5;
-  color: #fff;
-}
-
-/* мобильная */
-.mobile-login {
-  margin-top: 10px;
-  display: block;
-  padding: 10px;
-  border-top: 1px solid #eee;
 }
