@@ -69,6 +69,7 @@ e2e/
 | `/vacancies` | Вакансии |
 | `/anti-corruption` | Противодействие коррупции |
 | `/ombucmen` | Омбудсмен |
+| `/security` | Служба информационной безопасности и ТБ |
 | `/news`, `/news/:id` | Новости и карточка новости |
 | `/404`, `**` | Страница 404 |
 
@@ -123,6 +124,7 @@ lang>` разъедется с содержимым.
 | `OMBUDSMAN` — должность, `ABOUT_1`, `ABOUT_2`, `NAME` | официальные формулировки заказчика |
 | `ANTI_CORRUPTION` — офицер, `HOTLINE_*`, `INFO_*` | официальные формулировки заказчика |
 | `ANTI_CORRUPTION.TITLE`, `SUBTITLE`, `DOCS_TITLE`, `DOCS_SUBTITLE` | **черновик, нужна вычитка** |
+| `SECURITY` целиком и `HEADER.SECURITY` | **черновик, нужна вычитка** |
 | `OMBUDSMAN.SUBTITLE`, `ABOUT_TITLE`, `DOC_TITLE`, `DOC_LINK` | **черновик, нужна вычитка** |
 | `HEADER`, `FOOTER`, `HERO`, `NEWS`, `STRUCTURE`, `VACANCIES`, `CONTACTS` (кроме адреса) | **черновик, нужна вычитка** |
 

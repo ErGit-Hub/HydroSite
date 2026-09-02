@@ -114,6 +114,14 @@ try {
   const about = await open(page, '/about');
   check('/about — заголовок раздела', about.title, 'О предприятии — HydroGeo');
 
+  const security = await open(page, '/security');
+  check('/security — заголовок раздела', security.title, 'Служба информационной безопасности и ТБ — HydroGeo');
+  check('/security — оба документа на месте', await page.locator('.doc-item').count(), 2);
+  for (const href of await page.locator('.doc-item').evaluateAll(a => a.map(x => x.getAttribute('href')))) {
+    const res = await page.request.get(`${BASE}/${encodeURI(href)}`);
+    check(`отдаётся ${href.split('/').pop().slice(0, 24)}…`, res.headers()['content-type'], 'application/pdf');
+  }
+
   const news = await open(page, '/news/1');
   check('/news/1 — новость открывается', news.is404, false);
   check('/news/1 — заголовок', news.title, 'Новости — HydroGeo');
@@ -239,7 +247,7 @@ try {
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth
   );
 
-  for (const path of ['/home', '/about', '/reception', '/contacts', '/projects', '/ombucmen', '/anti-corruption']) {
+  for (const path of ['/home', '/about', '/reception', '/contacts', '/projects', '/ombucmen', '/anti-corruption', '/security']) {
     await mobile.goto(BASE + path, { waitUntil: 'networkidle' });
     await mobile.waitForTimeout(400);
     check(`${path} — нет горизонтальной прокрутки`, await pageOverflow() <= 0, true);

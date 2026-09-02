@@ -16,7 +16,8 @@
     "NEWS": "News",
     "VACANCIES": "Careers",
     "LOGIN": "Log in",
-    "LANGUAGE": "Language"
+    "LANGUAGE": "Language",
+    "SECURITY": "Security and safety service"
   },
   "HERO": {
     "TITLE": "National\nHydrogeological Service",
@@ -307,5 +308,14 @@
     "TITLE": "Page not found",
     "TEXT": "The page may have been moved or deleted, or the address contains a typo.",
     "BUTTON": "Go to home"
+  },
+  "SECURITY": {
+    "TITLE": "Information Security and Occupational Safety Service",
+    "SUBTITLE": "Internal documents governing the service and occupational safety requirements",
+    "DOCS_TITLE": "Governing documents",
+    "DOCS": {
+      "REGULATION": "Regulations on the Information Security and Occupational Safety Service",
+      "LABOUR_POLICY": "Occupational health and safety policy"
+    }
   }
 }

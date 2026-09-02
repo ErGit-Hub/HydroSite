@@ -1,0 +1,30 @@
+<section class="page-hero">
+  <div class="container">
+    <h1>{{ 'SECURITY.TITLE' | translate }}</h1>
+    <p>{{ 'SECURITY.SUBTITLE' | translate }}</p>
+  </div>
+</section>
+
+<section class="security">
+  <div class="container">
+
+    <div class="documents-card">
+
+      <h2>{{ 'SECURITY.DOCS_TITLE' | translate }}</h2>
+
+      <div class="documents-list">
+        @for (doc of documents; track doc.key) {
+          <a class="doc-item" [href]="doc.file" target="_blank">
+            <span class="doc-icon" aria-hidden="true">📄</span>
+            <div class="doc-info">
+              <h4>{{ 'SECURITY.DOCS.' + doc.key | translate }}</h4>
+              <p>{{ doc.code }}</p>
+            </div>
+          </a>
+        }
+      </div>
+
+    </div>
+
+  </div>
+</section>

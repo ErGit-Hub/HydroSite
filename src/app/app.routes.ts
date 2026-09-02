@@ -69,6 +69,11 @@ export const routes: Routes = [
     loadComponent: () => import('./sections/ombucmen/ombucmen.component').then(m => m.OmbucmenComponent)
   },
   {
+    path: 'security',
+    title: 'Служба информационной безопасности и ТБ',
+    loadComponent: () => import('./sections/security/security.component').then(m => m.SecurityComponent)
+  },
+  {
     path: 'news',
     title: 'Новости',
     loadComponent: () => import('./sections/news/news.component').then(m => m.NewsComponent)
