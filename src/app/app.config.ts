@@ -37,7 +37,9 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
 
     provideTranslateService({
-      defaultLanguage: 'ru',
+      // kz.json и en.json заполнены не полностью: недостающие ключи
+      // берутся из ru.json, иначе в вёрстке видны сами ключи (ABOUT.TITLE)
+      fallbackLang: 'ru',
       loader: provideTranslateLoader(CustomTranslateLoader)
     }),
 
