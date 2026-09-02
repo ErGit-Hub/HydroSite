@@ -422,6 +422,27 @@ section {
 }
 /* ===== КОМПЛАЕНС-ОФИЦЕР ===== */
 
+.officer-card {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+/* исходник 337x461 — не растягиваем шире родного размера, иначе мыло */
+.officer-photo img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.officer-info .card-header-custom {
+  margin-bottom: 0;
+}
+
 .officer-name {
   margin: 18px 0 20px;
   font-size: 24px;
@@ -439,6 +460,15 @@ section {
 }
 
 @media (max-width: 768px) {
+  .officer-card {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .officer-photo img {
+    margin: 0 auto;
+  }
+
   .officer-contacts {
     flex-direction: column;
   }

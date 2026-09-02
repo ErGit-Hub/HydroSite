@@ -122,6 +122,12 @@ try {
     check(`отдаётся ${href.split('/').pop().slice(0, 24)}…`, res.headers()['content-type'], 'application/pdf');
   }
 
+  await page.goto(BASE + '/anti-corruption', { waitUntil: 'networkidle' });
+  const officerPhoto = await page.locator('.officer-photo img').evaluate(
+    el => el.complete && el.naturalWidth > 0
+  );
+  check('фото комплаенс-офицера загрузилось', officerPhoto, true);
+
   const news = await open(page, '/news/1');
   check('/news/1 — новость открывается', news.is404, false);
   check('/news/1 — заголовок', news.title, 'Новости — HydroGeo');
