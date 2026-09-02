@@ -420,3 +420,36 @@ section {
 .documents-card {
   overflow: hidden;
 }
+/* ===== КОМПЛАЕНС-ОФИЦЕР ===== */
+
+.officer-name {
+  margin: 18px 0 20px;
+  font-size: 24px;
+  color: #003b7a;
+}
+
+.officer-contacts {
+  display: flex;
+  gap: 20px;
+}
+
+.officer-contacts .email-box {
+  margin-top: 0;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .officer-contacts {
+    flex-direction: column;
+  }
+
+  /* адрес почты на 20px в узкий экран не влезает */
+  .officer-contacts .email-box {
+    min-width: 0;
+  }
+
+  .officer-contacts .email-box a {
+    font-size: 17px;
+    overflow-wrap: anywhere;
+  }
+}

@@ -239,7 +239,7 @@ try {
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth
   );
 
-  for (const path of ['/home', '/about', '/reception', '/contacts', '/projects', '/ombucmen']) {
+  for (const path of ['/home', '/about', '/reception', '/contacts', '/projects', '/ombucmen', '/anti-corruption']) {
     await mobile.goto(BASE + path, { waitUntil: 'networkidle' });
     await mobile.waitForTimeout(400);
     check(`${path} — нет горизонтальной прокрутки`, await pageOverflow() <= 0, true);

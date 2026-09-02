@@ -121,6 +121,8 @@ lang>` разъедется с содержимым.
 | --- | --- |
 | `RECEPTION`, `LEADERS`, `CONTACTS.ADDRESS` | официальные формулировки заказчика |
 | `OMBUDSMAN` — должность, `ABOUT_1`, `ABOUT_2`, `NAME` | официальные формулировки заказчика |
+| `ANTI_CORRUPTION` — офицер, `HOTLINE_*`, `INFO_*` | официальные формулировки заказчика |
+| `ANTI_CORRUPTION.TITLE`, `SUBTITLE`, `DOCS_TITLE`, `DOCS_SUBTITLE` | **черновик, нужна вычитка** |
 | `OMBUDSMAN.SUBTITLE`, `ABOUT_TITLE`, `DOC_TITLE`, `DOC_LINK` | **черновик, нужна вычитка** |
 | `HEADER`, `FOOTER`, `HERO`, `NEWS`, `STRUCTURE`, `VACANCIES`, `CONTACTS` (кроме адреса) | **черновик, нужна вычитка** |
 

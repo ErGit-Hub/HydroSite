@@ -267,11 +267,10 @@
     "TITLE": "Anti-corruption compliance",
     "SUBTITLE": "Information for citizens and legal entities on reporting corruption",
     "HOTLINE_TITLE": "Hotline",
-    "HOTLINE_SUBTITLE": "Report corruption risks, violations, conflicts of interest or any other conduct contrary to the principles of integrity.",
+    "HOTLINE_SUBTITLE": "On discovering or encountering corruption offences, or situations showing signs of corruption, employees of the Company must notify the management and report the matter to the compliance officer at the number above.",
     "INFO_TITLE": "For citizens and employees",
-    "INFO_1": "You may submit a complaint, report corruption risks, breaches of the law or abuse of office, or propose ways to make the company's work more transparent.",
+    "INFO_1": "You may submit a complaint or report corruption risks, breaches of anti-corruption law, abuse of office, or violations of the code of conduct.",
     "INFO_2": "All submissions are reviewed under the established procedure and treated as confidential.",
-    "EMAIL_LABEL": "Email",
     "DOCS_TITLE": "Governing documents",
     "DOCS_SUBTITLE": "This section holds the internal documents on anti-corruption, corporate ethics and the resolution of conflicts of interest.",
     "DOCS": {
@@ -299,7 +298,10 @@
         "TITLE": "Anti-corruption standard",
         "DESC": "Common requirements and standards of anti-corruption conduct."
       }
-    }
+    },
+    "OFFICER_TITLE": "Compliance officer",
+    "OFFICER_NAME": "Мусралимов Марат Кокушевич",
+    "OFFICER_POSITION": "Compliance officer of NJSC National Hydrogeological Service Kazhydrogeology"
   },
   "NOT_FOUND": {
     "TITLE": "Page not found",
