@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Component, OnInit, inject } from '@angular/core';
 import { NEWS_DATA } from '../../../models/news.data';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-news-details',
@@ -11,19 +10,26 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
     templateUrl: './news-details.component.html',
     styleUrl: './news-details.component.scss'
 })
-export class NewsDetailsComponent  {
-isVisible = false;
- newsItem: any;
- 
-   constructor(private route: ActivatedRoute) {}
-ngOnInit() {
-   const id = Number(this.route.snapshot.paramMap.get('id'));
+export class NewsDetailsComponent implements OnInit {
+  isVisible = false;
+  newsItem: any;
 
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
     this.newsItem = NEWS_DATA.find(n => n.id === id);
-  setTimeout(() => {
-    this.isVisible = true;
-  }, 50);
-}
 
-}
+    if (!this.newsItem) {
+      // Маршрут `news/:id` совпал, поэтому `**` уже не сработает.
+      // Адрес в строке оставляем — так видно, на какой ссылке ошибка.
+      this.router.navigate(['/404'], { skipLocationChange: true });
+      return;
+    }
 
+    setTimeout(() => {
+      this.isVisible = true;
+    }, 50);
+  }
+}

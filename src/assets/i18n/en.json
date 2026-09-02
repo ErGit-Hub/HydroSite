@@ -8,5 +8,10 @@
   "HERO": {
     "TITLE": "National Hydrogeological Service",
     "SUBTITLE": "Kazhydrogeology"
+  },
+  "NOT_FOUND": {
+    "TITLE": "Page not found",
+    "TEXT": "The page may have been moved or deleted, or the address contains a typo.",
+    "BUTTON": "Go to home"
   }
 }

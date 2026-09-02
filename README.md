@@ -1,93 +1,151 @@
-# hydro-site
+# KazHydro — сайт НАО «НГС Казгидрогеология»
 
+Одностраничное приложение (SPA) на Angular 21 для Национальной гидрогеологической
+службы Республики Казахстан: информация о предприятии, направления деятельности,
+проекты, новости, вакансии и антикоррупционный блок.
 
+Интерфейс мультиязычный: русский (по умолчанию), казахский и английский.
 
-## Getting started
+## Требования
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- Node.js 20.19+, 22.12+ или 24+ (`engines` у Angular 21; нечётные
+  релизы — 21.x, 23.x — не поддерживаются)
+- npm 10+
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Запуск
 
-## Add your files
+```bash
+npm install
+npm start          # dev-сервер на http://localhost:4200
+```
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+Остальные команды:
+
+```bash
+npm run build      # продакшн-сборка в dist/hydro-site/browser
+npm run build:dev  # сборка без минификации, с source maps
+npm run watch      # пересборка при изменениях
+npm test           # юнит-тесты (vitest)
+```
+
+## Структура проекта
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/hydro3164022/hydro-site.git
-git branch -M main
-git push -uf origin main
+src/
+├── app/
+│   ├── app.component.*          # корневой компонент: header + router-outlet + footer
+│   ├── app.config.ts            # провайдеры: роутер, HttpClient, ngx-translate
+│   ├── app.routes.ts            # маршруты, заголовки страниц, lazy-загрузка
+│   ├── core/                    # язык, заголовок вкладки, обработка ошибок чанков
+│   ├── components/              # переиспользуемые блоки (header, footer)
+│   ├── models/                  # интерфейсы и статические данные (новости)
+│   ├── pages/                   # home, not-found
+│   └── sections/                # страницы разделов сайта
+├── assets/
+│   ├── docs/                    # PDF: антикоррупционные документы, кодекс этики
+│   ├── i18n/                    # ru.json, kz.json, en.json
+│   └── images/                  # изображения разделов, новостей, руководства
+└── styles.scss                  # глобальные стили, контейнер, анимация .fade-in
 ```
 
-## Integrate with your tools
+## Маршруты
 
-* [Set up project integrations](https://gitlab.com/hydro3164022/hydro-site/-/settings/integrations)
+| Путь | Раздел |
+| --- | --- |
+| `/` | редирект на `/home` |
+| `/home` | Главная |
+| `/about` | О компании |
+| `/activity` | Направления деятельности |
+| `/govement` | Государственные задачи |
+| `/services` | Услуги |
+| `/structure` | Структура |
+| `/reception` | Приёмная / график приёма |
+| `/contacts` | Контакты |
+| `/projects` | Проекты |
+| `/vacancies` | Вакансии |
+| `/anti-corruption` | Противодействие коррупции |
+| `/ombucmen` | Омбудсмен |
+| `/news`, `/news/:id` | Новости и карточка новости |
+| `/404`, `**` | Страница 404 |
 
-## Collaborate with your team
+Все разделы подгружаются отдельными чанками (`loadComponent`). Исключение —
+`/home`: её открывает каждый посетитель, поэтому она собрана в начальный бандл.
+Остальные чанки докачиваются в фоне (`withPreloading(PreloadAllModules)`), так что
+клик по меню не ждёт сети.
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+Заголовок вкладки задаётся полем `title` маршрута; `PageTitleStrategy`
+(`src/app/core/page-title.strategy.ts`) добавляет к нему название сайта.
 
-## Test and Deploy
+Маршрут `/404` нужен для страниц, у которых совпал путь, но не нашлись данные:
+`news/:id` с несуществующим id уходит на него сам (`**` в этом случае не
+срабатывает — путь-то совпал).
 
-Use the built-in continuous integration in GitLab.
+## Локализация
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+Переводы лежат в `src/assets/i18n/<lang>.json` и загружаются по HTTP через
+`CustomTranslateLoader` (`src/app/core/translate.loader.ts`).
 
-***
+Активный язык — целиком зона ответственности `LanguageService`
+(`src/app/core/language.service.ts`): он восстанавливает выбор из `localStorage`
+при старте (`provideAppInitializer` в `app.config.ts`), откатывается на `ru` и
+сохраняет каждое переключение. `HeaderComponent.setLang` только вызывает его —
+не задавайте язык через `TranslateService.use` мимо сервиса, иначе выбор
+не сохранится.
 
-# Editing this README
+Чтобы добавить строку, внесите ключ во все три файла (`ru.json`, `kz.json`,
+`en.json`) и используйте его в шаблоне: `{{ 'SECTION.KEY' | translate }}`.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+> `kz.json` и `en.json` пока заполнены не полностью — основной объём текстов есть
+> только в `ru.json`.
 
-## Suggestions for a good README
+## Тесты
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+Тесты запускаются билдером `@angular/build:unit-test` поверх vitest в jsdom.
+На каждый компонент есть smoke-тест «should create»; компонентам, использующим
+`translate` или `routerLink`, в `TestBed` нужно передать `provideTranslateService()`
+и `provideRouter([])` — см. `src/app/pages/not-found/not-found.component.spec.ts`.
 
-## Name
-Choose a self-explaining name for your project.
+```bash
+npm test
+```
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Деплой
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+`npm run build` кладёт статику в `dist/hydro-site/browser`. Её можно раздать любым
+статическим хостингом, но SPA-маршрутизация требует fallback всех неизвестных путей
+на `index.html` (иначе прямой заход на `/news/3` вернёт 404 от сервера).
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+Fallback нужно ограничить документами. Если под него попадут скрипты и ассеты,
+пропавший файл вернётся как `index.html` со статусом 200 — а это, например, ломает
+навигацию после деплоя: имена чанков хэшируются (`outputHashing: "all"`), и
+открытая у пользователя вкладка просит уже несуществующий чанк.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+```nginx
+# ассеты и чанки: пропал файл — честный 404, а не index.html
+location /assets/ {
+  try_files $uri =404;
+}
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+location ~* \.(js|css|map|woff2?|ico|png|jpe?g|svg)$ {
+  try_files $uri =404;
+}
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+location / {
+  try_files $uri $uri/ /index.html;
+}
+```
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Приложение обрабатывает такой 404 само: `withNavigationErrorHandler`
+(`src/app/core/chunk-load-error.ts`) перезагружает страницу по тому же адресу,
+чтобы браузер получил свежий `index.html` со ссылками на новые чанки.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+Статуса 404 у неизвестных путей при этом всё равно нет — их отдаёт `index.html`
+с кодом 200. Чтобы опечатки в ссылках не попадали в индекс, `NotFoundComponent`
+выставляет `<meta name="robots" content="noindex, follow">`.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Заметки
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- В `package.json` объявлены, но нигде в `src/` не используются: `primeng`,
+  `primeicons`, `@angular/cdk`, `@angular/animations`, `@angular/forms`,
+  `tailwindcss` (конфига Tailwind в проекте тоже нет). Их можно удалить.
+- Данные новостей статические — `src/app/models/news.data.ts`, без бэкенда.
