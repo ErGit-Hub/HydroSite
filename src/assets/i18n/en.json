@@ -241,7 +241,9 @@
       "mykan": "Last Wednesday of the month",
       "vakasova": "Last Tuesday of the month"
     },
-    "ADDRESS": "2/1 B. Momyshuly Avenue, Astana"
+    "ADDRESS": "13/3 Korgalzhyn Highway, Vion business centre, Astana",
+    "PLACE_LABEL": "Reception venue",
+    "TH_EMAIL": "Email"
   },
   "VACANCIES": {
     "TITLE": "Careers",

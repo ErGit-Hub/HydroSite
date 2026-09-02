@@ -19,6 +19,7 @@
             <th>{{ 'RECEPTION.TH_POSITION' | translate }}</th>
             <th>{{ 'RECEPTION.TH_SCHEDULE' | translate }}</th>
             <th>{{ 'RECEPTION.TH_TIME' | translate }}</th>
+            <th>{{ 'RECEPTION.TH_EMAIL' | translate }}</th>
           </tr>
         </thead>
 
@@ -29,6 +30,7 @@
               <td>{{ 'LEADERS.' + row.key + '.POSITION' | translate }}</td>
               <td>{{ 'RECEPTION.SCHEDULE.' + row.key | translate }}</td>
               <td>{{ row.time }}</td>
+              <td><a [href]="'mailto:' + row.email">{{ row.email }}</a></td>
             </tr>
           }
         </tbody>
@@ -37,8 +39,7 @@
     </div>
 
     <div class="reception-info">
-      <p><strong>{{ 'CONTACTS.ADDRESS_LABEL' | translate }}:</strong> {{ 'RECEPTION.ADDRESS' | translate }}</p>
-      <p><strong>{{ 'CONTACTS.EMAIL_LABEL' | translate }}:</strong> {{ 'CONTACTS.EMAIL' | translate }}</p>
+      <p><strong>{{ 'RECEPTION.PLACE_LABEL' | translate }}:</strong> {{ 'RECEPTION.ADDRESS' | translate }}</p>
     </div>
 
   </div>
