@@ -78,6 +78,14 @@ header.scrolled {
   }
 }
 
+/* после клика по пункту список прячется, пока курсор не уйдёт с него:
+   иначе страница уже сменилась, а меню всё ещё висит под указателем.
+   Правило идёт после :hover — при равной специфичности выигрывает последнее */
+.dropdown.suppressed .dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .dropdown-menu {
   position: absolute;
   top: 100%;

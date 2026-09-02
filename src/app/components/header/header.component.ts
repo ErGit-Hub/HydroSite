@@ -16,6 +16,13 @@ export class HeaderComponent {
   isMenuOpen = false;
   isScrolled = false;
 
+  /**
+   * Списки разделов раскрываются на :hover, поэтому после перехода по пункту
+   * курсор остаётся над меню и оно продолжает висеть. Прячем до тех пор, пока
+   * указатель не уйдёт с выпадашки.
+   */
+  isDropdownSuppressed = false;
+
   private readonly router = inject(Router);
 
   isHomePage(): boolean {

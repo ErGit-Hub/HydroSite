@@ -12,10 +12,13 @@
     <nav class="menu">
 
       <a routerLink="/home">{{ 'HEADER.HOME' | translate }}</a>
-      <div class="dropdown">
+      <div
+        class="dropdown"
+        [class.suppressed]="isDropdownSuppressed"
+        (mouseleave)="isDropdownSuppressed = false">
         <span>{{ 'HEADER.ABOUT' | translate }} ▾</span>
 
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" (click)="isDropdownSuppressed = true">
           <a routerLink="/about">{{ 'HEADER.ABOUT_PAGE' | translate }}</a>
           <a routerLink="/activity">{{ 'HEADER.ACTIVITY' | translate }}</a>
           <a routerLink="/govement">{{ 'HEADER.GOV' | translate }}</a>
@@ -27,10 +30,13 @@
       <a routerLink="/services">{{ 'HEADER.SERVICES' | translate }}</a>
 
       <!-- DROPDOWN -->
-      <div class="dropdown">
+      <div
+        class="dropdown"
+        [class.suppressed]="isDropdownSuppressed"
+        (mouseleave)="isDropdownSuppressed = false">
         <span>{{ 'HEADER.WORK' | translate }} ▾</span>
 
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" (click)="isDropdownSuppressed = true">
           <a routerLink="/structure">{{ 'HEADER.STRUCTURE' | translate }}</a>
           <a routerLink="/projects">{{ 'HEADER.PROJECTS' | translate }}</a>
           <a routerLink="/reception">{{ 'HEADER.RECEPTION' | translate }}</a>

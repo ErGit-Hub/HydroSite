@@ -133,6 +133,28 @@ try {
   const afterNotFound = await open(page, '/services');
   check('noindex снят при уходе с 404', afterNotFound.robots, null);
 
+  // Списки разделов держатся на :hover, поэтому после перехода курсор
+  // остаётся над меню и оно продолжает висеть, пока его не подавить.
+  console.log('\nВыпадающие меню разделов');
+  await page.goto(BASE + '/home', { waitUntil: 'networkidle' });
+  const group = page.locator('.dropdown').first();
+  const groupMenu = group.locator('.dropdown-menu');
+
+  await group.hover();
+  await page.waitForTimeout(400);
+  check('наведение раскрывает список', await groupMenu.isVisible(), true);
+
+  await page.locator('.dropdown-menu a[href="/about"]').first().click();
+  await page.waitForTimeout(800);
+  check('переход состоялся', new URL(page.url()).pathname, '/about');
+  check('список скрыт, хотя курсор над ним', await groupMenu.isVisible(), false);
+
+  await page.mouse.move(640, 500);
+  await page.waitForTimeout(300);
+  await group.hover();
+  await page.waitForTimeout(400);
+  check('список снова работает после увода курсора', await groupMenu.isVisible(), true);
+
   console.log('\nЯзык');
   await page.goto(BASE + '/about', { waitUntil: 'networkidle' });
   await page.evaluate(() => localStorage.removeItem('hydro-site:lang'));
