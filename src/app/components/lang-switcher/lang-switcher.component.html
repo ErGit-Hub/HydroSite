@@ -1,0 +1,31 @@
+<div class="lang-switch">
+
+  <button
+    type="button"
+    class="lang-trigger"
+    aria-haspopup="listbox"
+    [attr.aria-expanded]="isOpen"
+    (click)="toggle()">
+    <span class="label">{{ currentLabel }}</span>
+    <span class="caret" aria-hidden="true">▾</span>
+  </button>
+
+  @if (isOpen) {
+    <ul class="lang-menu" role="listbox" (keydown)="onListKeydown($event)">
+      @for (lang of languages; track lang.code) {
+        <li>
+          <button
+            type="button"
+            class="lang-option"
+            role="option"
+            [attr.aria-selected]="lang.code === current"
+            [class.active]="lang.code === current"
+            (click)="select(lang.code)">
+            {{ lang.label }}
+          </button>
+        </li>
+      }
+    </ul>
+  }
+
+</div>

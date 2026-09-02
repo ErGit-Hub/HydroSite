@@ -1,7 +1,13 @@
-import { Injectable, inject } from '@angular/core';
+import { DOCUMENT, Injectable, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
-export const SUPPORTED_LANGS = ['ru', 'kz', 'en'] as const;
+/** Языки названы на самих себе — так их узнаёт носитель, а не только полиглот. */
+export const LANGUAGES = [
+  { code: 'ru', label: 'Русский' },
+  { code: 'kz', label: 'Қазақша' },
+  { code: 'en', label: 'English' }
+] as const;
+
 export const DEFAULT_LANG = 'ru';
 
 const STORAGE_KEY = 'hydro-site:lang';
@@ -10,15 +16,28 @@ const STORAGE_KEY = 'hydro-site:lang';
 @Injectable({ providedIn: 'root' })
 export class LanguageService {
   private readonly translate = inject(TranslateService);
+  private readonly document = inject(DOCUMENT);
 
   /** Восстанавливает язык из localStorage. Вызывается один раз при старте. */
   init(): void {
     this.use(this.stored() ?? DEFAULT_LANG);
   }
 
+  get current(): string {
+    return this.translate.currentLang || DEFAULT_LANG;
+  }
+
+  get currentLabel(): string {
+    return LANGUAGES.find(l => l.code === this.current)?.label ?? '';
+  }
+
   use(lang: string): void {
-    const next = (SUPPORTED_LANGS as readonly string[]).includes(lang) ? lang : DEFAULT_LANG;
+    const next = LANGUAGES.some(l => l.code === lang) ? lang : DEFAULT_LANG;
     this.translate.use(next);
+
+    // Без этого скринридеры и поисковики читают страницу как англоязычную:
+    // в index.html атрибут проставлен один раз и сам не меняется.
+    this.document.documentElement.lang = next;
 
     try {
       localStorage.setItem(STORAGE_KEY, next);

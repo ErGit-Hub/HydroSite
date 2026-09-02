@@ -3,11 +3,11 @@ import { Component, HostListener, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { Router, RouterModule } from '@angular/router';
 
-import { LanguageService } from '../../core/language.service';
+import { LangSwitcherComponent } from '../lang-switcher/lang-switcher.component';
 
 @Component({
     selector: 'app-header',
-    imports: [TranslateModule, RouterModule],
+    imports: [TranslateModule, RouterModule, LangSwitcherComponent],
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
@@ -16,7 +16,6 @@ export class HeaderComponent {
   isMenuOpen = false;
   isScrolled = false;
 
-  private readonly language = inject(LanguageService);
   private readonly router = inject(Router);
 
   isHomePage(): boolean {
@@ -25,11 +24,6 @@ export class HeaderComponent {
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
-  }
-
-  setLang(lang: string) {
-    this.language.use(lang);
-    this.isMenuOpen = false;
   }
 
   @HostListener('window:scroll', [])

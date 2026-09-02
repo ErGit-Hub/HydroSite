@@ -1,0 +1,106 @@
+.lang-switch {
+  position: relative;
+}
+
+.lang-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+
+  font: inherit;
+  font-weight: 500;
+  color: inherit;
+
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.lang-trigger:hover {
+  opacity: 0.75;
+}
+
+.lang-trigger:focus-visible {
+  outline: 2px solid #2c7be5;
+  outline-offset: 2px;
+}
+
+.lang-trigger .caret {
+  font-size: 12px;
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+  min-width: 160px;
+
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.lang-option {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font: inherit;
+  text-align: left;
+  color: #0f172a;
+}
+
+.lang-option:hover {
+  background: #f1f5f9;
+}
+
+.lang-option:focus-visible {
+  outline: 2px solid #2c7be5;
+  outline-offset: -2px;
+}
+
+.lang-option.active {
+  font-weight: 600;
+  color: #2c7be5;
+}
+
+/* В мобильном меню фон тёмный — там список раскрывается на месте. */
+:host(.on-dark) .lang-trigger {
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 0;
+}
+
+:host(.on-dark) .lang-menu {
+  position: static;
+  min-width: 0;
+  margin-top: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+:host(.on-dark) .lang-option {
+  color: #fff;
+  font-size: 16px;
+}
+
+:host(.on-dark) .lang-option:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+:host(.on-dark) .lang-option.active {
+  color: #7ab6ff;
+}

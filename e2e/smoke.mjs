@@ -55,6 +55,23 @@ function stopServer(child) {
   }
 }
 
+/** Открывает выпадашку языка в шапке и выбирает язык по его названию. */
+async function switchLang(page, label) {
+  await page.locator('.desktop-lang .lang-trigger').click();
+  await page.locator('.desktop-lang .lang-option', { hasText: label }).click();
+  await page.waitForTimeout(600);
+}
+
+const htmlLang = page => page.evaluate(() => document.documentElement.lang);
+
+/** Ждёт появления/исчезновения пунктов, чтобы не считать их до перерисовки. */
+async function langOptionCount(page, expected) {
+  await page.locator('.desktop-lang .lang-option').first()
+    .waitFor({ state: expected ? 'visible' : 'detached', timeout: 2000 })
+    .catch(() => {});
+  return page.locator('.desktop-lang .lang-option').count();
+}
+
 /** Снимок того, что видит пользователь на странице. */
 async function open(page, path) {
   await page.goto(BASE + path, { waitUntil: 'networkidle' });
@@ -122,17 +139,28 @@ try {
   await page.reload({ waitUntil: 'networkidle' });
   const ru = (await page.locator('h1').first().textContent()).trim();
   check('русский по умолчанию', ru, 'О предприятии');
+  check('lang документа — ru', await htmlLang(page), 'ru');
+  check('выпадашка закрыта до клика', await langOptionCount(page, false), 0);
+  check('в кнопке видно текущий язык', (await page.locator('.desktop-lang .label').innerText()).trim(), 'Русский');
 
-  await page.locator('.lang button', { hasText: 'EN' }).click();
-  await page.waitForTimeout(600);
+  await page.locator('.desktop-lang .lang-trigger').click();
+  check('клик открывает список из трёх языков', await langOptionCount(page, true), 3);
+
+  await page.keyboard.press('Escape');
+  check('Escape закрывает список', await langOptionCount(page, false), 0);
+
+  await switchLang(page, 'English');
   const en = (await page.locator('h1').first().textContent()).trim();
   check('EN не показывает сырые ключи', en.includes('.'), false);
+  check('lang документа — en', await htmlLang(page), 'en');
+  check('в кнопке видно выбранный язык', (await page.locator('.desktop-lang .label').innerText()).trim(), 'English');
   check('выбор языка сохранён', await page.evaluate(() => localStorage.getItem('hydro-site:lang')), 'en');
 
   await page.reload({ waitUntil: 'networkidle' });
   await page.waitForTimeout(600);
   const afterReload = (await page.locator('h1').first().textContent()).trim();
   check('язык пережил перезагрузку', afterReload, en);
+  check('lang документа пережил перезагрузку', await htmlLang(page), 'en');
 
   // Главная проверка: текст обязан действительно поменяться. Фолбэк на ru
   // делает непереведённую страницу неотличимой от переведённой, и без этой
@@ -145,8 +173,7 @@ try {
     await page.waitForTimeout(400);
     const before = await page.locator('main, body').first().innerText();
 
-    await page.locator('.lang button', { hasText: 'EN' }).click();
-    await page.waitForTimeout(700);
+    await switchLang(page, 'English');
     const after = await page.locator('main, body').first().innerText();
 
     check(`${path} — текст меняется на EN`, after !== before, true);
@@ -154,6 +181,36 @@ try {
     const ratio = after.split('\n').filter(l => RU_LETTERS.test(l)).length / Math.max(after.split('\n').length, 1);
     check(`${path} — кириллицы в EN меньше половины`, ratio < 0.5, true);
   }
+
+  // Мобильный вид: переключатель живёт внутри меню-бургера, и меню должно
+  // прокручиваться — иначе нижние пункты физически недоступны на телефоне.
+  console.log('\nМобильный переключатель (390×844)');
+  const mobile = await (await browser.newContext({ viewport: { width: 390, height: 844 } })).newPage();
+  await mobile.goto(BASE + '/about', { waitUntil: 'networkidle' });
+  check('в шапке на мобильном переключателя нет', await mobile.locator('.desktop-lang').isVisible(), false);
+
+  await mobile.locator('.burger').click();
+  const mobileTrigger = mobile.locator('app-lang-switcher.on-dark .lang-trigger');
+  await mobileTrigger.scrollIntoViewIfNeeded().catch(() => {});
+
+  // Проверяем именно попадание в экран: без прокрутки меню кнопка остаётся
+  // «видимой» по DOM, но лежит ниже нижнего края и недоступна для клика.
+  const box = await mobileTrigger.boundingBox();
+  const inViewport = !!box && box.y >= 0 && box.y + box.height <= 844;
+  check('переключатель в меню попадает в экран', inViewport, true);
+
+  let mobileLang = 'переключить не удалось';
+  try {
+    await mobileTrigger.click({ timeout: 5000 });
+    await mobile.locator('app-lang-switcher.on-dark .lang-option', { hasText: 'English' })
+      .click({ timeout: 5000 });
+    await mobile.waitForTimeout(600);
+    mobileLang = await htmlLang(mobile);
+  } catch {
+    // остаётся сообщение об ошибке — его и покажет проверка
+  }
+  check('язык переключается с мобильного', mobileLang, 'en');
+  await mobile.close();
 
   console.log('\nКонсоль');
   check('нет ошибок в консоли', consoleErrors.join(' | ') || '—', '—');

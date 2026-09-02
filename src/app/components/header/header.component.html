@@ -46,11 +46,7 @@
     <!-- RIGHT -->
     <div class="right">
 
-      <div class="lang">
-        <button (click)="setLang('ru')">RU</button>
-        <button (click)="setLang('kz')">KZ</button>
-        <button (click)="setLang('en')">EN</button>
-      </div>
+      <app-lang-switcher class="desktop-lang"></app-lang-switcher>
       <a class="login-btn" href="https://data.hydrogeo.kz/">
         {{ 'HEADER.LOGIN' | translate }}
       </a>
@@ -78,6 +74,9 @@
       <a routerLink="/news" (click)="toggleMenu()">{{ 'HEADER.NEWS' | translate }}</a>
       <a routerLink="/vacancies" (click)="toggleMenu()">{{ 'HEADER.VACANCIES' | translate }}</a>
       <a routerLink="/contacts" (click)="toggleMenu()">{{ 'HEADER.CONTACTS' | translate }}</a>
+
+      <div class="mobile-group">{{ 'HEADER.LANGUAGE' | translate }}</div>
+      <app-lang-switcher class="on-dark"></app-lang-switcher>
     </div>
   }
 
