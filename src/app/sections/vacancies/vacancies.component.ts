@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-vacancies',
-    imports: [],
+    imports: [TranslateModule],
     templateUrl: './vacancies.component.html',
     styleUrl: './vacancies.component.scss'
 })

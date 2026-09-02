@@ -2,11 +2,11 @@
 
   <div class="container">
 
-    <h2>Проекты</h2>
+    <h2>{{ 'PROJECTS.PAGE_TITLE' | translate }}</h2>
 
     <div class="projects-grid">
 
-      @for (p of projects; track p) {
+      @for (p of projects; track p.key) {
         <div class="project-card">
           <div class="project-image">
             <img [src]="p.image" alt="">
@@ -20,13 +20,13 @@
             }
           </div>
           <div class="project-content">
-            <span class="status" [class.done]="p.status === 'Завершен'">
-              {{ p.status }}
+            <span class="status" [class.done]="p.status === 'DONE'">
+              {{ 'PROJECTS.STATUS.' + p.status | translate }}
             </span>
-            <h3>{{ p.title }}</h3>
-            <p>{{ p.description }}</p>
+            <h3>{{ 'PROJECTS.ITEMS.' + p.key + '.TITLE' | translate }}</h3>
+            <p>{{ 'PROJECTS.ITEMS.' + p.key + '.DESC' | translate }}</p>
             <div class="meta">
-              <span>📍 {{ p.location }}</span>
+              <span>📍 {{ 'PROJECTS.ITEMS.' + p.key + '.LOCATION' | translate }}</span>
               <span>📅 {{ p.period }}</span>
             </div>
           </div>
@@ -42,15 +42,11 @@
 
   <div class="container">
 
-    <h2>Система мониторинга уровня и расхода воды</h2>
+    <h2>{{ 'PROJECTS.MONITORING_TITLE' | translate }}</h2>
 
-    <p class="subtitle">
-      Демонстрационная карта мониторинга (г. Шымкент)
-    </p>
+    <p class="subtitle">{{ 'PROJECTS.MONITORING_SUBTITLE' | translate }}</p>
 
-    <p class="note">
-      * Данные тестовые. Отображение, структура и логика соответствуют реальной системе.
-    </p>
+    <p class="note">{{ 'PROJECTS.MONITORING_NOTE' | translate }}</p>
 
     <div class="map-wrapper">
       <iframe

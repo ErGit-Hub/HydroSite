@@ -1,6 +1,6 @@
 <section class="page-hero">
   <div class="container">
-    <h1>Новости</h1>
+    <h1>{{ 'NEWS.TITLE' | translate }}</h1>
   </div>
 </section>
 
@@ -19,7 +19,7 @@
       <div class="content">
         <h1>{{ newsItem.title }}</h1>
         <div class="article" [innerHTML]="newsItem.fullContent"></div>
-        <a routerLink="/news" class="back">← Назад к новостям</a>
+        <a routerLink="/news" class="back">← {{ 'NEWS.BACK' | translate }}</a>
       </div>
     </div>
   </section>

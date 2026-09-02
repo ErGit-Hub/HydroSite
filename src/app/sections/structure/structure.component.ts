@@ -1,19 +1,24 @@
 
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+
 @Component({
     selector: 'app-structure',
-    imports: [],
+    imports: [TranslateModule],
     templateUrl: './structure.component.html',
     styleUrl: './structure.component.scss'
 })
 export class StructureComponent {
 isVisible = false;
 selectedLeader: any = null;
+selectedKey: string | null = null;
+
+/** Порядок карточек; должности лежат в i18n под LEADERS.<key>.POSITION. */
+leaderKeys = ['bekniyaz', 'ibraev', 'mykan', 'vakasova'];
 
 leaders: any = {
   bekniyaz: {
     name: 'Бекнияз Болат Қабыкенұлы',
-    position: 'Председатель Правления',
     image: 'assets/images/leader/leader1.jpeg',
     description: `
 Болат Бекнияз родился в 1962 году в Акмолинской области.
@@ -42,7 +47,6 @@ leaders: any = {
 
   ibraev: {
     name: 'Ибраев Даир Зарапович',
-    position: 'Первый заместитель',
        image: 'assets/images/leader/leader2.png',
     description: `Ибраев Даир Зарапович — первый заместитель председателя правления НАО «Казгидрогеология».
 
@@ -53,7 +57,6 @@ leaders: any = {
 
   mykan: {
     name: 'Мықан Қаракөз Еламанқызы',
-    position: 'Заместитель председателя',
     image: 'assets/images/leader/leader5.png',
     description: `Мықан Қаракөз Еламанқызы занимает должность заместителя председателя правления НАО «Казгидрогеология».
 
@@ -64,7 +67,6 @@ leaders: any = {
 
   vakasova: {
     name: 'Вакасова Гульданам Туглукжановна',
-    position: 'Заместитель председателя',
    image: 'assets/images/leader/leader6.png',
     description: `Вакасова Гульданам Туглукжановна занимает должность заместителя председателя правления НАО «Казгидрогеология».
 
@@ -77,6 +79,7 @@ leaders: any = {
 };
 
 selectLeader(key: string) {
+  this.selectedKey = key;
   this.selectedLeader = this.leaders[key];
 }
 ngAfterViewInit() {

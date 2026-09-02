@@ -3,11 +3,299 @@
     "HOME": "Home",
     "ABOUT": "About",
     "SERVICES": "Services",
-    "CONTACTS": "Contacts"
+    "STRUCTURE": "Structure",
+    "CONTACTS": "Contacts",
+    "ABOUT_PAGE": "About the company",
+    "ACTIVITY": "Areas of activity",
+    "GOV": "State level",
+    "ANTI_CORRUPTION": "Anti-corruption compliance",
+    "OMBUDSMAN": "Corporate ombudsman",
+    "WORK": "Activities",
+    "PROJECTS": "Projects",
+    "RECEPTION": "Public reception",
+    "NEWS": "News",
+    "VACANCIES": "Careers",
+    "LOGIN": "Log in"
   },
   "HERO": {
-    "TITLE": "National Hydrogeological Service",
-    "SUBTITLE": "Kazhydrogeology"
+    "TITLE": "National\nHydrogeological Service",
+    "SUBTITLE": "Kazhydrogeology",
+    "MINISTRY": "An organisation under the Ministry of Water Resources\nand Irrigation of the Republic of Kazakhstan",
+    "BUTTON": "Learn more",
+    "LEAD": "The single operator for the management of the country's groundwater resources"
+  },
+  "FOOTER": {
+    "TAGLINE": "Hydrogeological research and water resources of Kazakhstan",
+    "NAV": "Navigation",
+    "COPYRIGHT": "© 2026 HydroGeo"
+  },
+  "ABOUT": {
+    "TITLE": "About the company",
+    "SUBTITLE": "Kazhydrogeology is a specialised organisation for the study and monitoring of groundwater",
+    "TEXT": "NJSC NHS Kazhydrogeology studies, assesses, monitors and manages the sustainable use of groundwater in Kazakhstan. It carries out state tasks in hydrogeology, water supply, irrigation and the digitalisation of water resources."
+  },
+  "ACTIVITIES": {
+    "TITLE": "Areas of activity",
+    "INTRO": "Our main areas of work cover the key aspects of studying, using and protecting groundwater",
+    "LIST": {
+      "MONITORING_TITLE": "State groundwater monitoring",
+      "MONITORING_DESC": "Systematic observation of the condition and changes of groundwater resources",
+      "SUPPLY_TITLE": "Water supply",
+      "SUPPLY_DESC": "Supplying groundwater to communities, agriculture and industry",
+      "MELIORATION_TITLE": "Land reclamation",
+      "MELIORATION_DESC": "Monitoring and assessment of the reclamation status of land",
+      "DIGITAL_TITLE": "Digitalisation and GIS",
+      "DIGITAL_DESC": "Maintaining databases, digitalisation and the use of geographic information systems",
+      "SCIENCE_TITLE": "Scientific research",
+      "SCIENCE_DESC": "Research, expert review and analysis",
+      "ENGINEERING_TITLE": "Engineering surveys",
+      "ENGINEERING_DESC": "Engineering-geological and hydrogeological surveys",
+      "EDUCATION_TITLE": "Training of specialists",
+      "EDUCATION_DESC": "Training and professional development for water sector specialists"
+    }
+  },
+  "PROJECTS": {
+    "TITLE": "Completed projects",
+    "LIST": {
+      "PROJECT_1_TITLE": "Groundwater reserve assessment",
+      "PROJECT_1_DESC": "Comprehensive studies to determine groundwater reserves",
+      "PROJECT_2_TITLE": "Water resource monitoring",
+      "PROJECT_2_DESC": "Building an observation system for groundwater conditions",
+      "PROJECT_3_TITLE": "Deposit exploration",
+      "PROJECT_3_DESC": "Search for and assessment of promising water supply sources",
+      "PROJECT_4_TITLE": "State programmes",
+      "PROJECT_4_DESC": "Participation in national water resource projects"
+    },
+    "PAGE_TITLE": "Projects",
+    "STATUS": {
+      "ACTIVE": "In progress",
+      "DONE": "Completed",
+      "PLANNED": "Planned"
+    },
+    "ITEMS": {
+      "SOUTH_MONITORING": {
+        "TITLE": "Groundwater monitoring system for Southern Kazakhstan",
+        "DESC": "An automated monitoring system for 50 observation wells with real-time data transmission.",
+        "LOCATION": "Turkestan Region"
+      },
+      "ALMATY_RESERVES": {
+        "TITLE": "Groundwater reserve assessment for the Almaty agglomeration",
+        "DESC": "Comprehensive assessment of exploitable groundwater reserves to secure the water supply.",
+        "LOCATION": "Almaty Region"
+      },
+      "LAB": {
+        "TITLE": "Modernisation of the analytical laboratory",
+        "DESC": "Installation of new water analysis equipment.",
+        "LOCATION": "Astana"
+      },
+      "MAP": {
+        "TITLE": "Hydrogeological map of Kazakhstan",
+        "DESC": "A digital map built with GIS.",
+        "LOCATION": "Nationwide"
+      },
+      "PROTECTION": {
+        "TITLE": "Groundwater protection programme",
+        "DESC": "Developing measures to protect water from contamination.",
+        "LOCATION": "Karaganda Region"
+      },
+      "AQUIFERS": {
+        "TITLE": "Aquifer research",
+        "DESC": "Fundamental research into the hydrogeology of the region.",
+        "LOCATION": "Atyrau Region"
+      }
+    },
+    "MONITORING_TITLE": "Water level and flow monitoring system",
+    "MONITORING_SUBTITLE": "Demonstration monitoring map (Shymkent)",
+    "MONITORING_NOTE": "* Test data. The display, structure and logic match the production system."
+  },
+  "GOV": {
+    "TITLE": "State level",
+    "INTRO": "Delivering state tasks in the management of the groundwater resources of the Republic of Kazakhstan",
+    "LIST": {
+      "TASK_1_TITLE": "State monitoring",
+      "TASK_1_DESC": "Observation of groundwater conditions and their changes",
+      "TASK_2_TITLE": "Water cadastre",
+      "TASK_2_DESC": "Contribution to the state water cadastre",
+      "TASK_3_TITLE": "Reserve assessment",
+      "TASK_3_DESC": "State-level exploration and assessment of groundwater reserves",
+      "TASK_4_TITLE": "Well decommissioning",
+      "TASK_4_DESC": "Sealing of emergency and abandoned wells",
+      "TASK_5_TITLE": "Digitalisation of the sector",
+      "TASK_5_DESC": "Creating and maintaining state databases and GIS",
+      "TASK_6_TITLE": "Water security",
+      "TASK_6_DESC": "Ensuring the sustainable use and protection of water resources"
+    }
+  },
+  "ABOUT_DETAILS": {
+    "TITLE": "About the company",
+    "MISSION": ": Securing the country's water safety and the sustainable use of groundwater.",
+    "GOAL": "Building an effective system for recording, monitoring and managing groundwater resources.",
+    "TEXT_1": "Kazhydrogeology carries out comprehensive research and monitoring of groundwater across the Republic of Kazakhstan. Our work focuses on studying hydrogeological conditions, assessing reserves and ensuring the sustainable use of water resources.",
+    "TEXT_2": "The organisation takes an active part in state programmes, conducts applied research and supports projects in water supply, ecology and environmental management.",
+    "TEXT_3": "Main areas of activity:",
+    "TEXT_4": "• monitoring of groundwater conditions\n• assessment and forecasting of water resources\n• protection from contamination and depletion\n• adoption of modern water management technologies"
+  },
+  "FEATURES": {
+    "TITLE": "Capabilities",
+    "LIST": {
+      "MONITORING_TITLE": "Monitoring",
+      "MONITORING_DESC": "Real-time tracking of water levels, precipitation and the condition of water bodies",
+      "ACCOUNTING_TITLE": "Data records",
+      "ACCOUNTING_DESC": "Storing and structuring hydrological data in a single system",
+      "ANALYTICS_TITLE": "Analytics",
+      "ANALYTICS_DESC": "Report generation and data visualisation",
+      "INTEGRATION_TITLE": "Integrations",
+      "INTEGRATION_DESC": "Data exchange with government and industry systems"
+    }
+  },
+  "AUDIENCE": {
+    "TITLE": "Who it is for",
+    "GOV": "Government bodies — oversight and management of water resources",
+    "BUSINESS": "Business — access to data and services for planning",
+    "SCIENCE": "Researchers — data analysis and research"
+  },
+  "ADVANTAGES": {
+    "TITLE": "Advantages",
+    "LIST": [
+      "A single digital platform",
+      "Greater transparency of processes",
+      "Less paper-based paperwork",
+      "Fast access to data",
+      "Scalability and flexibility"
+    ]
+  },
+  "MODULES": {
+    "TITLE": "System modules",
+    "LIST": [
+      "Register of water bodies",
+      "Gauging station monitoring",
+      "Reporting",
+      "Analytics",
+      "User and role management"
+    ]
+  },
+  "SERVICES": {
+    "TITLE": "Services and expertise",
+    "LIST": {
+      "SERVICE_1_TITLE": "Scientific research",
+      "SERVICE_1_DESC": "Applied research in hydrogeology and water resources.",
+      "SERVICE_2_TITLE": "Hydrogeological expert review",
+      "SERVICE_2_DESC": "Scientific support for projects and programmes.",
+      "SERVICE_3_TITLE": "Groundwater monitoring",
+      "SERVICE_3_DESC": "Study of the condition and dynamics of resources.",
+      "SERVICE_4_TITLE": "Digitalisation of the sector",
+      "SERVICE_4_DESC": "GIS, databases and analytical models.",
+      "SERVICE_5_TITLE": "Reserve assessment",
+      "SERVICE_5_DESC": "Evidence-based calculation of groundwater resources.",
+      "SERVICE_6_TITLE": "Climate and water security",
+      "SERVICE_6_DESC": "Research into the impact of climate on water resources."
+    }
+  },
+  "CONTACTS": {
+    "TITLE": "Contacts",
+    "EMAIL": "qazhydrogeology@gmail.com",
+    "PHONE": "+7 701 785 01 40",
+    "EMAIL_LABEL": "Email",
+    "PHONE_LABEL": "Phone",
+    "ADDRESS_LABEL": "Address",
+    "ADDRESS": "2/1 Bauyrzhan Momyshuly Avenue, floor 7, Astana, Kazakhstan",
+    "MAP": "Open in maps"
+  },
+  "NEWS": {
+    "TITLE": "News",
+    "READ_MORE": "Read more",
+    "BACK": "Back to news"
+  },
+  "STRUCTURE": {
+    "TITLE": "Structure",
+    "SUBTITLE": "Organisational structure of the company",
+    "SCHEME_ALT": "Organisational structure of the company",
+    "LEADERSHIP": "Leadership",
+    "CARD_HINT": "Select a card to see more information"
+  },
+  "LEADERS": {
+    "bekniyaz": {
+      "POSITION": "Chair of the Management Board"
+    },
+    "ibraev": {
+      "POSITION": "First Deputy Chair"
+    },
+    "mykan": {
+      "POSITION": "Deputy Chair"
+    },
+    "vakasova": {
+      "POSITION": "Deputy Chair"
+    }
+  },
+  "RECEPTION": {
+    "TITLE": "Public reception schedule",
+    "SUBTITLE": "Reception of citizens by the management of NJSC NHS Kazhydrogeology",
+    "TH_NAME": "Name",
+    "TH_POSITION": "Position",
+    "TH_SCHEDULE": "Reception days",
+    "TH_TIME": "Time",
+    "SCHEDULE": {
+      "bekniyaz": "First Friday of the month",
+      "ibraev": "Last Thursday of the month",
+      "mykan": "Last Wednesday of the month",
+      "vakasova": "Last Tuesday of the month"
+    },
+    "ADDRESS": "2/1 B. Momyshuly Avenue, Astana"
+  },
+  "VACANCIES": {
+    "TITLE": "Careers",
+    "JOIN_TITLE": "Join our team",
+    "JOIN_TEXT": "We always welcome talented specialists in hydrology, design and data analysis.",
+    "SEND_CV": "Send your CV to",
+    "COPY_HINT": "Click to copy the email address"
+  },
+  "OMBUDSMAN": {
+    "TITLE": "Corporate ombudsman",
+    "SUBTITLE": "An independent officer who promotes corporate ethics, helps resolve labour disputes and reviews employee complaints.",
+    "POSITION": "Ombudsman of NJSC National Hydrogeological Service Kazhydrogeology",
+    "ABOUT_TITLE": "About the ombudsman",
+    "ABOUT_1": "The corporate ombudsman helps resolve labour disputes and conflict situations, and promotes corporate ethics and fair dealing.",
+    "ABOUT_2": "Employees may contact the ombudsman for a confidential review of matters concerning employment relations, respect for their rights, conflicts of interest and other situations that call for independent consideration.",
+    "DOC_TITLE": "Governing document",
+    "DOC_LINK": "Regulations on the ombudsman"
+  },
+  "ANTI_CORRUPTION": {
+    "TITLE": "Anti-corruption compliance",
+    "SUBTITLE": "Information for citizens and legal entities on reporting corruption",
+    "HOTLINE_TITLE": "Hotline",
+    "HOTLINE_SUBTITLE": "Report corruption risks, violations, conflicts of interest or any other conduct contrary to the principles of integrity.",
+    "INFO_TITLE": "For citizens and employees",
+    "INFO_1": "You may submit a complaint, report corruption risks, breaches of the law or abuse of office, or propose ways to make the company's work more transparent.",
+    "INFO_2": "All submissions are reviewed under the established procedure and treated as confidential.",
+    "EMAIL_LABEL": "Email",
+    "DOCS_TITLE": "Governing documents",
+    "DOCS_SUBTITLE": "This section holds the internal documents on anti-corruption, corporate ethics and the resolution of conflicts of interest.",
+    "DOCS": {
+      "ETHICS": {
+        "TITLE": "Code of corporate ethics",
+        "DESC": "The document setting out corporate values and standards of conduct."
+      },
+      "INSTRUCTION": {
+        "TITLE": "Anti-corruption guidance for employees",
+        "DESC": "How employees are expected to meet anti-corruption requirements."
+      },
+      "POLICY": {
+        "TITLE": "Internal anti-corruption policy",
+        "DESC": "The core measures and principles for preventing corruption risks."
+      },
+      "CONFLICT": {
+        "TITLE": "Policy on identifying and resolving conflicts of interest",
+        "DESC": "Rules for preventing and resolving conflicts of interest."
+      },
+      "PLAN": {
+        "TITLE": "Anti-corruption action plan",
+        "DESC": "The list of internal measures for preventing corruption."
+      },
+      "STANDARD": {
+        "TITLE": "Anti-corruption standard",
+        "DESC": "Common requirements and standards of anti-corruption conduct."
+      }
+    }
   },
   "NOT_FOUND": {
     "TITLE": "Page not found",

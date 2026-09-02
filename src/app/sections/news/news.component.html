@@ -1,7 +1,7 @@
 
 <section class="page-hero">
   <div class="container">
-    <h1>Новости</h1>
+    <h1>{{ 'NEWS.TITLE' | translate }}</h1>
   </div>
 </section>
 <section class="services fade-in" [class.show]="isVisible">
@@ -23,7 +23,7 @@
               {{ n.preview }}
             </p>
             <div class="read-more">
-              Читать далее →
+              {{ 'NEWS.READ_MORE' | translate }} →
             </div>
           </div>
         </div>

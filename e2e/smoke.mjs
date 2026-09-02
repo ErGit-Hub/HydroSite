@@ -78,9 +78,16 @@ try {
   browser = await chromium.launch({ args: ['--no-sandbox'] });
   const page = await (await browser.newContext({ viewport: { width: 1280, height: 900 } })).newPage();
 
+  // Считаем только свои ошибки: на /projects встроен сторонний iframe
+  // (hydro.krpro.kz), который шумит своими 403 и Highcharts.
   const consoleErrors = [];
-  page.on('console', m => m.type() === 'error' && consoleErrors.push(m.text()));
-  page.on('pageerror', e => consoleErrors.push(String(e)));
+  const isOurs = url => typeof url === 'string' && url.startsWith(BASE);
+  page.on('console', m => {
+    if (m.type() === 'error' && isOurs(m.location()?.url)) consoleErrors.push(m.text());
+  });
+  page.on('pageerror', e => {
+    if (isOurs(e.stack) || (e.stack ?? '').includes(BASE)) consoleErrors.push(String(e));
+  });
 
   console.log('\nМаршруты и заголовки вкладок');
   const home = await open(page, '/');
@@ -111,6 +118,8 @@ try {
 
   console.log('\nЯзык');
   await page.goto(BASE + '/about', { waitUntil: 'networkidle' });
+  await page.evaluate(() => localStorage.removeItem('hydro-site:lang'));
+  await page.reload({ waitUntil: 'networkidle' });
   const ru = (await page.locator('h1').first().textContent()).trim();
   check('русский по умолчанию', ru, 'О предприятии');
 
@@ -124,6 +133,27 @@ try {
   await page.waitForTimeout(600);
   const afterReload = (await page.locator('h1').first().textContent()).trim();
   check('язык пережил перезагрузку', afterReload, en);
+
+  // Главная проверка: текст обязан действительно поменяться. Фолбэк на ru
+  // делает непереведённую страницу неотличимой от переведённой, и без этой
+  // проверки пустой en.json выглядит как рабочее переключение.
+  console.log('\nПеревод страниц на EN');
+  const RU_LETTERS = /[а-яё]/i;
+  for (const path of ['/home', '/about', '/services', '/contacts', '/projects', '/vacancies']) {
+    await page.evaluate(() => localStorage.setItem('hydro-site:lang', 'ru'));
+    await page.goto(BASE + path, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(400);
+    const before = await page.locator('main, body').first().innerText();
+
+    await page.locator('.lang button', { hasText: 'EN' }).click();
+    await page.waitForTimeout(700);
+    const after = await page.locator('main, body').first().innerText();
+
+    check(`${path} — текст меняется на EN`, after !== before, true);
+    // хвосты кириллицы допустимы: имена, новости и биографии живут в данных
+    const ratio = after.split('\n').filter(l => RU_LETTERS.test(l)).length / Math.max(after.split('\n').length, 1);
+    check(`${path} — кириллицы в EN меньше половины`, ratio < 0.5, true);
+  }
 
   console.log('\nКонсоль');
   check('нет ошибок в консоли', consoleErrors.join(' | ') || '—', '—');

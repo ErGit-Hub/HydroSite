@@ -1,8 +1,8 @@
 
 <section class="page-hero">
   <div class="container">
-    <h1>График приема граждан</h1>
-    <p>  Прием граждан руководством НАО «НГС «Казгидрогеология»</p>
+    <h1>{{ 'RECEPTION.TITLE' | translate }}</h1>
+    <p>{{ 'RECEPTION.SUBTITLE' | translate }}</p>
   </div>
 </section>
   <section class="services fade-in" [class.show]="isVisible">
@@ -15,49 +15,30 @@
 
         <thead>
           <tr>
-            <th>Ф.И.О.</th>
-            <th>Должность</th>
-            <th>График приема</th>
-            <th>Время</th>
+            <th>{{ 'RECEPTION.TH_NAME' | translate }}</th>
+            <th>{{ 'RECEPTION.TH_POSITION' | translate }}</th>
+            <th>{{ 'RECEPTION.TH_SCHEDULE' | translate }}</th>
+            <th>{{ 'RECEPTION.TH_TIME' | translate }}</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
-            <td>Бекнияз Болат Қабыкенұлы</td>
-            <td>Председатель</td>
-            <td>Первая пятница месяца</td>
-            <td>10:00 – 12:00</td>
-          </tr>
-
-          <tr>
-            <td>Ибраев Даир Зарапович</td>
-            <td>Первый заместитель председателя</td>
-            <td>Последний четверг месяца</td>
-            <td>15:30 – 17:30</td>
-          </tr>
-
-          <tr>
-            <td>Мықан Қаракөз Еламанқызы</td>
-            <td>Заместитель председателя</td>
-            <td>Последняя среда месяца</td>
-            <td>15:30 – 17:30</td>
-          </tr>
-
-          <tr>
-            <td>Вакасова Гульданам Туглукжановна</td>
-            <td>Заместитель председателя</td>
-            <td>Последний вторник месяца</td>
-            <td>15:30 – 17:30</td>
-          </tr>
+          @for (row of schedule; track row.key) {
+            <tr>
+              <td>{{ row.name }}</td>
+              <td>{{ 'LEADERS.' + row.key + '.POSITION' | translate }}</td>
+              <td>{{ 'RECEPTION.SCHEDULE.' + row.key | translate }}</td>
+              <td>{{ row.time }}</td>
+            </tr>
+          }
         </tbody>
 
       </table>
     </div>
 
     <div class="reception-info">
-      <p><strong>Адрес:</strong> г. Астана, пр. Б. Момышулы 2/1</p>
-      <p><strong>Email:</strong> qazhydrogeology&#64;gmail.com</p>
+      <p><strong>{{ 'CONTACTS.ADDRESS_LABEL' | translate }}:</strong> {{ 'RECEPTION.ADDRESS' | translate }}</p>
+      <p><strong>{{ 'CONTACTS.EMAIL_LABEL' | translate }}:</strong> {{ 'CONTACTS.EMAIL' | translate }}</p>
     </div>
 
   </div>

@@ -11,35 +11,35 @@
 
     <nav class="menu">
 
-      <a routerLink="/home">Главная</a>
+      <a routerLink="/home">{{ 'HEADER.HOME' | translate }}</a>
       <div class="dropdown">
-        <span>О компании ▾</span>
+        <span>{{ 'HEADER.ABOUT' | translate }} ▾</span>
 
         <div class="dropdown-menu">
-          <a routerLink="/about">О предприятии</a>
-          <a routerLink="/activity">Направления деятельности</a>
-          <a routerLink="/govement">Государственный уровень</a>
-          <a routerLink="/anti-corruption">Антикоррупционный комплаенс</a>
-          <a routerLink="/ombucmen">Корпоративный омбудсмен</a>
+          <a routerLink="/about">{{ 'HEADER.ABOUT_PAGE' | translate }}</a>
+          <a routerLink="/activity">{{ 'HEADER.ACTIVITY' | translate }}</a>
+          <a routerLink="/govement">{{ 'HEADER.GOV' | translate }}</a>
+          <a routerLink="/anti-corruption">{{ 'HEADER.ANTI_CORRUPTION' | translate }}</a>
+          <a routerLink="/ombucmen">{{ 'HEADER.OMBUDSMAN' | translate }}</a>
         </div>
       </div>
 
-      <a routerLink="/services">Услуги</a>
+      <a routerLink="/services">{{ 'HEADER.SERVICES' | translate }}</a>
 
       <!-- DROPDOWN -->
       <div class="dropdown">
-        <span>Деятельность ▾</span>
+        <span>{{ 'HEADER.WORK' | translate }} ▾</span>
 
         <div class="dropdown-menu">
-          <a routerLink="/structure">Структура</a>
-          <a routerLink="/projects">Проекты</a>
-          <a routerLink="/reception">Прием граждан</a>
-          <a routerLink="/news">Новости</a>
-          <a routerLink="/vacancies">Вакансии</a>
+          <a routerLink="/structure">{{ 'HEADER.STRUCTURE' | translate }}</a>
+          <a routerLink="/projects">{{ 'HEADER.PROJECTS' | translate }}</a>
+          <a routerLink="/reception">{{ 'HEADER.RECEPTION' | translate }}</a>
+          <a routerLink="/news">{{ 'HEADER.NEWS' | translate }}</a>
+          <a routerLink="/vacancies">{{ 'HEADER.VACANCIES' | translate }}</a>
         </div>
       </div>
 
-      <a routerLink="/contacts">Контакты</a>
+      <a routerLink="/contacts">{{ 'HEADER.CONTACTS' | translate }}</a>
 
     </nav>
 
@@ -52,7 +52,7 @@
         <button (click)="setLang('en')">EN</button>
       </div>
       <a class="login-btn" href="https://data.hydrogeo.kz/">
-        Вход
+        {{ 'HEADER.LOGIN' | translate }}
       </a>
       <button class="burger" (click)="toggleMenu()">☰</button>
 
@@ -63,21 +63,21 @@
   <!-- MOBILE -->
   @if (isMenuOpen) {
     <div class="mobile-menu">
-      <a routerLink="/home" (click)="toggleMenu()">Главная</a>
-      <div class="mobile-group">О компании</div>
-      <a routerLink="/about" (click)="toggleMenu()">О предприятии</a>
-      <a routerLink="/activity" (click)="toggleMenu()">Направления деятельности</a>
-      <a routerLink="/anti-corruption" (click)="toggleMenu()">Антикоррупционный комплаенс</a>
-      <a routerLink="/ombucmen" (click)="toggleMenu()">Корпоративный омбудсмен</a>
-      <a routerLink="/services" (click)="toggleMenu()">Услуги</a>
+      <a routerLink="/home" (click)="toggleMenu()">{{ 'HEADER.HOME' | translate }}</a>
+      <div class="mobile-group">{{ 'HEADER.ABOUT' | translate }}</div>
+      <a routerLink="/about" (click)="toggleMenu()">{{ 'HEADER.ABOUT_PAGE' | translate }}</a>
+      <a routerLink="/activity" (click)="toggleMenu()">{{ 'HEADER.ACTIVITY' | translate }}</a>
+      <a routerLink="/anti-corruption" (click)="toggleMenu()">{{ 'HEADER.ANTI_CORRUPTION' | translate }}</a>
+      <a routerLink="/ombucmen" (click)="toggleMenu()">{{ 'HEADER.OMBUDSMAN' | translate }}</a>
+      <a routerLink="/services" (click)="toggleMenu()">{{ 'HEADER.SERVICES' | translate }}</a>
       <!-- ГРУППА -->
-      <div class="mobile-group">Деятельность</div>
-      <a routerLink="/structure" (click)="toggleMenu()">Структура</a>
-      <a routerLink="/projects" (click)="toggleMenu()">Проекты</a>
-      <a routerLink="/reception" (click)="toggleMenu()">Прием граждан</a>
-      <a routerLink="/news" (click)="toggleMenu()">Новости</a>
-      <a routerLink="/vacancies" (click)="toggleMenu()">Вакансии</a>
-      <a routerLink="/contacts" (click)="toggleMenu()">Контакты</a>
+      <div class="mobile-group">{{ 'HEADER.WORK' | translate }}</div>
+      <a routerLink="/structure" (click)="toggleMenu()">{{ 'HEADER.STRUCTURE' | translate }}</a>
+      <a routerLink="/projects" (click)="toggleMenu()">{{ 'HEADER.PROJECTS' | translate }}</a>
+      <a routerLink="/reception" (click)="toggleMenu()">{{ 'HEADER.RECEPTION' | translate }}</a>
+      <a routerLink="/news" (click)="toggleMenu()">{{ 'HEADER.NEWS' | translate }}</a>
+      <a routerLink="/vacancies" (click)="toggleMenu()">{{ 'HEADER.VACANCIES' | translate }}</a>
+      <a routerLink="/contacts" (click)="toggleMenu()">{{ 'HEADER.CONTACTS' | translate }}</a>
     </div>
   }
 

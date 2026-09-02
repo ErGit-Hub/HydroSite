@@ -1,10 +1,7 @@
 <section class="page-hero">
   <div class="container">
-    <h1>Антикоррупционный комплаенс</h1>
-    <p>
-      Информация для обращения граждан и юридических лиц
-      по вопросам противодействия коррупции
-    </p>
+    <h1>{{ 'ANTI_CORRUPTION.TITLE' | translate }}</h1>
+    <p>{{ 'ANTI_CORRUPTION.SUBTITLE' | translate }}</p>
   </div>
 </section>
 
@@ -15,36 +12,23 @@
 
   <div class="card-header-custom">
     <div>
-      <h2>Горячая линия</h2>
+      <h2>{{ 'ANTI_CORRUPTION.HOTLINE_TITLE' | translate }}</h2>
 
-      <p class="card-subtitle">
-        Сообщить о коррупционных рисках, нарушениях,
-        конфликте интересов или иных фактах,
-        противоречащих принципам добропорядочности.
-      </p>
+      <p class="card-subtitle">{{ 'ANTI_CORRUPTION.HOTLINE_SUBTITLE' | translate }}</p>
     </div>
-
-   
   </div>
 
   <div class="info-block">
-    <h4>Для обращений граждан и работников</h4>
+    <h4>{{ 'ANTI_CORRUPTION.INFO_TITLE' | translate }}</h4>
 
-    <p>
-      Вы можете направить обращение, сообщение о коррупционных рисках,
-      нарушениях законодательства, злоупотреблении служебным положением
-      либо предложения по повышению прозрачности деятельности Общества.
-    </p>
+    <p>{{ 'ANTI_CORRUPTION.INFO_1' | translate }}</p>
 
-    <p>
-      Все обращения рассматриваются в установленном порядке
-      с соблюдением конфиденциальности.
-    </p>
+    <p>{{ 'ANTI_CORRUPTION.INFO_2' | translate }}</p>
 
     <div class="email-box">
-      <span>Электронная почта:</span>
+      <span>{{ 'ANTI_CORRUPTION.EMAIL_LABEL' | translate }}:</span>
       <a href="mailto:qazhydrogeology&#64;gmail.com">
-        qazhydrogeology&#64;gmail.com
+        {{ 'CONTACTS.EMAIL' | translate }}
       </a>
     </div>
   </div>
@@ -56,84 +40,28 @@
 
   <div class="card-header-custom">
     <div>
-      <h2>Нормативные документы</h2>
+      <h2>{{ 'ANTI_CORRUPTION.DOCS_TITLE' | translate }}</h2>
 
-      <p class="card-subtitle">
-        В данном разделе размещены внутренние документы
-        по вопросам противодействия коррупции,
-        корпоративной этики и урегулирования конфликта интересов.
-      </p>
+      <p class="card-subtitle">{{ 'ANTI_CORRUPTION.DOCS_SUBTITLE' | translate }}</p>
     </div>
-
- 
   </div>
 
   <div class="documents-list">
 
-    <div class="documents-list">
+    @for (doc of documents; track doc.key) {
+      <a class="doc-item" [href]="doc.file" target="_blank">
+        <span class="doc-icon">📄</span>
+        <div class="doc-info">
+          <h4>{{ 'ANTI_CORRUPTION.DOCS.' + doc.key + '.TITLE' | translate }}</h4>
+          <p>{{ 'ANTI_CORRUPTION.DOCS.' + doc.key + '.DESC' | translate }}</p>
+        </div>
+      </a>
+    }
 
-  <a class="doc-item"
-     href="assets/docs/Кодекс корпоративной этики.pdf"
-     target="_blank">
-    <span class="doc-icon">📄</span>
-    <div class="doc-info">
-      <h4>Кодекс корпоративной этики</h4>
-      <p>Документ, определяющий корпоративные ценности и нормы поведения.</p>
-    </div>
-  </a>
-
-  <a class="doc-item"
-     href="assets/docs/Инструкция_по_противодействию_коррупции_для_работников.pdf"
-     target="_blank">
-    <span class="doc-icon">📄</span>
-    <div class="doc-info">
-      <h4>Инструкция по противодействию коррупции для работников</h4>
-      <p>Порядок соблюдения антикоррупционных требований сотрудниками.</p>
-    </div>
-  </a>
-
-  <a class="doc-item"
-     href="assets/docs/ВНУТРЕННЯЯ_ПОЛИТИКА_ПРОТИВОДЕЙСТВИЯ_КОРРУПЦИИ.pdf"
-     target="_blank">
-    <span class="doc-icon">📄</span>
-    <div class="doc-info">
-      <h4>Внутренняя политика противодействия коррупции</h4>
-      <p>Основные меры и принципы предотвращения коррупционных рисков.</p>
-    </div>
-  </a>
-
-  <a class="doc-item"
-     href="assets/docs/ВНУТРЕННЯЯ_ПОЛИТИКА_ВЫЯВЛЕНИЯ_И_УРЕГУЛИРОВАНИЯ_КОНФЛИКТА_ИНТЕРЕСОВ.pdf"
-     target="_blank">
-    <span class="doc-icon">📄</span>
-    <div class="doc-info">
-      <h4>Политика выявления и урегулирования конфликта интересов</h4>
-      <p>Правила предотвращения и урегулирования конфликта интересов.</p>
-    </div>
-  </a>
-
-  <a class="doc-item"
-     href="assets/docs/ВНУТРЕННИЙ_ПЛАН_МЕРОПРИЯТИЙ_ПО_ВОПРОСАМ_ПРОТИВОДЕЙСТВИЯ_КОРРУПЦИИ.pdf"
-     target="_blank">
-    <span class="doc-icon">📄</span>
-    <div class="doc-info">
-      <h4>План мероприятий по вопросам противодействия коррупции</h4>
-      <p>Перечень внутренних мероприятий по профилактике коррупции.</p>
-    </div>
-  </a>
-
-  <a class="doc-item"
-     href="assets/docs/Антикоррупционный стандарт.pdf"
-     target="_blank">
-    <span class="doc-icon">📄</span>
-    <div class="doc-info">
-      <h4>Антикоррупционный стандарт</h4>
-      <p>Единые требования и стандарты антикоррупционного поведения.</p>
-    </div>
-  </a>
+  </div>
 
 </div>
 
-    </div>
-
   </div>
+
+</section>

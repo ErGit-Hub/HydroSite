@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideTranslateService } from '@ngx-translate/core';
 
 import { OmbucmenComponent } from './ombucmen.component';
 
@@ -8,7 +9,8 @@ describe('OmbucmenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OmbucmenComponent]
+      imports: [OmbucmenComponent],
+      providers: [provideTranslateService()]
     })
     .compileComponents();
 

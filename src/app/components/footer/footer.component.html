@@ -4,38 +4,37 @@
     <!-- ЛОГО -->
     <div class="footer-col">
       <div class="logo">HydroGeo</div>
-      <p>Гидрогеологические исследования и водные ресурсы Казахстана</p>
+      <p>{{ 'FOOTER.TAGLINE' | translate }}</p>
     </div>
 
     <!-- НАВИГАЦИЯ -->
     <div class="footer-col">
-      <h4>Навигация</h4>
-      <a routerLink="/home">Главная</a>
-      <a routerLink="/about">О компании</a>
-      <a routerLink="/services">Услуги</a>
-      <a routerLink="/contacts">Контакты</a>
+      <h4>{{ 'FOOTER.NAV' | translate }}</h4>
+      <a routerLink="/home">{{ 'HEADER.HOME' | translate }}</a>
+      <a routerLink="/about">{{ 'HEADER.ABOUT' | translate }}</a>
+      <a routerLink="/services">{{ 'HEADER.SERVICES' | translate }}</a>
+      <a routerLink="/contacts">{{ 'HEADER.CONTACTS' | translate }}</a>
     </div>
 
     <!-- ДЕЯТЕЛЬНОСТЬ -->
     <div class="footer-col">
-      <h4>Деятельность</h4>
-      <a routerLink="/structure">Структура</a>
-      <a routerLink="/projects">Проекты</a>
-      <a routerLink="/reception">Прием граждан</a>
-      <a routerLink="/news">Новости</a>
-      <a routerLink="/vacancies">Вакансии</a>
+      <h4>{{ 'HEADER.WORK' | translate }}</h4>
+      <a routerLink="/structure">{{ 'HEADER.STRUCTURE' | translate }}</a>
+      <a routerLink="/projects">{{ 'HEADER.PROJECTS' | translate }}</a>
+      <a routerLink="/reception">{{ 'HEADER.RECEPTION' | translate }}</a>
+      <a routerLink="/news">{{ 'HEADER.NEWS' | translate }}</a>
+      <a routerLink="/vacancies">{{ 'HEADER.VACANCIES' | translate }}</a>
     </div>
 
     <!-- КОНТАКТЫ -->
     <div class="footer-col">
-      <h4>Контакты</h4>
-    <!--  <p>Телефон: +7 701 785 01 40</p>-->
-      <p>Email: qazhydrogeology&#64;gmail.com</p>
+      <h4>{{ 'HEADER.CONTACTS' | translate }}</h4>
+      <p>{{ 'CONTACTS.EMAIL_LABEL' | translate }}: {{ 'CONTACTS.EMAIL' | translate }}</p>
     </div>
 
   </div>
 
   <div class="footer-bottom">
-    © 2026 HydroGeo
+    {{ 'FOOTER.COPYRIGHT' | translate }}
   </div>
 </footer>

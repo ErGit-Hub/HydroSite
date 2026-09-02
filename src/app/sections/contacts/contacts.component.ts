@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-contacts',
-    imports: [],
+    imports: [TranslateModule],
     templateUrl: './contacts.component.html',
     styleUrl: './contacts.component.scss'
 })

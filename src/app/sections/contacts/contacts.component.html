@@ -2,49 +2,36 @@
   <section class="contacts fade-in" [class.show]="isVisible">
   <div class="container">
 
-    <h2>Контакты</h2>
+    <h2>{{ 'CONTACTS.TITLE' | translate }}</h2>
 
     <div class="contacts-grid">
 
       <!-- ЛЕВАЯ ЧАСТЬ -->
       <div class="contacts-info">
 
-      <!--     <p><strong>Телефон:</strong> +7 701 785 01 40</p>-->
+        <p><strong>{{ 'CONTACTS.EMAIL_LABEL' | translate }}:</strong> {{ 'CONTACTS.EMAIL' | translate }}</p>
 
-        <p><strong>Email:</strong> qazhydrogeology&#64;gmail.com</p>
+        <p><strong>{{ 'CONTACTS.ADDRESS_LABEL' | translate }}:</strong> {{ 'CONTACTS.ADDRESS' | translate }}</p>
 
-        <p><strong>Адрес:</strong> г. Астана, Казахстан Проспект Бауыржан Момышулы, 2/1 7 этаж</p>
-
-        
-        <a 
-          href="https://2gis.kz/astana/search/%D0%91.%20%D0%BC%D0%BE%D0%BC%D1%8B%D1%88%D1%83%D0%BB%D1%8B%202%2F1%2C%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%20-%20%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%C2%ABbcc%C2%BB/firm/70000001083859721/71.4594%2C51.130265" 
+        <a
+          href="https://2gis.kz/astana/search/%D0%91.%20%D0%BC%D0%BE%D0%BC%D1%8B%D1%88%D1%83%D0%BB%D1%8B%202%2F1%2C%20%D0%B1%D0%B8%D0%B7%D0%BD%D0%B5%D1%81%20-%20%D1%86%D0%B5%D0%BD%D1%82%D1%80%20%C2%ABbcc%C2%BB/firm/70000001083859721/71.4594%2C51.130265"
           target="_blank"
           class="map-link"
         >
-          📍 Открыть на карте
+          📍 {{ 'CONTACTS.MAP' | translate }}
         </a>
 
       </div>
 
       <!-- ПРАВАЯ ЧАСТЬ -->
-  <div class="contacts-actions">
+      <div class="contacts-actions">
 
-  <a href="mailto:qazhydrogeology@gmail.com" class="contact-card">
-    <span class="icon">📧</span>
-    <span>Email</span>
-  </a>
+        <a href="mailto:qazhydrogeology@gmail.com" class="contact-card">
+          <span class="icon">📧</span>
+          <span>{{ 'CONTACTS.EMAIL_LABEL' | translate }}</span>
+        </a>
 
-  <!--<a href="https://wa.me/77770000000" target="_blank" class="contact-card">
-    <span class="icon">💬</span>
-    <span>WhatsApp</span>
-  </a>
-
-  <a href="https://t.me/your_bot" target="_blank" class="contact-card">
-    <span class="icon">🤖</span>
-    <span>Telegram</span>
-  </a>-->
-
-</div>
+      </div>
 
     </div>
 
