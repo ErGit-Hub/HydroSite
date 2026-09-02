@@ -238,6 +238,19 @@ section {
 
 .about-text-block {
   max-width: 600px;
+
+  /* .container — grid, у его элементов min-width: auto, поэтому блок
+     не сжимается уже своего содержимого и распирает страницу вбок */
+  min-width: 0;
+}
+
+/* у <pre> по умолчанию white-space: pre — самая длинная строка списка
+   задавала ширину в 510px при экране 390px */
+.about-text-block .list {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: inherit;
+  margin: 0 0 15px;
 }
 
 .about-text-block p {

@@ -233,13 +233,32 @@ try {
   }
   check('язык переключается с мобильного', mobileLang, 'en');
 
-  // карточка с почтой омбудсмена длиннее телефонной и легко вылезает за экран
-  await mobile.goto(BASE + '/ombucmen', { waitUntil: 'networkidle' });
-  await mobile.waitForTimeout(400);
-  const overflow = await mobile.evaluate(
+  // Горизонтальный вылет на телефоне: страница едет вбок вместе с шапкой и
+  // подвалом. Ловится только замером, глазами на десктопе не видно.
+  const pageOverflow = () => mobile.evaluate(
     () => document.documentElement.scrollWidth - document.documentElement.clientWidth
   );
-  check('/ombucmen — нет горизонтальной прокрутки', overflow <= 0, true);
+
+  for (const path of ['/home', '/about', '/reception', '/contacts', '/projects', '/ombucmen']) {
+    await mobile.goto(BASE + path, { waitUntil: 'networkidle' });
+    await mobile.waitForTimeout(400);
+    check(`${path} — нет горизонтальной прокрутки`, await pageOverflow() <= 0, true);
+  }
+
+  // биография раскрывается по клику, поэтому в обычный обход не попадает
+  await mobile.goto(BASE + '/structure', { waitUntil: 'networkidle' });
+  await mobile.locator('.leader-card').first().click();
+  await mobile.waitForTimeout(600);
+  check('/structure с раскрытой биографией — нет прокрутки', await pageOverflow() <= 0, true);
+
+  // таблица приёма шире телефона: прокрутка должна быть внутри блока
+  await mobile.goto(BASE + '/reception', { waitUntil: 'networkidle' });
+  await mobile.waitForTimeout(400);
+  const tableScrolls = await mobile.evaluate(() => {
+    const w = document.querySelector('.table-wrapper');
+    return w.scrollWidth > w.clientWidth;
+  });
+  check('таблица приёма прокручивается внутри блока', tableScrolls, true);
 
   await mobile.close();
 

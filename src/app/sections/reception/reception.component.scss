@@ -1,5 +1,13 @@
 
+/* пять колонок в телефон не влезают: прокручиваем таблицу внутри блока,
+   а не растягиваем всю страницу */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .reception-table {
+  min-width: 640px;
   width: 100%;
   border-collapse: collapse;
   background: #fff;
