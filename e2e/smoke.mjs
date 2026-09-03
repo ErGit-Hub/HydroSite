@@ -149,6 +149,17 @@ try {
 
   // Списки разделов держатся на :hover, поэтому после перехода курсор
   // остаётся над меню и оно продолжает висеть, пока его не подавить.
+  // Симптом устаревшего кэша переводов и просто забытого ключа один и тот же:
+  // на странице вместо текста виден сам ключ вида SECURITY.TITLE.
+  console.log('\nНепереведённые ключи');
+  const RAW_KEY = /\b[A-Z][A-Z0-9_]{2,}(\.[A-Z][A-Z0-9_]+)+\b/;
+  for (const path of ['/home', '/security', '/anti-corruption', '/ombucmen', '/reception']) {
+    await page.goto(BASE + path, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(400);
+    const raw = (await page.locator('body').innerText()).split('\n').find(l => RAW_KEY.test(l));
+    check(`${path} — ключи переводов не видны`, raw ?? '—', '—');
+  }
+
   console.log('\nВыпадающие меню разделов');
   await page.goto(BASE + '/home', { waitUntil: 'networkidle' });
   const group = page.locator('.dropdown').first();
