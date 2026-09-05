@@ -18,9 +18,9 @@
               <span class="icon">📅</span>
               <span>{{ n.date }}</span>
             </div>
-            <h3>{{ n.title }}</h3>
+            <h3>{{ pickLang(n.title, currentLang) }}</h3>
             <p class="preview">
-              {{ n.preview }}
+              {{ pickLang(n.preview, currentLang) }}
             </p>
             <div class="read-more">
               {{ 'NEWS.READ_MORE' | translate }} →

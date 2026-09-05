@@ -1,0 +1,65 @@
+name: Telegram news
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Только ru→en; поднимаем с ограниченным набором моделей, чтобы не грузить всё подряд.
+      - name: Start LibreTranslate
+        run: |
+          docker run -d --name libretranslate -p 5000:5000 \
+            libretranslate/libretranslate --load-only en,ru
+          for i in $(seq 1 60); do
+            if curl -sf http://localhost:5000/languages > /dev/null; then
+              echo "LibreTranslate готов"
+              break
+            fi
+            sleep 5
+          done
+
+      - name: Fetch Telegram posts
+        run: node scripts/fetch-telegram-news.mjs
+
+      - name: Stop LibreTranslate
+        if: always()
+        run: docker rm -f libretranslate || true
+
+      - name: Commit updated news
+        id: commit
+        run: |
+          git config user.name "hydrogeo-news-bot"
+          git config user.email "actions@github.com"
+          git add src/assets/news/telegram-news.json scripts/state.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Автообновление новостей из Telegram-канала"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy news.json to hosting
+        if: steps.commit.outputs.changed == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./src/assets/news/
+          server-dir: ./httpdocs/assets/news/
+          exclude: |
+            **/.gitkeep
