@@ -3,8 +3,8 @@ import { Component, ElementRef, HostListener, inject } from '@angular/core';
 import { LANGUAGES, LanguageService } from '../../core/language.service';
 
 /**
- * Выпадающий выбор языка. Открывается по клику, а не по :hover, как остальные
- * меню в шапке: hover-меню недоступны с тач-экрана и с клавиатуры.
+ * Выпадающий выбор языка (флаг вместо текста). Открывается по клику, а не по
+ * :hover, как остальные меню в шапке: hover-меню недоступны с тач-экрана и с клавиатуры.
  */
 @Component({
     selector: 'app-lang-switcher',
@@ -26,6 +26,10 @@ export class LangSwitcherComponent {
 
   get currentLabel(): string {
     return this.language.currentLabel;
+  }
+
+  get currentFlag(): string {
+    return this.languages.find(l => l.code === this.current)?.flag ?? '';
   }
 
   toggle(): void {

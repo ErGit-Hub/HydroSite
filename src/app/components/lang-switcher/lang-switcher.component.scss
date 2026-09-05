@@ -8,20 +8,20 @@
   gap: 6px;
 
   background: none;
-  border: none;
-  padding: 6px 8px;
-  cursor: pointer;
-
-  font: inherit;
-  font-weight: 500;
-  color: inherit;
-
+  border: 1px solid currentColor;
   border-radius: 6px;
+  padding: 5px 9px;
+  cursor: pointer;
+  opacity: 0.85;
+
   transition: 0.2s;
 }
 
-.lang-trigger:hover {
-  opacity: 0.75;
+.lang-trigger:hover,
+.lang-trigger[aria-expanded="true"] {
+  opacity: 1;
+  background: #2c7be5;
+  border-color: #2c7be5;
 }
 
 .lang-trigger:focus-visible {
@@ -31,6 +31,15 @@
 
 .lang-trigger .caret {
   font-size: 12px;
+  color: inherit;
+}
+
+.flag {
+  display: block;
+  width: 22px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 2px;
 }
 
 .lang-menu {
@@ -39,10 +48,11 @@
   right: 0;
   z-index: 20;
 
+  display: flex;
+  gap: 6px;
   margin: 0;
-  padding: 6px 0;
+  padding: 8px;
   list-style: none;
-  min-width: 160px;
 
   background: #fff;
   border-radius: 10px;
@@ -50,57 +60,85 @@
 }
 
 .lang-option {
+  position: relative;
   display: block;
-  width: 100%;
-  padding: 10px 15px;
+  padding: 3px;
 
   background: none;
-  border: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  line-height: 0;
   cursor: pointer;
-
-  font: inherit;
-  text-align: left;
-  color: #0f172a;
+  opacity: 0.6;
+  transition: 0.2s;
 }
 
 .lang-option:hover {
+  opacity: 1;
   background: #f1f5f9;
 }
 
 .lang-option:focus-visible {
   outline: 2px solid #2c7be5;
-  outline-offset: -2px;
+  outline-offset: 2px;
 }
 
 .lang-option.active {
-  font-weight: 600;
-  color: #2c7be5;
+  opacity: 1;
+  border-color: #2c7be5;
 }
 
-/* В мобильном меню фон тёмный — там список раскрывается на месте. */
-:host(.on-dark) .lang-trigger {
+/* Тултип с названием языка — своя всплывашка вместо системного title.
+   Только у флагов в раскрытом списке и не у уже выбранного — там и так понятно.
+   Сбоку, а не снизу: под курсором она не перекрывается им самим. */
+.lang-option:not(.active)::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 8px);
+  transform: translateY(-50%);
+  z-index: 30;
+
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #0f172a;
   color: #fff;
-  font-size: 18px;
-  padding: 10px 0;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s;
+  pointer-events: none;
+}
+
+.lang-option:not(.active):hover::after,
+.lang-option:not(.active):focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* В мобильном меню фон тёмный — там список раскрывается на месте, без рамки на кнопке. */
+:host(.on-dark) .lang-trigger {
+  border: none;
+  padding: 8px 0;
+}
+
+:host(.on-dark) .lang-trigger:hover,
+:host(.on-dark) .lang-trigger[aria-expanded="true"] {
+  background: none;
+}
+
+:host(.on-dark) .flag {
+  width: 28px;
+  height: 20px;
 }
 
 :host(.on-dark) .lang-menu {
   position: static;
-  min-width: 0;
-  margin-top: 6px;
-  background: rgba(255, 255, 255, 0.08);
+  margin-top: 8px;
+  padding: 0;
+  background: none;
   box-shadow: none;
-}
-
-:host(.on-dark) .lang-option {
-  color: #fff;
-  font-size: 16px;
-}
-
-:host(.on-dark) .lang-option:hover {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-:host(.on-dark) .lang-option.active {
-  color: #7ab6ff;
 }

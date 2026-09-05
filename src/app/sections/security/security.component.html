@@ -14,7 +14,7 @@
 
       <div class="documents-list">
         @for (doc of documents; track doc.key) {
-          <a class="doc-item" [href]="doc.file" target="_blank">
+          <a class="doc-item" [href]="doc.file" target="_blank" rel="noopener">
             <span class="doc-icon" aria-hidden="true">📄</span>
             <div class="doc-info">
               <h4>{{ 'SECURITY.DOCS.' + doc.key | translate }}</h4>

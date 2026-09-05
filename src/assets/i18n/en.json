@@ -29,7 +29,7 @@
   "FOOTER": {
     "TAGLINE": "Hydrogeological research and water resources of Kazakhstan",
     "NAV": "Navigation",
-    "COPYRIGHT": "© 2026 HydroGeo"
+    "COPYRIGHT": "© 2026 NJSC NHS Kazhydrogeology"
   },
   "ABOUT": {
     "TITLE": "About the company",
@@ -195,7 +195,7 @@
   },
   "CONTACTS": {
     "TITLE": "Contacts",
-    "EMAIL": "qazhydrogeology@gmail.com",
+    "EMAIL": "info@hydrogeo.kz",
     "PHONE": "+7 701 785 01 40",
     "EMAIL_LABEL": "Email",
     "PHONE_LABEL": "Phone",

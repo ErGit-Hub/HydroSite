@@ -5,8 +5,9 @@
     class="lang-trigger"
     aria-haspopup="listbox"
     [attr.aria-expanded]="isOpen"
+    [attr.aria-label]="currentLabel"
     (click)="toggle()">
-    <span class="label">{{ currentLabel }}</span>
+    <img class="flag" [src]="currentFlag" [alt]="currentLabel" />
     <span class="caret" aria-hidden="true">▾</span>
   </button>
 
@@ -20,8 +21,9 @@
             role="option"
             [attr.aria-selected]="lang.code === current"
             [class.active]="lang.code === current"
+            [attr.data-tooltip]="lang.label"
             (click)="select(lang.code)">
-            {{ lang.label }}
+            <img class="flag" [src]="lang.flag" [alt]="lang.label" />
           </button>
         </li>
       }

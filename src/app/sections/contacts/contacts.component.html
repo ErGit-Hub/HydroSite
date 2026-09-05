@@ -16,6 +16,7 @@
         <a
           href="https://2gis.kz/astana/search/%D0%9A%D0%BE%D1%80%D0%B3%D0%B0%D0%BB%D0%B6%D1%8B%D0%BD%D1%81%D0%BA%D0%BE%D0%B5%20%D1%88%D0%BE%D1%81%D1%81%D0%B5%2013%2F3"
           target="_blank"
+          rel="noopener"
           class="map-link"
         >
           📍 {{ 'CONTACTS.MAP' | translate }}
@@ -26,7 +27,7 @@
       <!-- ПРАВАЯ ЧАСТЬ -->
       <div class="contacts-actions">
 
-        <a href="mailto:qazhydrogeology@gmail.com" class="contact-card">
+        <a [href]="'mailto:' + ('CONTACTS.EMAIL' | translate)" class="contact-card">
           <span class="icon">📧</span>
           <span>{{ 'CONTACTS.EMAIL_LABEL' | translate }}</span>
         </a>

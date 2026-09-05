@@ -3,12 +3,12 @@ import { TranslateService } from '@ngx-translate/core';
 
 /** Языки названы на самих себе — так их узнаёт носитель, а не только полиглот. */
 export const LANGUAGES = [
-  { code: 'ru', label: 'Русский' },
-  { code: 'kz', label: 'Қазақша' },
-  { code: 'en', label: 'English' }
+  { code: 'kz', label: 'Қазақша', flag: 'assets/images/flags/kz.svg' },
+  { code: 'ru', label: 'Русский', flag: 'assets/images/flags/ru.svg' },
+  { code: 'en', label: 'English', flag: 'assets/images/flags/gb.svg' }
 ] as const;
 
-export const DEFAULT_LANG = 'ru';
+export const DEFAULT_LANG = 'kz';
 
 const STORAGE_KEY = 'hydro-site:lang';
 

@@ -190,7 +190,7 @@
   },
   "CONTACTS": {
     "TITLE": "Контакты",
-    "EMAIL": "qazhydrogeology@gmail.com",
+    "EMAIL": "info@hydrogeo.kz",
     "PHONE": "+7 701 785 01 40",
     "EMAIL_LABEL": "Email",
     "PHONE_LABEL": "Телефон",
@@ -206,7 +206,7 @@
   "FOOTER": {
     "TAGLINE": "Гидрогеологические исследования и водные ресурсы Казахстана",
     "NAV": "Навигация",
-    "COPYRIGHT": "© 2026 HydroGeo"
+    "COPYRIGHT": "© 2026 НАО «НГС «Казгидрогеология»"
   },
   "NEWS": {
     "TITLE": "Новости",

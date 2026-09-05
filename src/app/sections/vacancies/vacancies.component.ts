@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Component, inject } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-vacancies',
@@ -9,6 +8,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     styleUrl: './vacancies.component.scss'
 })
 export class VacanciesComponent  {
+private readonly translate = inject(TranslateService);
 isVisible = false;
 ngOnInit() {
   setTimeout(() => {
@@ -16,7 +16,7 @@ ngOnInit() {
   }, 50);
 }
 copyEmail() {
-  navigator.clipboard.writeText('info@yourcompany.kz');
+  navigator.clipboard.writeText(this.translate.instant('CONTACTS.EMAIL'));
   alert('Email скопирован');
 }
 }
