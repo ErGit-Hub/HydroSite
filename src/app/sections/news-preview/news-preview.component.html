@@ -2,24 +2,15 @@
   <div class="container">
     <h2>{{ 'NEWS.TITLE' | translate }}</h2>
 
-    <div class="news-grid">
+    <div class="news-list">
       @for (n of news; track n) {
-        <div class="news-card" [routerLink]="['/news', n.id]">
-          <div class="image">
+        <div class="news-row" [routerLink]="['/news', n.id]">
+          <div class="thumb">
             <img [src]="n.image" alt="" />
           </div>
-          <div class="content">
-            <div class="date">
-              <span class="icon">📅</span>
-              <span>{{ n.date }}</span>
-            </div>
+          <div class="info">
+            <div class="date">{{ n.date }}</div>
             <h3>{{ pickLang(n.title, currentLang) }}</h3>
-            <p class="preview">
-              {{ pickLang(n.preview, currentLang) }}
-            </p>
-            <div class="read-more">
-              {{ 'NEWS.READ_MORE' | translate }} →
-            </div>
           </div>
         </div>
       }
