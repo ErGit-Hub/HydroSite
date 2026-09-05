@@ -206,7 +206,8 @@
   "NEWS": {
     "TITLE": "News",
     "READ_MORE": "Read more",
-    "BACK": "Back to news"
+    "BACK": "Back to news",
+    "SEE_ALL": "All news"
   },
   "STRUCTURE": {
     "TITLE": "Structure",
