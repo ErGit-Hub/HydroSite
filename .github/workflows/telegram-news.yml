@@ -60,6 +60,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./src/assets/news/
-          server-dir: ./httpdocs/assets/news/
+          server-dir: ./assets/news/
           exclude: |
             **/.gitkeep
