@@ -53,7 +53,7 @@ jobs:
           fi
 
       - name: Deploy news.json to hosting
-        if: always()
+        if: steps.commit.outputs.changed == 'true'
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
           server: ${{ secrets.FTP_HOST }}
