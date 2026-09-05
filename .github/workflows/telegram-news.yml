@@ -60,5 +60,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_path: ./src/assets/news/*
-          remote_path: ./assets/news/
+          remote_path: ./httpdocs/assets/news/
           sftp_only: true
