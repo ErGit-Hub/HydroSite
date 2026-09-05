@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { NEWS_DATA } from '../../models/news.data';
-import { NewsItem } from '../../models/news.model';
+import { NewsItem, NEWS_PLACEHOLDER_IMAGE } from '../../models/news.model';
 import { TelegramNewsService } from '../../core/telegram-news.service';
 import { LanguageService } from '../../core/language.service';
 import { pickLang } from '../../core/news-lang.util';
@@ -19,6 +19,10 @@ const PREVIEW_COUNT = 3;
 export class NewsPreviewComponent implements OnInit {
   news: NewsItem[] = NEWS_DATA.slice(0, PREVIEW_COUNT);
   readonly pickLang = pickLang;
+
+  isPlaceholder(image: string): boolean {
+    return image === NEWS_PLACEHOLDER_IMAGE;
+  }
 
   private readonly telegramNews = inject(TelegramNewsService);
   private readonly language = inject(LanguageService);

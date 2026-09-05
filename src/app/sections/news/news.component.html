@@ -10,7 +10,7 @@
     <div class="news-grid">
       @for (n of news; track n) {
         <div class="news-card" [routerLink]="['/news', n.id]">
-          <div class="image">
+          <div class="image" [class.placeholder]="isPlaceholder(n.image)">
             <img [src]="n.image" alt="" />
           </div>
           <div class="content">

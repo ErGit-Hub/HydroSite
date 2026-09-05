@@ -5,7 +5,7 @@
     <div class="news-list">
       @for (n of news; track n) {
         <div class="news-row" [routerLink]="['/news', n.id]">
-          <div class="thumb">
+          <div class="thumb" [class.placeholder]="isPlaceholder(n.image)">
             <img [src]="n.image" alt="" />
           </div>
           <div class="info">
