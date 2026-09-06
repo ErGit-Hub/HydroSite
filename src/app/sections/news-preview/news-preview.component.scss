@@ -42,19 +42,20 @@
       height: 100%;
       object-fit: cover;
     }
+  }
 
-    &.placeholder {
-      background: #0f172a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  &.no-image {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
 
-      img {
-        width: 55%;
-        height: 55%;
-        object-fit: contain;
-        opacity: 0.28;
-      }
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: url('/assets/images/logo.svg') no-repeat center / 40% auto;
+      opacity: 0.16;
     }
   }
 

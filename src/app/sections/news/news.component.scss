@@ -109,35 +109,30 @@
     inset: 0;
     background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.6));
   }
-
-  &.placeholder {
-    background: #0f172a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &::after {
-      display: none;
-    }
-
-    img {
-      width: 55%;
-      height: 55%;
-      object-fit: contain;
-      opacity: 0.16;
-      transition: none;
-    }
-  }
-
-  &.placeholder:hover img {
-    transform: none;
-  }
 }
 .content {
   position: relative;
   margin-top: -40px;
   background: #1e293b;
   border-radius: 12px;
+}
+
+&.no-image .content {
+  margin-top: 0;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: url('/assets/images/logo.svg') no-repeat center / 50% auto;
+    opacity: 0.14;
+  }
 }
 .read-more {
   color: #38bdf8;

@@ -4,10 +4,12 @@
 
     <div class="news-list">
       @for (n of news; track n) {
-        <div class="news-row" [routerLink]="['/news', n.id]">
-          <div class="thumb" [class.placeholder]="isPlaceholder(n.image)">
-            <img [src]="n.image" alt="" />
-          </div>
+        <div class="news-row" [class.no-image]="isPlaceholder(n.image)" [routerLink]="['/news', n.id]">
+          @if (!isPlaceholder(n.image)) {
+            <div class="thumb">
+              <img [src]="n.image" alt="" />
+            </div>
+          }
           <div class="info">
             <div class="date">{{ n.date }}</div>
             <h3>{{ pickLang(n.title, currentLang) }}</h3>
