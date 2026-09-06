@@ -2,11 +2,6 @@
   padding: 80px 0;
 }
 
-.contacts h2 {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
 .contacts-grid {
   display: flex;
   gap: 40px;
@@ -93,9 +88,6 @@
 .icon {
   font-size: 28px;
   margin-bottom: 10px;
-}
-.contacts {
-  min-height: 500px;
 }
 .fade-in {
   opacity: 0;
