@@ -3,7 +3,7 @@ import { NEWS_DATA } from '../../models/news.data';
 import { NewsItem, NEWS_PLACEHOLDER_IMAGE } from '../../models/news.model';
 import { TelegramNewsService } from '../../core/telegram-news.service';
 import { LanguageService } from '../../core/language.service';
-import { pickLang } from '../../core/news-lang.util';
+import { pickLang, hasLang } from '../../core/news-lang.util';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -28,6 +28,11 @@ export class NewsComponent implements OnInit {
 
   get currentLang(): string {
     return this.language.current;
+  }
+
+  /** Посты без текста на текущем языке (например, kz-only из Telegram) не показываем вовсе. */
+  get visibleNews(): NewsItem[] {
+    return this.news.filter(n => hasLang(n.title, this.currentLang));
   }
 
   ngOnInit() {

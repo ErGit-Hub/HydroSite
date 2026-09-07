@@ -3,7 +3,7 @@ import { NEWS_DATA } from '../../../models/news.data';
 import { NewsItem } from '../../../models/news.model';
 import { TelegramNewsService } from '../../../core/telegram-news.service';
 import { LanguageService } from '../../../core/language.service';
-import { pickLang } from '../../../core/news-lang.util';
+import { pickLang, hasLang } from '../../../core/news-lang.util';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -33,7 +33,8 @@ export class NewsDetailsComponent implements OnInit {
 
     this.telegramNews.getNews().subscribe(remote => {
       const all = [...NEWS_DATA, ...remote];
-      this.newsItem = all.find(n => String(n.id) === id);
+      const found = all.find(n => String(n.id) === id);
+      this.newsItem = found && hasLang(found.title, this.currentLang) ? found : undefined;
 
       if (!this.newsItem) {
         // Маршрут `news/:id` совпал, поэтому `**` уже не сработает.

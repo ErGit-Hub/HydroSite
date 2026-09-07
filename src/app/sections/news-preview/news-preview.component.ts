@@ -3,7 +3,7 @@ import { NEWS_DATA } from '../../models/news.data';
 import { NewsItem, NEWS_PLACEHOLDER_IMAGE } from '../../models/news.model';
 import { TelegramNewsService } from '../../core/telegram-news.service';
 import { LanguageService } from '../../core/language.service';
-import { pickLang } from '../../core/news-lang.util';
+import { pickLang, hasLang } from '../../core/news-lang.util';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -17,7 +17,7 @@ const PREVIEW_COUNT = 3;
     styleUrl: './news-preview.component.scss'
 })
 export class NewsPreviewComponent implements OnInit {
-  news: NewsItem[] = NEWS_DATA.slice(0, PREVIEW_COUNT);
+  private news: NewsItem[] = NEWS_DATA;
   readonly pickLang = pickLang;
 
   isPlaceholder(image: string): boolean {
@@ -31,11 +31,14 @@ export class NewsPreviewComponent implements OnInit {
     return this.language.current;
   }
 
+  /** Первые PREVIEW_COUNT постов, у которых вообще есть текст на текущем языке. */
+  get visibleNews(): NewsItem[] {
+    return this.news.filter(n => hasLang(n.title, this.currentLang)).slice(0, PREVIEW_COUNT);
+  }
+
   ngOnInit() {
     this.telegramNews.getNews().subscribe(remote => {
-      this.news = [...NEWS_DATA, ...remote]
-        .sort((a, b) => b.date.localeCompare(a.date))
-        .slice(0, PREVIEW_COUNT);
+      this.news = [...NEWS_DATA, ...remote].sort((a, b) => b.date.localeCompare(a.date));
     });
   }
 }

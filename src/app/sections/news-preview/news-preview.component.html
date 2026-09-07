@@ -3,7 +3,7 @@
     <h2>{{ 'NEWS.TITLE' | translate }}</h2>
 
     <div class="news-list">
-      @for (n of news; track n) {
+      @for (n of visibleNews; track n) {
         <div class="news-row" [class.no-image]="isPlaceholder(n.image)" [routerLink]="['/news', n.id]">
           @if (!isPlaceholder(n.image)) {
             <div class="thumb">
