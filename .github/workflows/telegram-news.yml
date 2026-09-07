@@ -53,12 +53,13 @@ jobs:
           fi
 
       - name: Deploy news.json to hosting
-        if: steps.commit.outputs.changed == 'true'
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        if: always()
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local_path: ./src/assets/news/*
-          remote_path: ./httpdocs/assets/news/
-          sftp_only: true
+          local-dir: ./src/assets/news/
+          server-dir: ./assets/news/
+          exclude: |
+            **/.gitkeep
