@@ -53,7 +53,7 @@ jobs:
           fi
 
       - name: Deploy news.json to hosting
-        if: always()
+        if: steps.commit.outputs.changed == 'true'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
