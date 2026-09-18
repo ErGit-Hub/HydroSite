@@ -135,6 +135,7 @@ lang>` разъедется с содержимым.
 | `SECURITY` целиком и `HEADER.SECURITY` | **черновик, нужна вычитка** |
 | `OMBUDSMAN.SUBTITLE`, `ABOUT_TITLE`, `DOC_TITLE`, `DOC_LINK` | **черновик, нужна вычитка** |
 | `HEADER`, `FOOTER`, `HERO`, `NEWS`, `STRUCTURE`, `VACANCIES`, `CONTACTS` (кроме адреса) | **черновик, нужна вычитка** |
+| `DEV_BANNER` — плашка «Сайт в разработке» | **черновик, нужна вычитка** |
 
 Разделы с содержательными текстами — `ABOUT`, `ABOUT_DETAILS`, `ACTIVITIES`,
 `GOV`, `SERVICES`, `PROJECTS`, `ANTI_CORRUPTION`, `FEATURES`, `AUDIENCE`,

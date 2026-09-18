@@ -2,8 +2,8 @@ import { Injectable, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
 
-const SITE_NAME = 'HydroGeo';
-const HOME_TITLE = 'HydroGeo — Гидрогеология Казахстана';
+const SITE_NAME = 'НАО «НГС «Казгидрогеология»';
+const HOME_TITLE = SITE_NAME;
 
 /** Подставляет `title` маршрута в <title>, добавляя название сайта. */
 @Injectable({ providedIn: 'root' })

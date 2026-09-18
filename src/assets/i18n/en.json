@@ -17,7 +17,8 @@
     "VACANCIES": "Careers",
     "LOGIN": "Log in",
     "LANGUAGE": "Language",
-    "SECURITY": "Security and safety service"
+    "SECURITY": "Security and safety service",
+    "ORG_NAME": "NJSC NHS\nKazhydrogeology"
   },
   "HERO": {
     "TITLE": "National\nHydrogeological Service",
@@ -318,5 +319,9 @@
       "REGULATION": "Regulations on the Information Security and Occupational Safety Service",
       "LABOUR_POLICY": "Occupational health and safety policy"
     }
+  },
+  "DEV_BANNER": {
+    "TITLE": "This website is under development.",
+    "NOTE": "Some sections may be incomplete."
   }
 }

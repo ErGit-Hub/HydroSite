@@ -1,4 +1,13 @@
 
+/* высота плашки «Сайт в разработке», см. core/site-flags.ts */
+:root {
+  --dev-banner-h: 0px;
+}
+
+:root.has-dev-banner {
+  --dev-banner-h: 32px;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -9,7 +18,7 @@ body {
 /* чтобы header не перекрывал */
 app-root {
   display: block;
-  padding-top: 80px;
+  padding-top: calc(80px + var(--dev-banner-h));
 }
 
 /* ===== КОНТЕЙНЕР ===== */
@@ -42,7 +51,7 @@ app-root {
 /* ===== СЕКЦИИ ===== */
 
 section {
-  scroll-margin-top: 90px; /* чтобы якоря не прятались под header */
+  scroll-margin-top: calc(90px + var(--dev-banner-h)); /* чтобы якоря не прятались под header */
 }
 .fade-in {
   opacity: 0;

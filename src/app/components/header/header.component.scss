@@ -8,6 +8,25 @@ header {
   transition: all 0.3s ease;
 }
 
+/* ===== ПЛАШКА «В РАЗРАБОТКЕ» ===== */
+
+.dev-banner {
+  height: var(--dev-banner-h);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35em;
+  /* правый край текста — по правому краю содержимого шапки (кнопка «Вход») */
+  padding: 0 max(20px, calc((100% - 1200px) / 2));
+  box-sizing: border-box;
+
+  background: #0c3c60;
+  color: #fff;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 /* ===== СОСТОЯНИЯ ===== */
 
 /* главная (hero) */
@@ -40,10 +59,40 @@ header.scrolled {
   display: flex;
   align-items: center;
   gap: 10px;
+  /* высота прежнего логотипа: под неё рассчитан отступ страницы */
+  min-height: 50px;
 }
 
 .logo img {
-  height: 50px;
+  height: 40px;
+}
+
+.logo-name {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  /* \n в переводе при nowrap схлопывается в пробел — на широком экране одна строка */
+  white-space: nowrap;
+}
+
+/* рядом с меню в одну строку не помещается — две строки, перенос задан в переводе */
+@media (max-width: 1200px) {
+  .logo {
+    flex-shrink: 0;
+  }
+
+  .header-inner {
+    gap: 20px;
+  }
+
+  .menu {
+    gap: 16px;
+  }
+
+  .logo-name {
+    white-space: pre-line;
+    font-size: 16px;
+  }
 }
 
 /* ===== MENU ===== */
@@ -156,7 +205,10 @@ header.scrolled {
 
 /* ===== MOBILE ===== */
 
-@media (max-width: 768px) {
+/* с названием организации вместо короткого логотипа меню в строку уже не
+   помещается: уже на 1000px кнопки «Вход» и язык уезжали за правый край,
+   а казахское меню до 1100px переносилось на три строки */
+@media (max-width: 1100px) {
 
   .menu {
     display: none;
@@ -172,12 +224,39 @@ header.scrolled {
   }
 }
 
+@media (max-width: 768px) {
+
+  /* казахское «…» ҰАҚ» здесь уходит на третью строку — в высоту логотипа влезает */
+  .logo-name {
+    max-width: 160px;
+    font-size: 13px;
+  }
+
+  .login-btn {
+    margin-left: 0;
+  }
+
+  /* на 360px иначе не хватает места под название, «Вход» и бургер */
+  .header-inner {
+    gap: 8px;
+  }
+
+  .burger {
+    padding: 0 4px;
+  }
+
+  /* вторая фраза на телефоне не помещается в одну строку */
+  .dev-banner-note {
+    display: none;
+  }
+}
+
 .mobile-menu {
   position: fixed;
-  top: 70px;
+  top: calc(70px + var(--dev-banner-h));
   left: 0;
   width: 100%;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 70px - var(--dev-banner-h));
 
   background: #0f172a;
   padding: 20px;

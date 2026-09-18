@@ -2,11 +2,19 @@
   [class.scrolled]="isScrolled || !isHomePage()"
   [class.top]="!isScrolled && isHomePage()">
 
+  @if (showDevBanner) {
+    <div class="dev-banner" role="status">
+      {{ 'DEV_BANNER.TITLE' | translate }}
+      <span class="dev-banner-note">{{ 'DEV_BANNER.NOTE' | translate }}</span>
+    </div>
+  }
+
   <div class="container header-inner">
 
     <!-- LOGO -->
     <div class="logo">
-      <img src="assets/images/logo.svg" alt="KazHydro" />
+      <img src="assets/images/logo-mark.svg" alt="" />
+      <span class="logo-name">{{ 'HEADER.ORG_NAME' | translate }}</span>
     </div>
 
     <nav class="menu">

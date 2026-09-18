@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Router, RouterModule } from '@angular/router';
 
 import { LangSwitcherComponent } from '../lang-switcher/lang-switcher.component';
+import { SHOW_DEV_BANNER } from '../../core/site-flags';
 
 @Component({
     selector: 'app-header',
@@ -12,6 +13,8 @@ import { LangSwitcherComponent } from '../lang-switcher/lang-switcher.component'
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  readonly showDevBanner = SHOW_DEV_BANNER;
 
   isMenuOpen = false;
   isScrolled = false;
@@ -24,6 +27,11 @@ export class HeaderComponent {
   isDropdownSuppressed = false;
 
   private readonly router = inject(Router);
+
+  constructor() {
+    // от класса зависит --dev-banner-h, а на ней держатся все отступы под шапку
+    document.documentElement.classList.toggle('has-dev-banner', SHOW_DEV_BANNER);
+  }
 
   isHomePage(): boolean {
     return this.router.url === '/' || this.router.url === '/home';

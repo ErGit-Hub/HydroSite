@@ -109,13 +109,13 @@ try {
   console.log('\nМаршруты и заголовки вкладок');
   const home = await open(page, '/');
   check('/ редиректит на /home', home.path, '/home');
-  check('/ — заголовок сайта', home.title, 'HydroGeo — Гидрогеология Казахстана');
+  check('/ — заголовок сайта', home.title, 'НАО «НГС «Казгидрогеология»');
 
   const about = await open(page, '/about');
-  check('/about — заголовок раздела', about.title, 'О предприятии — HydroGeo');
+  check('/about — заголовок раздела', about.title, 'О предприятии — НАО «НГС «Казгидрогеология»');
 
   const security = await open(page, '/security');
-  check('/security — заголовок раздела', security.title, 'Служба информационной безопасности и ТБ — HydroGeo');
+  check('/security — заголовок раздела', security.title, 'Служба информационной безопасности и ТБ — НАО «НГС «Казгидрогеология»');
   check('/security — оба документа на месте', await page.locator('.doc-item').count(), 2);
   for (const href of await page.locator('.doc-item').evaluateAll(a => a.map(x => x.getAttribute('href')))) {
     const res = await page.request.get(`${BASE}/${encodeURI(href)}`);
@@ -130,14 +130,14 @@ try {
 
   const news = await open(page, '/news/1');
   check('/news/1 — новость открывается', news.is404, false);
-  check('/news/1 — заголовок', news.title, 'Новости — HydroGeo');
+  check('/news/1 — заголовок', news.title, 'Новости — НАО «НГС «Казгидрогеология»');
 
   console.log('\nСтраница 404');
   const missingNews = await open(page, '/news/999');
   check('/news/999 показывает 404', missingNews.is404, true);
   check('/news/999 сохраняет адрес', missingNews.path, '/news/999');
   check('/news/999 — noindex', missingNews.robots, 'noindex, follow');
-  check('/news/999 — заголовок', missingNews.title, 'Страница не найдена — HydroGeo');
+  check('/news/999 — заголовок', missingNews.title, 'Страница не найдена — НАО «НГС «Казгидрогеология»');
 
   const unknown = await open(page, '/nesushchestvuyushchiy-put');
   check('неизвестный путь показывает 404', unknown.is404, true);

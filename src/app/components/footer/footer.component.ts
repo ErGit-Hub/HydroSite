@@ -13,7 +13,8 @@ export class FooterComponent {
 scrollTo(id: string) {
   const el = document.getElementById(id);
   if (el) {
-    const yOffset = -80;
+    // шапка вместе с плашкой «в разработке», если она включена
+    const yOffset = -(document.querySelector('header')?.offsetHeight ?? 80);
     const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
     window.scrollTo({
