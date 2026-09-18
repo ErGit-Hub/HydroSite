@@ -52,9 +52,7 @@
       "SCIENCE_TITLE": "Scientific research",
       "SCIENCE_DESC": "Research, expert review and analysis",
       "ENGINEERING_TITLE": "Engineering surveys",
-      "ENGINEERING_DESC": "Engineering-geological and hydrogeological surveys",
-      "EDUCATION_TITLE": "Training of specialists",
-      "EDUCATION_DESC": "Training and professional development for water sector specialists"
+      "ENGINEERING_DESC": "Engineering-geological and hydrogeological surveys"
     }
   },
   "PROJECTS": {
