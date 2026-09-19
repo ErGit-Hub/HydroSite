@@ -1,24 +1,26 @@
 #!/usr/bin/env node
 // Тянет новые посты из публичного веб-превью Telegram-канала (t.me/s/<канал>),
-// раскладывает их по языкам и дописывает в src/assets/news/telegram-news.json.
-// Без бота и токенов — канал не наш, только чтение публичной страницы.
+// раскладывает их по языкам и публикует в headless WordPress (cms.hydrogeo.kz)
+// через REST API. Канал не наш, только чтение публичной страницы — без бота и токенов.
 //
 // Запуск: node scripts/fetch-telegram-news.mjs
 // Переменные окружения:
 //   TELEGRAM_CHANNEL     — юзернейм канала (по умолчанию QR_Su_resurstari_ministrligi)
 //   LIBRETRANSLATE_URL   — адрес LibreTranslate для ru→en (по умолчанию http://localhost:5000)
+//   HYDROGEO_API_KEY     — секрет для публикации в WP (заголовок X-Api-Key), обязателен
+//   CMS_API_URL          — REST-эндпоинт постов WP (по умолчанию cms.hydrogeo.kz)
 
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT = path.resolve(__dirname, '..');
 
 const CHANNEL = process.env.TELEGRAM_CHANNEL || 'QR_Su_resurstari_ministrligi';
 const LIBRETRANSLATE_URL = process.env.LIBRETRANSLATE_URL || 'http://localhost:5000';
+const CMS_API_URL = process.env.CMS_API_URL || 'https://cms.hydrogeo.kz/?rest_route=/wp/v2/posts';
+const API_KEY = process.env.HYDROGEO_API_KEY;
 const STATE_FILE = path.join(__dirname, 'state.json');
-const OUTPUT_FILE = path.join(ROOT, 'src/assets/news/telegram-news.json');
 const PLACEHOLDER_IMAGE = 'assets/images/logo.svg';
 const MIN_TEXT_LENGTH = 40;
 
@@ -26,6 +28,10 @@ const MIN_TEXT_LENGTH = 40;
 const KZ_CHARS = /[әғқңөұүһіӘҒҚҢӨҰҮҺІ]/;
 
 async function main() {
+  if (!API_KEY) {
+    throw new Error('HYDROGEO_API_KEY не задан — публиковать в WordPress нечем.');
+  }
+
   const state = await readState();
   const html = await fetchChannelHtml(CHANNEL);
   const posts = parsePosts(html, CHANNEL);
@@ -44,25 +50,19 @@ async function main() {
     return;
   }
 
-  const existing = await readExisting();
-  const existingIds = new Set(existing.map(n => n.id));
-
-  const built = [];
+  let published = 0;
   for (const post of fresh) {
     const item = await buildNewsItem(post);
-    if (item && !existingIds.has(item.id)) {
-      built.push(item);
+    if (item) {
+      await publishToWordpress(item);
+      published++;
     }
   }
-
-  const merged = [...existing, ...built];
-  await mkdir(path.dirname(OUTPUT_FILE), { recursive: true });
-  await writeFile(OUTPUT_FILE, JSON.stringify(merged, null, 2) + '\n', 'utf8');
 
   const maxId = fresh.reduce((m, p) => Math.max(m, p.numId), state.lastId);
   await writeState({ lastId: maxId });
 
-  console.log(`Добавлено новостей: ${built.length}. Всего в файле: ${merged.length}.`);
+  console.log(`Опубликовано новостей: ${published} из ${fresh.length} новых постов канала.`);
 }
 
 async function readState() {
@@ -75,14 +75,6 @@ async function readState() {
 
 async function writeState(state) {
   await writeFile(STATE_FILE, JSON.stringify(state, null, 2) + '\n', 'utf8');
-}
-
-async function readExisting() {
-  try {
-    return JSON.parse(await readFile(OUTPUT_FILE, 'utf8'));
-  } catch {
-    return [];
-  }
 }
 
 async function fetchChannelHtml(channel) {
@@ -234,17 +226,49 @@ async function buildNewsItem(post) {
     return map;
   };
 
+  // Основной язык записи в самом WP (заголовок/тело/отрывок) — ru, если есть, иначе kz.
+  const primary = ruFields ?? kzFields;
+
   return {
-    id: post.id,
-    title: pick('title'),
-    preview: pick('preview'),
-    content: pick('content'),
-    fullContent: pick('fullContent'),
-    image: post.image ?? PLACEHOLDER_IMAGE,
+    sourceId: post.id,
+    sourceUrl: post.url,
     date: post.date ?? new Date().toISOString().slice(0, 10),
-    source: 'telegram',
-    sourceUrl: post.url
+    primaryTitle: primary.title,
+    primaryExcerpt: primary.preview,
+    primaryContent: primary.fullContent,
+    i18n: {
+      title: pick('title'),
+      preview: pick('preview'),
+      content: pick('content'),
+      fullContent: pick('fullContent'),
+      image: post.image ?? PLACEHOLDER_IMAGE
+    }
   };
+}
+
+async function publishToWordpress(item) {
+  const res = await fetch(CMS_API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Api-Key': API_KEY
+    },
+    body: JSON.stringify({
+      title: item.primaryTitle,
+      excerpt: item.primaryExcerpt,
+      content: item.primaryContent,
+      status: 'publish',
+      date: `${item.date}T00:00:00`,
+      meta: {
+        hg_i18n: JSON.stringify(item.i18n)
+      }
+    })
+  });
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`WordPress отклонил публикацию (${item.sourceId}): HTTP ${res.status} ${body}`);
+  }
 }
 
 main().catch(err => {

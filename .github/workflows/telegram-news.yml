@@ -31,35 +31,23 @@ jobs:
             sleep 5
           done
 
-      - name: Fetch Telegram posts
+      - name: Fetch Telegram posts and publish to WordPress
+        env:
+          HYDROGEO_API_KEY: ${{ secrets.HYDROGEO_API_KEY }}
         run: node scripts/fetch-telegram-news.mjs
 
       - name: Stop LibreTranslate
         if: always()
         run: docker rm -f libretranslate || true
 
-      - name: Commit updated news
-        id: commit
+      - name: Commit updated state
         run: |
           git config user.name "hydrogeo-news-bot"
           git config user.email "actions@github.com"
-          git add src/assets/news/telegram-news.json scripts/state.json
+          git add scripts/state.json
           if git diff --cached --quiet; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Прогресс не изменился, коммитить нечего."
           else
             git commit -m "Автообновление новостей из Telegram-канала"
             git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Deploy news.json to hosting
-        if: steps.commit.outputs.changed == 'true'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./src/assets/news/
-          server-dir: ./assets/news/
-          exclude: |
-            **/.gitkeep

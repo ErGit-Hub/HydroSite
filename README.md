@@ -284,6 +284,10 @@ Actions) отрабатывает `.github/workflows/telegram-news.yml`. В са
 GitHub, но пока решили с этим не бороться: для темпа этого канала разница
 не критична.
 
+Новости хранятся не в самом сайте, а в headless WordPress на `cms.hydrogeo.kz`
+(только REST API, публичной темы у него нет) — это общий бэкенд и для
+Telegram-автоматики, и для ручных публикаций через `wp-admin`.
+
 1. `scripts/fetch-telegram-news.mjs` тянет `t.me/s/QR_Su_resurstari_ministrligi`
    (публичный канал Министерства водных ресурсов и ирригации РК — не свой канал
    Казгидрогеологии, публикуется без модерации). Без бота и токенов, просто
@@ -295,51 +299,57 @@ GitHub, но пока решили с этим не бороться: для т�
    (`ә ғ қ ң ө ұ ү һ і`). Русский текст переводится на английский через
    LibreTranslate (поднимается в самом workflow, без ключей); казахский не
    переводится никуда — ни LibreTranslate, ни DeepL его не поддерживают.
-4. Результат уходит в `src/assets/news/telegram-news.json` (модель
-   `NewsItem.title/preview/content/fullContent` — либо строка, либо
-   `{ ru?, kz?, en? }`, см. `src/app/models/news.model.ts`), прогресс — в
-   `scripts/state.json` (`lastId`). Оба файла коммитятся и пушатся ботом
+4. Результат публикуется постом в WordPress через `POST /wp/v2/posts`
+   (заголовок `X-Api-Key`, не `Authorization` — на этом хостинге он вырезается
+   на уровне nginx/WAF до PHP, см. mu-plugin `wp-content/mu-plugins/api-key-auth.php`
+   на самом WP). Мультиязычные варианты полей (title/preview/content/fullContent
+   — либо строка, либо `{ ru?, kz?, en? }`, см. `src/app/models/news.model.ts`)
+   уходят одним JSON в мета-поле поста `hg_i18n` (регистрирует
+   `wp-content/mu-plugins/news-i18n-meta.php`); сам пост при этом заполняется
+   основным языком (ru, если есть, иначе kz) — так его видно в `wp-admin`.
+   Прогресс — в `scripts/state.json` (`lastId`), коммитится и пушится ботом
    `hydrogeo-news-bot`. **Первый запуск не подтягивает историю канала** —
    запоминает текущий последний `id` и публикует только то, что появится после.
-5. `TelegramNewsService` (`src/app/core/telegram-news.service.ts`) грузит этот
-   JSON во время выполнения и подмешивает записи к `NEWS_DATA`
-   (`src/app/models/news.data.ts`) — их показывают и `NewsComponent` (`/news`),
-   и виджет трёх последних новостей на главной (`NewsPreviewComponent`).
-   У постов без фото в канале стоит плейсхолдер `NEWS_PLACEHOLDER_IMAGE`
+5. `TelegramNewsService` (`src/app/core/telegram-news.service.ts`) во время
+   выполнения грузит посты через `https://cms.hydrogeo.kz/?rest_route=/wp/v2/posts`
+   (не `/wp-json/...` — красивые permalinks на этом хостинге не работают,
+   нет nginx rewrite) и подмешивает их к `NEWS_DATA` (`src/app/models/news.data.ts`)
+   — показывают и `NewsComponent` (`/news`), и виджет трёх последних новостей на
+   главной (`NewsPreviewComponent`). Если у поста есть `meta.hg_i18n` — берутся
+   мультиязычные поля оттуда (посты из Telegram); если нет — обычные
+   `title`/`excerpt`/`content` WordPress как есть (посты, написанные вручную в
+   `wp-admin`, показываются на всех языках сразу). Картинка — либо из
+   `hg_i18n.image` (прямая ссылка на CDN Telegram, ничего никуда не грузится),
+   либо featured image поста, либо плейсхолдер `NEWS_PLACEHOLDER_IMAGE`
    (`assets/images/logo.svg`) — в вёрстке он отрисован маленьким по центру,
    а не растянут на всю карточку.
 
-**Нужные секреты репозитория** (Settings → Secrets and variables → Actions):
-`FTP_HOST`, `FTP_USERNAME`, `FTP_PASSWORD` — доступ к hydrogeo.kz на Plesk.
-Отдельно там же Settings → Actions → General → Workflow permissions должно
-быть выставлено «Read and write permissions» — иначе workflow не сможет
-закоммитить обновлённый `telegram-news.json` обратно в репозиторий.
+**Нужный секрет репозитория** (Settings → Secrets and variables → Actions):
+`HYDROGEO_API_KEY` — тот же ключ, что зашит в `wp-content/mu-plugins/api-key-auth.php`
+на `cms.hydrogeo.kz`. Отдельно там же Settings → Actions → General → Workflow
+permissions должно быть выставлено «Read and write permissions» — иначе workflow
+не сможет закоммитить обновлённый `scripts/state.json` обратно в репозиторий.
 
-**Доставка на хостинг работает** через обычный FTP (порт 21, не SFTP) на
-учётку `kz_site` (домашняя папка на сервере уже `/httpdocs`, поэтому
-`server-dir` в workflow — `./assets/news/`, без префикса). Путь к этому был
-не быстрым: пассивный FTP с раннеров GitHub Actions сперва рвался
-`ECONNRESET` на data-socket (похоже, файрвол хостинга не пропускал старые
-условия доступа), SFTP на ту же учётку тоже не работал (`Connection closed`
-сразу после логина — SSH-доступа у неё нет). Помогло только когда хостинг
-явно выдал доступ именно по FTP (порт 21) — после этого обычный
-`SamKirkland/FTP-Deploy-Action` стал заливать файл без проблем.
+`FTP_HOST`/`FTP_USERNAME`/`FTP_PASSWORD` этому workflow больше не нужны — раньше
+ими заливался `telegram-news.json` на хостинг, теперь публикация идёт напрямую
+в WordPress по HTTPS.
 
 **Проверить руками** (без ожидания cron):
 
 1. GitHub → вкладка **Actions** → workflow **«Telegram news»** → **Run workflow**.
-2. Зелёная галка = сбор/коммит/заливка отработали. Шаг деплоя пропускается
-   (не падает) сам, если новых постов не было — это нормально, не ошибка.
-3. Проверить `https://www.hydrogeo.kz/assets/news/telegram-news.json` —
-   должен быть актуальным. Либо смотреть `src/assets/news/telegram-news.json`
-   в репозитории / коммиты `Автообновление новостей из Telegram-канала`.
+2. Зелёная галка = сбор и публикация в WordPress отработали (или ничего не
+   произошло, если новых постов не было — это нормально, не ошибка).
+3. Проверить `https://cms.hydrogeo.kz/?rest_route=/wp/v2/posts` — должны быть
+   актуальные записи. Либо коммиты `Автообновление новостей из Telegram-канала`
+   (там теперь меняется только `scripts/state.json`).
 
 **Протестировать локально, не трогая прод:** временно занизить `lastId` в
-`scripts/state.json`, прогнать `node scripts/fetch-telegram-news.mjs` — скрипт
-заберёт реальные посты канала как «новые» и запишет в
-`src/assets/news/telegram-news.json`. После проверки — `git checkout --
-src/assets/news/telegram-news.json scripts/state.json`, чтобы тестовый бэкфилл
-не попал в реальный коммит.
+`scripts/state.json`, задать `HYDROGEO_API_KEY` в окружении и прогнать
+`node scripts/fetch-telegram-news.mjs` — скрипт заберёт реальные посты канала
+как «новые» и опубликует их в проде на `cms.hydrogeo.kz` (тестового WP-стенда
+нет, так что это реальная публикация, не отменить кроме как удалить посты
+руками). После проверки — `git checkout -- scripts/state.json`, чтобы
+тестовый прогон не попал в реальный коммит.
 
 ## Заметки
 
