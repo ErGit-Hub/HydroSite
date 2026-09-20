@@ -8,8 +8,10 @@
   <section class="news-detail">
     <div class="container">
       <!-- 📸 Картинка -->
-      <div class="hero-image">
-        <img [src]="newsItem.image" alt="" />
+      <div class="hero-image" [class.no-image]="isPlaceholder(newsItem.image)">
+        @if (!isPlaceholder(newsItem.image)) {
+          <img [src]="newsItem.image" alt="" (error)="onImageError()" />
+        }
         <!-- 🔥 Дата поверх картинки -->
         <div class="date-badge">
           📅 {{ newsItem.date | date:'d MMMM y' }}

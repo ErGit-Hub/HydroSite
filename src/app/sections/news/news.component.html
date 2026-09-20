@@ -31,7 +31,7 @@
   <div class="news-card" [class.no-image]="isPlaceholder(n.image)" [routerLink]="['/news', n.id]">
     @if (!isPlaceholder(n.image)) {
       <div class="image">
-        <img [src]="n.image" alt="" />
+        <img [src]="n.image" alt="" (error)="onImageError(n)" />
       </div>
     }
     <div class="content">

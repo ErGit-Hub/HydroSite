@@ -31,6 +31,19 @@
     inset: 0;
     background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.4));
   }
+
+  &.no-image {
+    background: #1e293b;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      /* только капля: в logo.svg зашита старая надпись HydroGeo */
+      background: url('/assets/images/logo-mark.svg') no-repeat center / auto 40%;
+      opacity: 0.14;
+    }
+  }
 }
 
 /* 🔥 Плашка даты */

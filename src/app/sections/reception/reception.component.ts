@@ -14,7 +14,6 @@ export class ReceptionComponent implements OnInit {
   schedule = [
     { key: 'bekniyaz', name: 'Бекнияз Болат Қабыкенұлы', time: '10:00 – 12:00' },
     { key: 'ibraev', name: 'Ибраев Даир Зарапович', time: '15:00 – 17:00' },
-    { key: 'mykan', name: 'Мықан Қаракөз Еламанқызы', time: '15:00 – 17:00' },
     { key: 'vakasova', name: 'Вакасова Гульданам Туглукжановна', time: '15:00 – 17:00' }
   ];
 

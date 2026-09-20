@@ -4,7 +4,7 @@ import { NEWS_DATA } from '../../models/news.data';
 import { NewsItem, NEWS_PLACEHOLDER_IMAGE } from '../../models/news.model';
 import { TelegramNewsService } from '../../core/telegram-news.service';
 import { LanguageService } from '../../core/language.service';
-import { pickLang, hasLang } from '../../core/news-lang.util';
+import { pickLang, hasLang, markImageBroken } from '../../core/news-lang.util';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -17,8 +17,9 @@ import { RouterModule } from '@angular/router';
 })
 export class NewsComponent implements OnInit {
   isVisible = false;
-  news: NewsItem[] = NEWS_DATA;
+  news: NewsItem[] = NEWS_DATA.map(n => ({ ...n }));
   readonly pickLang = pickLang;
+  readonly onImageError = markImageBroken;
 
   isPlaceholder(image: string): boolean {
     return image === NEWS_PLACEHOLDER_IMAGE;
@@ -48,7 +49,7 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
     this.telegramNews.getNews().subscribe(remote => {
-      this.news = [...NEWS_DATA, ...remote].sort((a, b) => b.date.localeCompare(a.date));
+      this.news = [...NEWS_DATA.map(n => ({ ...n })), ...remote].sort((a, b) => b.date.localeCompare(a.date));
     });
 
     setTimeout(() => {

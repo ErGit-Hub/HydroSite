@@ -1,4 +1,4 @@
-import { LocalizedText } from '../models/news.model';
+import { LocalizedText, NewsItem, NEWS_PLACEHOLDER_IMAGE } from '../models/news.model';
 
 /** Строка — как есть; карта по языкам — текущий язык, иначе ru/kz/en по очереди. */
 export function pickLang(value: LocalizedText, lang: string): string {
@@ -19,4 +19,15 @@ export function hasLang(value: LocalizedText, lang: string): boolean {
     return true;
   }
   return !!value[lang as 'ru' | 'kz' | 'en'];
+}
+
+/**
+ * Ссылки на картинки из Telegram CDN со временем протухают — откатываемся на плейсхолдер.
+ * Ничего не делает, если уже на плейсхолдере (защита от повторного срабатывания, если
+ * протухнет и сам плейсхолдер).
+ */
+export function markImageBroken(item: NewsItem): void {
+  if (item.image !== NEWS_PLACEHOLDER_IMAGE) {
+    item.image = NEWS_PLACEHOLDER_IMAGE;
+  }
 }

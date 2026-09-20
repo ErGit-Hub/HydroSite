@@ -1,10 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of } from 'rxjs';
+import { Observable, catchError, forkJoin, map, of, switchMap } from 'rxjs';
 
 import { LocalizedText, NewsItem, NEWS_PLACEHOLDER_IMAGE } from '../models/news.model';
 
-const CMS_POSTS_URL = 'https://cms.hydrogeo.kz/?rest_route=/wp/v2/posts&_embed&per_page=50';
+// 100 — максимум, который WP REST API отдаёт за один запрос (per_page выше игнорируется/режется);
+// постов больше 100 — дальше страницы забираются через X-WP-TotalPages, см. fetchPage().
+const CMS_POSTS_URL = 'https://cms.hydrogeo.kz/?rest_route=/wp/v2/posts&_embed&per_page=100';
 
 /** Мультиязычные варианты полей поста — пишет только `fetch-telegram-news.mjs`, см. scripts/fetch-telegram-news.mjs. */
 interface NewsI18n {
@@ -85,9 +87,29 @@ export class TelegramNewsService {
   private readonly http = inject(HttpClient);
 
   getNews(): Observable<NewsItem[]> {
-    return this.http.get<WpPost[]>(`${CMS_POSTS_URL}&t=${Date.now()}`).pipe(
+    return this.fetchPage(1).pipe(
+      switchMap(({ posts, totalPages }) => {
+        if (totalPages <= 1) {
+          return of(posts);
+        }
+        const restPages = Array.from({ length: totalPages - 1 }, (_, i) => i + 2).map(page =>
+          this.fetchPage(page).pipe(map(r => r.posts)),
+        );
+        return forkJoin(restPages).pipe(map(pages => posts.concat(...pages)));
+      }),
       map(posts => posts.map(mapPost)),
       catchError(() => of([])),
     );
+  }
+
+  private fetchPage(page: number): Observable<{ posts: WpPost[]; totalPages: number }> {
+    return this.http
+      .get<WpPost[]>(`${CMS_POSTS_URL}&page=${page}&t=${Date.now()}`, { observe: 'response' })
+      .pipe(
+        map(res => ({
+          posts: res.body ?? [],
+          totalPages: Number(res.headers.get('X-WP-TotalPages') ?? 1),
+        })),
+      );
   }
 }

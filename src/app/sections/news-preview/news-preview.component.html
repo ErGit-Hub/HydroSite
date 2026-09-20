@@ -7,7 +7,7 @@
         <div class="news-row" [class.no-image]="isPlaceholder(n.image)" [routerLink]="['/news', n.id]">
           @if (!isPlaceholder(n.image)) {
             <div class="thumb">
-              <img [src]="n.image" alt="" />
+              <img [src]="n.image" alt="" (error)="onImageError(n)" />
             </div>
           }
           <div class="info">
