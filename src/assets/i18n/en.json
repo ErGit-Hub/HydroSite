@@ -206,7 +206,9 @@
     "TITLE": "News",
     "READ_MORE": "Read more",
     "BACK": "Back to news",
-    "SEE_ALL": "All news"
+    "SEE_ALL": "All news",
+    "SECTION_COMPANY": "Kazhydrogeology News",
+    "SECTION_INDUSTRY": "Industry News"
   },
   "STRUCTURE": {
     "TITLE": "Structure",

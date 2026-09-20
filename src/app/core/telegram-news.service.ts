@@ -48,6 +48,12 @@ function parseI18n(raw: string | undefined): NewsI18n | null {
   }
 }
 
+/** Пост из Telegram-канала министерства, где явно упоминается сама Казгидрогеология — считаем своей новостью. */
+function mentionsCompany(post: WpPost): boolean {
+  const haystack = `${post.meta?.hg_i18n ?? ''} ${post.title.rendered} ${post.excerpt.rendered}`.toLowerCase();
+  return haystack.includes('казгидрогеология') || haystack.includes('қазгидрогеология');
+}
+
 function mapPost(post: WpPost): NewsItem {
   const i18n = parseI18n(post.meta?.hg_i18n);
   const preview = i18n ? i18n.preview : stripTags(post.excerpt.rendered);
@@ -62,7 +68,10 @@ function mapPost(post: WpPost): NewsItem {
       post._embedded?.['wp:featuredmedia']?.[0]?.source_url ??
       NEWS_PLACEHOLDER_IMAGE,
     date: post.date.slice(0, 10),
-    source: 'telegram',
+    // hg_i18n пишет только автоматика из Telegram (см. scripts/fetch-telegram-news.mjs) —
+    // посты без него написаны вручную в wp-admin (или взяты из старого NEWS_DATA).
+    // Пост из Telegram, где упоминается сама Казгидрогеология, тоже считаем своим.
+    source: !i18n || mentionsCompany(post) ? 'local' : 'telegram',
   };
 }
 

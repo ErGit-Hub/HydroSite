@@ -7,29 +7,45 @@
 <section class="services fade-in" [class.show]="isVisible">
 
   <div class="container">
-    <div class="news-grid">
-      @for (n of visibleNews; track n) {
-        <div class="news-card" [class.no-image]="isPlaceholder(n.image)" [routerLink]="['/news', n.id]">
-          @if (!isPlaceholder(n.image)) {
-            <div class="image">
-              <img [src]="n.image" alt="" />
-            </div>
-          }
-          <div class="content">
-            <div class="date">
-              <span class="icon">📅</span>
-              <span>{{ n.date }}</span>
-            </div>
-            <h3>{{ pickLang(n.title, currentLang) }}</h3>
-            <p class="preview">
-              {{ pickLang(n.preview, currentLang) }}
-            </p>
-            <div class="read-more">
-              {{ 'NEWS.READ_MORE' | translate }} →
-            </div>
-          </div>
-        </div>
-      }
-    </div>
+    @if (companyNews.length > 0) {
+      <h2 class="news-section-title">{{ 'NEWS.SECTION_COMPANY' | translate }}</h2>
+      <div class="news-grid">
+        @for (n of companyNews; track n) {
+          <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ $implicit: n }" />
+        }
+      </div>
+    }
+
+    @if (industryNews.length > 0) {
+      <h2 class="news-section-title">{{ 'NEWS.SECTION_INDUSTRY' | translate }}</h2>
+      <div class="news-grid">
+        @for (n of industryNews; track n) {
+          <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ $implicit: n }" />
+        }
+      </div>
+    }
   </div>
 </section>
+
+<ng-template #card let-n>
+  <div class="news-card" [class.no-image]="isPlaceholder(n.image)" [routerLink]="['/news', n.id]">
+    @if (!isPlaceholder(n.image)) {
+      <div class="image">
+        <img [src]="n.image" alt="" />
+      </div>
+    }
+    <div class="content">
+      <div class="date">
+        <span class="icon">📅</span>
+        <span>{{ n.date }}</span>
+      </div>
+      <h3>{{ pickLang(n.title, currentLang) }}</h3>
+      <p class="preview">
+        {{ pickLang(n.preview, currentLang) }}
+      </p>
+      <div class="read-more">
+        {{ 'NEWS.READ_MORE' | translate }} →
+      </div>
+    </div>
+  </div>
+</ng-template>

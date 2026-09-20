@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { NEWS_DATA } from '../../models/news.data';
 import { NewsItem, NEWS_PLACEHOLDER_IMAGE } from '../../models/news.model';
 import { TelegramNewsService } from '../../core/telegram-news.service';
@@ -10,7 +11,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-news',
-    imports: [TranslateModule, RouterModule],
+    imports: [TranslateModule, RouterModule, NgTemplateOutlet],
     templateUrl: './news.component.html',
     styleUrl: './news.component.scss'
 })
@@ -33,6 +34,16 @@ export class NewsComponent implements OnInit {
   /** Посты без текста на текущем языке (например, kz-only из Telegram) не показываем вовсе. */
   get visibleNews(): NewsItem[] {
     return this.news.filter(n => hasLang(n.title, this.currentLang));
+  }
+
+  /** Свои новости — ручные (wp-admin) и старые из NEWS_DATA, без пометки source: 'telegram'. */
+  get companyNews(): NewsItem[] {
+    return this.visibleNews.filter(n => n.source !== 'telegram');
+  }
+
+  /** Автопостинг из Telegram-канала министерства. */
+  get industryNews(): NewsItem[] {
+    return this.visibleNews.filter(n => n.source === 'telegram');
   }
 
   ngOnInit() {

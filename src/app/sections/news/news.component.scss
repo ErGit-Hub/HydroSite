@@ -7,6 +7,16 @@
   }
 }
 
+.news-section-title {
+  font-size: 20px;
+  color: #0c3c60;
+  margin: 0 0 20px;
+
+  &:not(:first-child) {
+    margin-top: 50px;
+  }
+}
+
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
