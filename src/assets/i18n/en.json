@@ -208,7 +208,8 @@
     "BACK": "Back to news",
     "SEE_ALL": "All news",
     "SECTION_COMPANY": "Kazhydrogeology News",
-    "SECTION_INDUSTRY": "Industry News"
+    "SECTION_INDUSTRY": "Industry News",
+    "SHOW_MORE": "Show more"
   },
   "STRUCTURE": {
     "TITLE": "Structure",

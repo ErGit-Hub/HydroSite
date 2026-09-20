@@ -9,6 +9,8 @@ import { pickLang, hasLang, markImageBroken } from '../../core/news-lang.util';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 
+const PAGE_SIZE = 8;
+
 @Component({
     selector: 'app-news',
     imports: [TranslateModule, RouterModule, NgTemplateOutlet],
@@ -20,6 +22,9 @@ export class NewsComponent implements OnInit {
   news: NewsItem[] = NEWS_DATA.map(n => ({ ...n }));
   readonly pickLang = pickLang;
   readonly onImageError = markImageBroken;
+
+  companyLimit = PAGE_SIZE;
+  industryLimit = PAGE_SIZE;
 
   isPlaceholder(image: string): boolean {
     return image === NEWS_PLACEHOLDER_IMAGE;
@@ -45,6 +50,22 @@ export class NewsComponent implements OnInit {
   /** Автопостинг из Telegram-канала министерства. */
   get industryNews(): NewsItem[] {
     return this.visibleNews.filter(n => n.source === 'telegram');
+  }
+
+  get visibleCompanyNews(): NewsItem[] {
+    return this.companyNews.slice(0, this.companyLimit);
+  }
+
+  get visibleIndustryNews(): NewsItem[] {
+    return this.industryNews.slice(0, this.industryLimit);
+  }
+
+  showMoreCompany(): void {
+    this.companyLimit += PAGE_SIZE;
+  }
+
+  showMoreIndustry(): void {
+    this.industryLimit += PAGE_SIZE;
   }
 
   ngOnInit() {

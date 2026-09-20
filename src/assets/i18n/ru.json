@@ -213,7 +213,8 @@
     "BACK": "Назад к новостям",
     "SEE_ALL": "Все новости",
     "SECTION_COMPANY": "Новости Казгидрогеологии",
-    "SECTION_INDUSTRY": "Новости отрасли"
+    "SECTION_INDUSTRY": "Новости отрасли",
+    "SHOW_MORE": "Показать ещё"
   },
   "STRUCTURE": {
     "TITLE": "Структура",
