@@ -1,0 +1,21 @@
+name: Cleanup old news
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Remove news past retention (6 months company / 1 month industry)
+        env:
+          HYDROGEO_API_KEY: ${{ secrets.HYDROGEO_API_KEY }}
+        run: node scripts/cleanup-old-news.mjs
