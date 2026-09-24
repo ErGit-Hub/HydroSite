@@ -34,13 +34,17 @@
   align-items: center;
   justify-content: center;
   min-width: 0;
+  height: 100%;
+  padding: 14px 0;
+  box-sizing: border-box;
 }
 
 .hero-map {
   position: relative;
-  width: 100%;
-  max-width: 480px;
+  width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: 100%;
   aspect-ratio: 800 / 439;
   overflow: visible;
 
@@ -72,6 +76,21 @@
 .hero-map-strata-2 { fill: #6b5439; }
 .hero-map-strata-3 { fill: #4a3826; }
 .hero-map-strata-4 { fill: #241a12; }
+
+/* водоносный горизонт — жила воды внутри слоя грунта, бежит вдоль всего среза страны */
+.hero-map-vein {
+  fill: none;
+  stroke: url(#mapVeinGrad);
+  stroke-width: 1.4;
+  stroke-opacity: 0.75;
+  stroke-linejoin: round;
+  stroke-dasharray: 3 4;
+  animation: mapVeinFlow 18s linear infinite;
+}
+
+@keyframes mapVeinFlow {
+  to { stroke-dashoffset: -280; }
+}
 
 /* областные центры — статичные, отличаются от мигающих декоративных точек */
 .hero-city circle {
@@ -177,6 +196,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-map-shape,
+  .hero-map-vein,
   .hero-zone-jet,
   .hero-zone-droplet {
     animation: none;
@@ -194,18 +214,28 @@
   z-index: 1;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+  grid-template-columns: minmax(280px, 1fr) minmax(260px, 1.35fr);
+  align-items: stretch;
   gap: 40px;
 
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* на средних экранах тексту не хватает места под длинные слова — доля карты поменьше */
+@media (max-width: 1150px) {
+  .hero-grid {
+    grid-template-columns: minmax(280px, 1fr) minmax(220px, 1fr);
+  }
+}
+
 /* текст */
 .hero-text {
   text-align: left;
   max-width: 500px;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .hero-sub {
@@ -217,7 +247,7 @@
 
 /* заголовки */
 h1 {
-  font-size: 42px;
+  font-size: clamp(26px, 3.4vw, 42px);
   font-weight: 600;
   margin-bottom: 15px;
 }
