@@ -44,22 +44,6 @@
     }
   }
 
-  &.no-image {
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      /* только капля: в logo.svg зашита старая надпись HydroGeo */
-      background: url('/assets/images/logo-mark.svg') no-repeat center / auto 70%;
-      opacity: 0.16;
-    }
-  }
-
   .info {
     min-width: 0;
   }

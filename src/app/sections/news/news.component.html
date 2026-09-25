@@ -38,12 +38,10 @@
 </section>
 
 <ng-template #card let-n>
-  <div class="news-card" [class.no-image]="isPlaceholder(n.image)" [routerLink]="['/news', n.id]">
-    @if (!isPlaceholder(n.image)) {
-      <div class="image">
-        <img [src]="n.image" alt="" (error)="onImageError(n)" />
-      </div>
-    }
+  <div class="news-card" [routerLink]="['/news', n.id]">
+    <div class="image">
+      <img [src]="thumbSrc(n)" alt="" (error)="onImageError(n)" />
+    </div>
     <div class="content">
       <div class="date">
         <span class="icon">📅</span>

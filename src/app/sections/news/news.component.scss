@@ -146,24 +146,6 @@
   border-radius: 12px;
 }
 
-&.no-image .content {
-  margin-top: 0;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 0;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    /* только капля: в logo.svg зашита старая надпись HydroGeo */
-    background: url('/assets/images/logo-mark.svg') no-repeat center / auto 70%;
-    opacity: 0.14;
-  }
-}
 .read-more {
   color: #38bdf8;
   font-weight: 500;

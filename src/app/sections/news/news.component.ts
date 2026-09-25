@@ -1,10 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { NEWS_DATA } from '../../models/news.data';
-import { NewsItem, NEWS_PLACEHOLDER_IMAGE } from '../../models/news.model';
+import { NewsItem } from '../../models/news.model';
 import { TelegramNewsService } from '../../core/telegram-news.service';
 import { LanguageService } from '../../core/language.service';
 import { pickLang, hasLang, markImageBroken } from '../../core/news-lang.util';
+import { pickTopicImage } from '../../core/news-topic.util';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -26,15 +27,15 @@ export class NewsComponent implements OnInit {
   companyLimit = PAGE_SIZE;
   industryLimit = PAGE_SIZE;
 
-  isPlaceholder(image: string): boolean {
-    return image === NEWS_PLACEHOLDER_IMAGE;
-  }
-
   private readonly telegramNews = inject(TelegramNewsService);
   private readonly language = inject(LanguageService);
 
   get currentLang(): string {
     return this.language.current;
+  }
+
+  thumbSrc(n: NewsItem): string {
+    return pickTopicImage(n, this.currentLang);
   }
 
   /** Посты без текста на текущем языке (например, kz-only из Telegram) не показываем вовсе. */
