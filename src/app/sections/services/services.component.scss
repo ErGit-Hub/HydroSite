@@ -59,6 +59,60 @@
 .table-wrapper {
   overflow-x: auto;
 }
+.service-card.open {
+  width: 100%;
+  text-align: left;
+}
+
+.service-card-body {
+  margin-top: 14px;
+  text-align: left;
+  animation: fadeIn 0.35s ease;
+}
+
+.service-card-body p {
+  line-height: 1.7;
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.service-card-subhead {
+  color: #1a365d;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 18px 0 8px;
+}
+
+.service-card-body h4:first-child {
+  margin-top: 0;
+}
+
+.service-card-body .list {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: inherit;
+  line-height: 1.7;
+  color: #444;
+  font-size: 15px;
+  background: #f7f9fc;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 0 0 14px;
+}
+
+.service-feature-card .list {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: inherit;
+  line-height: 1.7;
+  color: #444;
+  background: #f7f9fc;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 0 0 14px;
+}
+
 .fade-in {
   opacity: 0;
   transform: translateY(30px);

@@ -1,11 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { NEWS_DATA } from '../../models/news.data';
-import { NewsItem } from '../../models/news.model';
+import { NewsItem, NEWS_PLACEHOLDER_IMAGE } from '../../models/news.model';
 import { TelegramNewsService } from '../../core/telegram-news.service';
 import { LanguageService } from '../../core/language.service';
 import { pickLang, hasLang, markImageBroken } from '../../core/news-lang.util';
-import { pickTopicImage } from '../../core/news-topic.util';
+import { pickTopicImage, trackVerifiedImages } from '../../core/news-topic.util';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
@@ -20,7 +20,13 @@ const PAGE_SIZE = 8;
 })
 export class NewsComponent implements OnInit {
   isVisible = false;
-  news: NewsItem[] = NEWS_DATA.map(n => ({ ...n }));
+  /**
+   * Пусто, пока не пришли настоящие новости — раньше здесь сразу стоял NEWS_DATA
+   * (старые локальные образцы с фото), из-за чего при загрузке на долю секунды
+   * показывались не те новости, а затем список резко менялся на актуальный.
+   */
+  news: NewsItem[] = [];
+  loading = true;
   readonly pickLang = pickLang;
   readonly onImageError = markImageBroken;
 
@@ -29,13 +35,15 @@ export class NewsComponent implements OnInit {
 
   private readonly telegramNews = inject(TelegramNewsService);
   private readonly language = inject(LanguageService);
+  private readonly verifiedImages = new Set<NewsItem['id']>();
 
   get currentLang(): string {
     return this.language.current;
   }
 
   thumbSrc(n: NewsItem): string {
-    return pickTopicImage(n, this.currentLang);
+    const unverified = n.image !== NEWS_PLACEHOLDER_IMAGE && !this.verifiedImages.has(n.id);
+    return pickTopicImage(n, this.currentLang, unverified);
   }
 
   /** Посты без текста на текущем языке (например, kz-only из Telegram) не показываем вовсе. */
@@ -72,6 +80,8 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
     this.telegramNews.getNews().subscribe(remote => {
       this.news = [...NEWS_DATA.map(n => ({ ...n })), ...remote].sort((a, b) => b.date.localeCompare(a.date));
+      this.loading = false;
+      trackVerifiedImages(this.news, this.verifiedImages);
     });
 
     setTimeout(() => {

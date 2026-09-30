@@ -10,6 +10,8 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class ServicesComponent {
 isVisible = false;
+meliorationOpen = false;
+digitalizationOpen = false;
 ngOnInit() {
   setTimeout(() => {
     this.isVisible = true;

@@ -271,7 +271,7 @@
 
 /* заголовки */
 h1 {
-  font-size: clamp(26px, 3.4vw, 42px);
+  font-size: clamp(20px, 2.6vw, 32px);
   font-weight: 600;
   margin-bottom: 15px;
 }
@@ -280,6 +280,13 @@ p {
   font-size: 20px;
   margin-bottom: 20px;
   opacity: 0.9;
+}
+
+/* «Казгидрогеология» — продолжение названия из заголовка, тот же размер и начертание */
+.hero-org-name {
+  font-size: clamp(20px, 2.6vw, 32px);
+  font-weight: 600;
+  opacity: 1;
 }
 
 /* кнопка */
@@ -353,13 +360,17 @@ p {
   }
 
   h1 {
-    font-size: 26px;
+    font-size: 22px;
     margin-bottom: 10px;
   }
 
   p {
     font-size: 15px;
     margin-bottom: 15px;
+  }
+
+  .hero-org-name {
+    font-size: 22px;
   }
 
   .hero-sub {

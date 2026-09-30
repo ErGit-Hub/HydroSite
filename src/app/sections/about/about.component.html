@@ -5,6 +5,45 @@
     <p>{{ 'ABOUT.SUBTITLE' | translate }}</p>
   </div>
 </section>
+
+<section class="welcome fade-in" [class.show]="isVisible">
+  <div class="container">
+    <div class="welcome-grid">
+      <div class="welcome-photo">
+        <img src="assets/images/leader/leader1.jpeg" [alt]="'WELCOME.NAME' | translate">
+        <p class="welcome-name">{{ 'WELCOME.NAME' | translate }}</p>
+        <p class="welcome-position">{{ 'WELCOME.POSITION' | translate }}</p>
+      </div>
+      <div class="welcome-text">
+        <p class="welcome-greeting">{{ 'WELCOME.GREETING' | translate }}</p>
+
+        <p>{{ 'WELCOME.TEXT_1' | translate }}</p>
+        <p>{{ 'WELCOME.TEXT_2' | translate }}</p>
+
+        <h3 class="welcome-subhead">{{ 'WELCOME.SUBHEAD_1' | translate }}</h3>
+        <p>{{ 'WELCOME.TEXT_3' | translate }}</p>
+        <p>{{ 'WELCOME.TEXT_4' | translate }}</p>
+
+        <p>{{ 'WELCOME.LIST_INTRO' | translate }}</p>
+        <pre class="welcome-list">{{ 'WELCOME.LIST' | translate }}</pre>
+
+        <h3 class="welcome-subhead">{{ 'WELCOME.SUBHEAD_2' | translate }}</h3>
+        <p>{{ 'WELCOME.TEXT_5' | translate }}</p>
+
+        <h3 class="welcome-subhead">{{ 'WELCOME.SUBHEAD_3' | translate }}</h3>
+        <p>{{ 'WELCOME.TEXT_6' | translate }}</p>
+        <p>{{ 'WELCOME.TEXT_7' | translate }}</p>
+        <p>{{ 'WELCOME.TEXT_8' | translate }}</p>
+
+        <p class="welcome-signoff">
+          {{ 'WELCOME.SIGN_OFF' | translate }}<br>
+          <strong>{{ 'WELCOME.POSITION' | translate }}</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
   <section class="services fade-in" [class.show]="isVisible">
   <div class="container">
 
@@ -45,6 +84,37 @@
 
     <div class="about-image">
       <img src="assets/images/water.png" alt="Водные ресурсы" />
+    </div>
+
+  </div>
+
+
+  <div class="container">
+
+    <div class="about-card documents-card">
+
+      <div class="card-header-custom">
+        <div>
+          <h2>{{ 'ABOUT_DETAILS.DOCS_TITLE' | translate }}</h2>
+
+          <p class="card-subtitle">{{ 'ABOUT_DETAILS.DOCS_SUBTITLE' | translate }}</p>
+        </div>
+      </div>
+
+      <div class="documents-list">
+
+        @for (doc of documents; track doc.key) {
+          <a class="doc-item" [href]="doc.file" target="_blank" rel="noopener">
+            <span class="doc-icon">📄</span>
+            <div class="doc-info">
+              <h4>{{ 'ABOUT_DETAILS.DOCS.' + doc.key + '.TITLE' | translate }}</h4>
+              <p>{{ 'ABOUT_DETAILS.DOCS.' + doc.key + '.DESC' | translate }}</p>
+            </div>
+          </a>
+        }
+
+      </div>
+
     </div>
 
   </div>

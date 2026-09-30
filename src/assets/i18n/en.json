@@ -21,7 +21,7 @@
     "ORG_NAME": "NJSC NHS\nKazhydrogeology"
   },
   "HERO": {
-    "TITLE": "National\nHydrogeological Service",
+    "TITLE": "Non-commercial Joint-Stock Company National Hydrogeological Service",
     "SUBTITLE": "Kazhydrogeology",
     "MINISTRY": "An organisation under the Ministry of Water Resources\nand Irrigation of the Republic of Kazakhstan",
     "BUTTON": "Learn more",
@@ -36,6 +36,25 @@
     "TITLE": "About the company",
     "SUBTITLE": "Kazhydrogeology is a specialised organisation for the study and monitoring of groundwater",
     "TEXT": "NJSC NHS Kazhydrogeology studies, assesses, monitors and manages the sustainable use of groundwater in Kazakhstan. It carries out state tasks in hydrogeology, water supply, irrigation and the digitalisation of water resources."
+  },
+  "WELCOME": {
+    "GREETING": "Dear colleagues, partners and visitors of the website!",
+    "TEXT_1": "Groundwater is one of Kazakhstan's key strategic resources. Today its importance goes far beyond a traditional source of drinking water supply.",
+    "TEXT_2": "Our country holds vast hydrogeological potential. Previous generations of Kazakhstani specialists carried out enormous work: territories were explored, deposits were surveyed, an observation network was established, and rich information funds were built up. Our task is not simply to preserve this scientific base, but to complement it with modern research, turning accumulated knowledge into a working resource for the economy and the state.",
+    "SUBHEAD_1": "New challenges and an integrated approach",
+    "TEXT_3": "Climate change, shrinking surface water and growing pressure on ecosystems call for a new approach. Groundwater must be seen both as a reserve for national water security and as a driver of sustainable economic development.",
+    "TEXT_4": "This is exactly the principle underpinning the work of the National Hydrogeological Service Kazhydrogeology. We are restoring an integrated state system for studying, monitoring, protecting and rationally using groundwater.",
+    "LIST_INTRO": "The scope of this resource is considerably wider than commonly assumed:",
+    "LIST": "• Drinking and industrial water supply\n• Regular and oasis irrigation, watering of pastures\n• Use of geothermal energy\n• Development of balneology and health resorts (medicinal-mineral and thermal waters)\n• Extraction of valuable components from industrial groundwater",
+    "SUBHEAD_2": "Balancing development and preservation",
+    "TEXT_5": "Economic development does not mean uncontrolled exploitation. Every project must be based on reliable data on reserves, quality and replenishment of aquifers. Our priority is to find the balance between today's needs and preserving resources for future generations.",
+    "SUBHEAD_3": "Digitalisation and open dialogue",
+    "TEXT_6": "We attach particular importance to digitalisation. Archival hydrogeological materials are being converted to digital form and integrated with geoinformation systems (GIS) and modern hydrogeological modelling. This will let the state, business and science obtain objective data for making sound decisions.",
+    "TEXT_7": "We see our website not only as an information board, but as an open platform for professional dialogue. We invite scientists, government officials, entrepreneurs and international partners to cooperate with us.",
+    "TEXT_8": "We look forward to joint, productive work for the good of Kazakhstan!",
+    "SIGN_OFF": "Sincerely,",
+    "NAME": "Bolat Bekniyaz",
+    "POSITION": "Chairman of the Management Board, NJSC National Hydrogeological Service Kazhydrogeology"
   },
   "ACTIVITIES": {
     "TITLE": "Areas of activity",
@@ -134,7 +153,15 @@
     "TEXT_1": "Kazhydrogeology carries out comprehensive research and monitoring of groundwater across the Republic of Kazakhstan. Our work focuses on studying hydrogeological conditions, assessing reserves and ensuring the sustainable use of water resources.",
     "TEXT_2": "The organisation takes an active part in state programmes, conducts applied research and supports projects in water supply, ecology and environmental management.",
     "TEXT_3": "Main areas of activity:",
-    "TEXT_4": "• monitoring of groundwater conditions\n• assessment and forecasting of water resources\n• protection from contamination and depletion\n• adoption of modern water management technologies"
+    "TEXT_4": "• monitoring of groundwater conditions\n• assessment and forecasting of water resources\n• protection from contamination and depletion\n• adoption of modern water management technologies",
+    "DOCS_TITLE": "Documents",
+    "DOCS_SUBTITLE": "Founding documents of the company",
+    "DOCS": {
+      "CHARTER": {
+        "TITLE": "Charter",
+        "DESC": "Charter of the Non-commercial Joint-Stock Company National Hydrogeological Service Kazhydrogeology"
+      }
+    }
   },
   "FEATURES": {
     "TITLE": "Capabilities",
@@ -180,16 +207,48 @@
     "LIST": {
       "SERVICE_1_TITLE": "Scientific research",
       "SERVICE_1_DESC": "Applied research in hydrogeology and water resources.",
-      "SERVICE_2_TITLE": "Hydrogeological expert review",
+      "SERVICE_2_TITLE": "Hydrogeological research",
       "SERVICE_2_DESC": "Scientific support for projects and programmes.",
       "SERVICE_3_TITLE": "Groundwater monitoring",
       "SERVICE_3_DESC": "Study of the condition and dynamics of resources.",
       "SERVICE_4_TITLE": "Digitalisation of the sector",
       "SERVICE_4_DESC": "GIS, databases and analytical models.",
       "SERVICE_5_TITLE": "Reserve assessment",
-      "SERVICE_5_DESC": "Evidence-based calculation of groundwater resources.",
-      "SERVICE_6_TITLE": "Climate and water security",
-      "SERVICE_6_DESC": "Research into the impact of climate on water resources."
+      "SERVICE_5_DESC": "Evidence-based calculation of groundwater resources."
+    },
+    "MELIORATION": {
+      "TITLE": "Monitoring and assessment of the reclamation status of irrigated land",
+      "SHORT_DESC": "Over 50 years of observations of Kazakhstan's irrigated land.",
+      "TEXT_1": "Kazakhstan's land reclamation service traces its history back to 1971, when a specialised service for monitoring and assessing the reclamation status of irrigated land was established in Shymkent as part of Glavrissovkhozstroy of the USSR Ministry of Water Management.",
+      "TEXT_2": "In the following years the system developed further: the Zhetysu and Kyzylorda hydrogeological-reclamation expeditions were formed. Today this work is carried out by the Almaty, Turkestan and Kyzylorda branches of NJSC National Hydrogeological Service Kazhydrogeology, which monitor irrigated land across the Republic of Kazakhstan.",
+      "MONITORING_LABEL": "What the monitoring covers.",
+      "MONITORING_INTRO": "Specialists carry out a range of field, laboratory and desk studies:",
+      "LIST": "• monitoring the level and mineralisation of groundwater;\n• surveying irrigated land and determining soil salinity;\n• monitoring runoff and the condition of collector-drainage water;\n• sampling and laboratory analysis of water and soil;\n• analysis and mapping of the data obtained.",
+      "TEXT_3": "Based on the results, an annual assessment of the reclamation status of irrigated land is carried out, thematic maps are produced, and recommendations are developed to prevent waterlogging and salinisation, improve land condition and make rational use of water resources.",
+      "HISTORY_LABEL": "Over 50 years of observations.",
+      "TEXT_4": "Over the years a substantial archive of hydrogeological, soil-reclamation and cartographic materials has been built up, making it possible to track long-term changes in the condition of irrigated areas.",
+      "TEXT_5": "Today the National Hydrogeological Service is working to preserve and digitise this data, develop a unified information base, and apply GIS technology, remote sensing and modern monitoring methods.",
+      "GOAL_LABEL": "The main goal is",
+      "GOAL_TEXT": "to move from simply recording the current state to the timely detection and forecasting of negative processes, preserving the productivity of irrigated land and the effective use of Kazakhstan's water resources."
+    },
+    "DIGITALIZATION": {
+      "SHORT_DESC": "A unified digital platform, automated monitoring and digital modelling of aquifers.",
+      "SEC1_TITLE": "A unified digital platform for groundwater",
+      "SEC1_LIST": "• creating a unified geoinformation platform for Kazakhstan's groundwater;\n• combining data on wells, deposits, reserves, the cadastre, monitoring, water users and geological funds in a single system.",
+      "SEC2_TITLE": "Digitising archives and sector data",
+      "SEC2_LIST": "• converting geological funds and archival materials into digital form;\n• creating a unified digital groundwater cadastre.",
+      "SEC3_TITLE": "Automating monitoring",
+      "SEC3_LIST": "• equipping observation points with automatic measuring instruments;\n• real-time data transmission: levels, flow rates, temperature, chemical composition;\n• remote metering of water abstraction.",
+      "SEC4_TITLE": "GIS, 3D modelling and digital twins",
+      "SEC4_LIST": "• a unified spatial database;\n• 3D modelling of aquifers;\n• creating digital twins of strategic artesian basins;\n• a national groundwater geoportal.",
+      "SEC5_TITLE": "Analytics and forecasting",
+      "SEC5_LIST": "• automatic data quality checks;\n• detecting anomalies and risks of depletion and contamination;\n• forecasting the state of groundwater;\n• optimising the operation of deposits.",
+      "SEC6_TITLE": "Cross-agency integration",
+      "SEC6_LIST": "• integration with the water and land cadastres, the hydrometeorological service, geology authorities and regional administrations;\n• a shared information space and data exchange.",
+      "SEC7_TITLE": "Digitising fieldwork",
+      "SEC7_LIST": "• digital well documentation;\n• automated control of drilling operations;\n• use of remote sensing and digital mapping databases.",
+      "RESULT_LABEL": "The main outcome —",
+      "RESULT_TEXT": "moving from scattered archival and departmental data to a unified digital system for managing groundwater: from exploration and monitoring to the cadastre, modelling, forecasting and management decisions."
     }
   },
   "CONTACTS": {

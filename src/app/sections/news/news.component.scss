@@ -152,4 +152,47 @@
 }.news-card {
   cursor: pointer;
 }
+
+.news-card.skeleton {
+  cursor: default;
+  pointer-events: none;
+
+  .image {
+    aspect-ratio: 2/1;
+  }
+
+  .image,
+  .date,
+  h3,
+  .preview {
+    background: linear-gradient(90deg, #263449 25%, #2f3f58 37%, #263449 63%);
+    background-size: 400% 100%;
+    animation: skeletonShimmer 1.4s ease infinite;
+    border-radius: 6px;
+  }
+
+  .date {
+    width: 90px;
+    height: 12px;
+  }
+
+  h3 {
+    height: 17px;
+    width: 80%;
+  }
+
+  .preview {
+    height: 34px;
+  }
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
 }

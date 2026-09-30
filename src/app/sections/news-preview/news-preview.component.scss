@@ -68,6 +68,40 @@
   }
 }
 
+.news-row.skeleton {
+  cursor: default;
+  pointer-events: none;
+
+  .thumb,
+  .date,
+  h3 {
+    background: linear-gradient(90deg, #263449 25%, #2f3f58 37%, #263449 63%);
+    background-size: 400% 100%;
+    animation: skeletonShimmer 1.4s ease infinite;
+    border-radius: 6px;
+  }
+
+  .date {
+    width: 70px;
+    height: 12px;
+  }
+
+  h3 {
+    height: 15px;
+    width: 70%;
+  }
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
 .see-all {
   display: block;
   text-align: center;

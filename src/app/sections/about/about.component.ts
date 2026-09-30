@@ -10,6 +10,12 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class AboutComponent {
 isVisible = false;
+
+/** Названия и описания лежат в i18n под ABOUT_DETAILS.DOCS.<key>. */
+documents = [
+  { key: 'CHARTER', file: 'assets/docs/Устав НАО НГС Казгидрогеология 2026.pdf' }
+];
+
 ngOnInit() {
   setTimeout(() => {
     this.isVisible = true;

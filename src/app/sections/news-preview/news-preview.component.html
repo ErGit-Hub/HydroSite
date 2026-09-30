@@ -3,16 +3,28 @@
     <h2>{{ 'NEWS.TITLE' | translate }}</h2>
 
     <div class="news-list">
-      @for (n of visibleNews; track n) {
-        <div class="news-row" [routerLink]="['/news', n.id]">
-          <div class="thumb">
-            <img [src]="thumbSrc(n)" alt="" (error)="onImageError(n)" />
+      @if (loading) {
+        @for (i of [1,2,3]; track i) {
+          <div class="news-row skeleton">
+            <div class="thumb"></div>
+            <div class="info">
+              <div class="date"></div>
+              <h3></h3>
+            </div>
           </div>
-          <div class="info">
-            <div class="date">{{ n.date }}</div>
-            <h3>{{ pickLang(n.title, currentLang) }}</h3>
+        }
+      } @else {
+        @for (n of visibleNews; track n) {
+          <div class="news-row" [routerLink]="['/news', n.id]">
+            <div class="thumb">
+              <img [src]="thumbSrc(n)" alt="" (error)="onImageError(n)" />
+            </div>
+            <div class="info">
+              <div class="date">{{ n.date }}</div>
+              <h3>{{ pickLang(n.title, currentLang) }}</h3>
+            </div>
           </div>
-        </div>
+        }
       }
     </div>
 

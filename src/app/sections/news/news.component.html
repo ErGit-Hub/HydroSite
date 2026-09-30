@@ -7,31 +7,46 @@
 <section class="services fade-in" [class.show]="isVisible">
 
   <div class="container">
-    @if (companyNews.length > 0) {
-      <h2 class="news-section-title">{{ 'NEWS.SECTION_COMPANY' | translate }}</h2>
+    @if (loading) {
       <div class="news-grid">
-        @for (n of visibleCompanyNews; track n) {
-          <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ $implicit: n }" />
+        @for (i of [1,2,3,4]; track i) {
+          <div class="news-card skeleton">
+            <div class="image"></div>
+            <div class="content">
+              <div class="date"></div>
+              <h3></h3>
+              <p class="preview"></p>
+            </div>
+          </div>
         }
       </div>
-      @if (companyNews.length > companyLimit) {
-        <button type="button" class="show-more" (click)="showMoreCompany()">
-          {{ 'NEWS.SHOW_MORE' | translate }}
-        </button>
+    } @else {
+      @if (companyNews.length > 0) {
+        <h2 class="news-section-title">{{ 'NEWS.SECTION_COMPANY' | translate }}</h2>
+        <div class="news-grid">
+          @for (n of visibleCompanyNews; track n) {
+            <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ $implicit: n }" />
+          }
+        </div>
+        @if (companyNews.length > companyLimit) {
+          <button type="button" class="show-more" (click)="showMoreCompany()">
+            {{ 'NEWS.SHOW_MORE' | translate }}
+          </button>
+        }
       }
-    }
 
-    @if (industryNews.length > 0) {
-      <h2 class="news-section-title">{{ 'NEWS.SECTION_INDUSTRY' | translate }}</h2>
-      <div class="news-grid">
-        @for (n of visibleIndustryNews; track n) {
-          <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ $implicit: n }" />
+      @if (industryNews.length > 0) {
+        <h2 class="news-section-title">{{ 'NEWS.SECTION_INDUSTRY' | translate }}</h2>
+        <div class="news-grid">
+          @for (n of visibleIndustryNews; track n) {
+            <ng-container [ngTemplateOutlet]="card" [ngTemplateOutletContext]="{ $implicit: n }" />
+          }
+        </div>
+        @if (industryNews.length > industryLimit) {
+          <button type="button" class="show-more" (click)="showMoreIndustry()">
+            {{ 'NEWS.SHOW_MORE' | translate }}
+          </button>
         }
-      </div>
-      @if (industryNews.length > industryLimit) {
-        <button type="button" class="show-more" (click)="showMoreIndustry()">
-          {{ 'NEWS.SHOW_MORE' | translate }}
-        </button>
       }
     }
   </div>
