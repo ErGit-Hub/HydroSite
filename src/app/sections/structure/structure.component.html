@@ -32,8 +32,8 @@
 
       @for (key of leaderKeys; track key) {
         <div class="leader-card" (click)="selectLeader(key)">
-          <img [src]="leaders[key].image" [alt]="leaders[key].name">
-          <h3>{{ leaders[key].name }}</h3>
+          <img [src]="leaders[key].image" [alt]="'LEADERS.' + key + '.NAME' | translate">
+          <h3>{{ 'LEADERS.' + key + '.NAME' | translate }}</h3>
           <p>{{ 'LEADERS.' + key + '.POSITION' | translate }}</p>
         </div>
       }
@@ -44,13 +44,11 @@
     @if (selectedLeader) {
       <div class="leader-details fade-in show">
         <div class="leader-details-grid">
-          <img [src]="selectedLeader.image" [alt]="selectedLeader.name">
+          <img [src]="selectedLeader.image" [alt]="'LEADERS.' + selectedKey + '.NAME' | translate">
           <div>
-            <h3>{{ selectedLeader.name }}</h3>
+            <h3>{{ 'LEADERS.' + selectedKey + '.NAME' | translate }}</h3>
             <p class="position">{{ 'LEADERS.' + selectedKey + '.POSITION' | translate }}</p>
-            <pre class="bio">
-              {{ selectedLeader.description }}
-            </pre>
+            <pre class="bio">{{ 'LEADERS.' + selectedKey + '.DESCRIPTION' | translate }}</pre>
           </div>
         </div>
       </div>

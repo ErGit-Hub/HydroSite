@@ -54,17 +54,17 @@
 
   <div class="about-card" >
   <h3>50+</h3>
-  <p>лет опыта в гидрогеологии</p>
+  <p>{{ 'ABOUT.STAT_1_LABEL' | translate }}</p>
 </div>
 
 <div class="about-card" >
-  <h3>Вся страна</h3>
-  <p>работа по территории Казахстана</p>
+  <h3>{{ 'ABOUT.STAT_2_TITLE' | translate }}</h3>
+  <p>{{ 'ABOUT.STAT_2_LABEL' | translate }}</p>
 </div>
 
 <div class="about-card" >
-  <h3>Гос. уровень</h3>
-  <p>участие в государственных проектах</p>
+  <h3>{{ 'ABOUT.STAT_3_TITLE' | translate }}</h3>
+  <p>{{ 'ABOUT.STAT_3_LABEL' | translate }}</p>
 </div>
     </div>
 
@@ -83,7 +83,7 @@
     </div>
 
     <div class="about-image">
-      <img src="assets/images/water.png" alt="Водные ресурсы" />
+      <img src="assets/images/water.png" [alt]="'ABOUT.IMAGE_ALT' | translate" />
     </div>
 
   </div>

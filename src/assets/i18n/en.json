@@ -1,4 +1,7 @@
 {
+  "SITE": {
+    "NAME": "NJSC NHS Kazhydrogeology"
+  },
   "HEADER": {
     "HOME": "Home",
     "ABOUT": "About",
@@ -7,7 +10,6 @@
     "CONTACTS": "Contacts",
     "ABOUT_PAGE": "About the company",
     "ACTIVITY": "Areas of activity",
-    "GOV": "State level",
     "ANTI_CORRUPTION": "Anti-corruption compliance",
     "OMBUDSMAN": "Corporate ombudsman",
     "WORK": "Activities",
@@ -35,7 +37,13 @@
   "ABOUT": {
     "TITLE": "About the company",
     "SUBTITLE": "Kazhydrogeology is a specialised organisation for the study and monitoring of groundwater",
-    "TEXT": "NJSC NHS Kazhydrogeology studies, assesses, monitors and manages the sustainable use of groundwater in Kazakhstan. It carries out state tasks in hydrogeology, water supply, irrigation and the digitalisation of water resources."
+    "TEXT": "NJSC NHS Kazhydrogeology studies, assesses, monitors and manages the sustainable use of groundwater in Kazakhstan. It carries out state tasks in hydrogeology, water supply, irrigation and the digitalisation of water resources.",
+    "STAT_1_LABEL": "years of experience in hydrogeology",
+    "STAT_2_TITLE": "Nationwide",
+    "STAT_2_LABEL": "operations across Kazakhstan",
+    "STAT_3_TITLE": "State level",
+    "STAT_3_LABEL": "participation in government projects",
+    "IMAGE_ALT": "Water resources"
   },
   "WELCOME": {
     "GREETING": "Dear colleagues, partners and visitors of the website!",
@@ -59,6 +67,7 @@
   "ACTIVITIES": {
     "TITLE": "Areas of activity",
     "INTRO": "Our main areas of work cover the key aspects of studying, using and protecting groundwater",
+    "IMAGE_ALT": "Hydrogeology",
     "LIST": {
       "MONITORING_TITLE": "State groundwater monitoring",
       "MONITORING_DESC": "Systematic observation of the condition and changes of groundwater resources",
@@ -128,24 +137,6 @@
     "MONITORING_SUBTITLE": "Demonstration monitoring map (Shymkent)",
     "MONITORING_NOTE": "* Test data. The display, structure and logic match the production system."
   },
-  "GOV": {
-    "TITLE": "State level",
-    "INTRO": "Delivering state tasks in the management of the groundwater resources of the Republic of Kazakhstan",
-    "LIST": {
-      "TASK_1_TITLE": "State monitoring",
-      "TASK_1_DESC": "Observation of groundwater conditions and their changes",
-      "TASK_2_TITLE": "Water cadastre",
-      "TASK_2_DESC": "Contribution to the state water cadastre",
-      "TASK_3_TITLE": "Reserve assessment",
-      "TASK_3_DESC": "State-level exploration and assessment of groundwater reserves",
-      "TASK_4_TITLE": "Well decommissioning",
-      "TASK_4_DESC": "Sealing of emergency and abandoned wells",
-      "TASK_5_TITLE": "Digitalisation of the sector",
-      "TASK_5_DESC": "Creating and maintaining state databases and GIS",
-      "TASK_6_TITLE": "Water security",
-      "TASK_6_DESC": "Ensuring the sustainable use and protection of water resources"
-    }
-  },
   "ABOUT_DETAILS": {
     "TITLE": "About the company",
     "MISSION": ": Securing the country's water safety and the sustainable use of groundwater.",
@@ -153,7 +144,7 @@
     "TEXT_1": "Kazhydrogeology carries out comprehensive research and monitoring of groundwater across the Republic of Kazakhstan. Our work focuses on studying hydrogeological conditions, assessing reserves and ensuring the sustainable use of water resources.",
     "TEXT_2": "The organisation takes an active part in state programmes, conducts applied research and supports projects in water supply, ecology and environmental management.",
     "TEXT_3": "Main areas of activity:",
-    "TEXT_4": "• monitoring of groundwater conditions\n• assessment and forecasting of water resources\n• protection from contamination and depletion\n• adoption of modern water management technologies",
+    "TEXT_4": "• monitoring of groundwater conditions\n• assessment and forecasting of water resources\n• protection from contamination and depletion\n• adoption of modern water management technologies\n• participation in maintaining the state water cadastre\n• decommissioning of emergency and abandoned wells\n• ensuring the rational use and protection of water resources",
     "DOCS_TITLE": "Documents",
     "DOCS_SUBTITLE": "Founding documents of the company",
     "DOCS": {
@@ -204,6 +195,7 @@
   },
   "SERVICES": {
     "TITLE": "Services and expertise",
+    "SUBTITLE": "Main areas of activity",
     "LIST": {
       "SERVICE_1_TITLE": "Scientific research",
       "SERVICE_1_DESC": "Applied research in hydrogeology and water resources.",
@@ -279,13 +271,19 @@
   },
   "LEADERS": {
     "bekniyaz": {
-      "POSITION": "Chair of the Management Board"
+      "NAME": "Bolat Bekniyaz",
+      "POSITION": "Chair of the Management Board",
+      "DESCRIPTION": "Graduated from the Kazakh Polytechnic Institute named after V.I. Lenin, the Academy of Public Administration under the President of the Republic of Kazakhstan, Lomonosov Moscow State University, and Taraz State University named after M. Dulati.\n\nHis professional career is linked to geology, water resources, research work and public administration.\n\nHe began his career as an engineer at the K. Satpayev Institute of Geological Sciences of the Academy of Sciences of the Kazakh SSR, later moving into research work there.\n\nHe has many years of experience in public administration, having held senior positions in government bodies in the fields of natural resources, environmental protection and water resource management. He also has experience in research and sector-specific work at water-sector organisations.\n\nHis professional experience spans state water policy, the management and protection of water resources, the development of the water management sector, and scientific and institutional support for the water sector.\n\nHe currently serves as Chair of the Management Board of NJSC National Hydrogeological Service Kazhydrogeology."
     },
     "ibraev": {
-      "POSITION": "First Deputy Chair"
+      "NAME": "Dair Ibrayev",
+      "POSITION": "First Deputy Chair",
+      "DESCRIPTION": "He began his career in hydrogeology, working as a hydrogeology technician and hydrogeology engineer at specialised hydrogeological organisations.\n\nA significant part of his professional experience is linked to the public administration system in the field of geology. At the Geology Committee he advanced from expert and chief expert to head of department, working on hydrogeology and state regulation of the sector.\n\nHe has experience in expert consulting work as well as teaching specialised disciplines in hydrogeology.\n\nHis professional experience spans practical hydrogeology, the study and use of groundwater, public administration and regulation in the field of geology, and the training of specialised personnel.\n\nHe currently serves as First Deputy Chair of the Management Board of NJSC National Hydrogeological Service Kazhydrogeology."
     },
     "vakasova": {
-      "POSITION": "Deputy Chair"
+      "NAME": "Guldanam Vakasova",
+      "POSITION": "Deputy Chair",
+      "DESCRIPTION": "Graduated from the K.I. Satpayev Kazakh National Technical University with a degree in Hydrogeology and Engineering Geology.\n\nEarned a master's degree in agricultural sciences from the Kazakh National Agrarian University, majoring in Water Resources and Water Use.\n\nContinued her studies at the Warsaw University of Life Sciences in environmental engineering, housing management and energy, earning an international master's degree in environmental engineering.\n\nHer professional career is linked to hydrogeology and water management. She has practical and managerial experience in hydrogeological research, the operation of water management systems, water use and hydrometry. She worked within the RSE Kazvodkhoz system, progressing from hydraulic engineer to head of a department responsible for water use and hydrometry. She has also worked as a geological engineer at a hydrogeological organisation.\n\nShe currently serves as Deputy Chair of the Management Board of NJSC National Hydrogeological Service Kazhydrogeology."
     }
   },
   "RECEPTION": {
@@ -309,7 +307,8 @@
     "JOIN_TITLE": "Join our team",
     "JOIN_TEXT": "We always welcome talented specialists in hydrology, design and data analysis.",
     "SEND_CV": "Send your CV to",
-    "COPY_HINT": "Click to copy the email address"
+    "COPY_HINT": "Click to copy the email address",
+    "EMAIL_COPIED": "Email copied"
   },
   "OMBUDSMAN": {
     "TITLE": "Corporate ombudsman",
@@ -320,7 +319,7 @@
     "ABOUT_2": "Employees may contact the ombudsman for a confidential review of matters concerning employment relations, respect for their rights, conflicts of interest and other situations that call for independent consideration.",
     "DOC_TITLE": "Governing document",
     "DOC_LINK": "Regulations on the ombudsman",
-    "NAME": "Махашов Жангельды Менлибаевич"
+    "NAME": "Zhangeldy Makhashov"
   },
   "ANTI_CORRUPTION": {
     "TITLE": "Anti-corruption compliance",
@@ -359,7 +358,7 @@
       }
     },
     "OFFICER_TITLE": "Compliance officer",
-    "OFFICER_NAME": "Мусралимов Марат Кокушевич",
+    "OFFICER_NAME": "Marat Musralimov",
     "OFFICER_POSITION": "Compliance officer of NJSC National Hydrogeological Service Kazhydrogeology"
   },
   "NOT_FOUND": {

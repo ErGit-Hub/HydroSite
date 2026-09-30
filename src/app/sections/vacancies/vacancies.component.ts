@@ -17,6 +17,6 @@ ngOnInit() {
 }
 copyEmail() {
   navigator.clipboard.writeText(this.translate.instant('CONTACTS.EMAIL'));
-  alert('Email скопирован');
+  alert(this.translate.instant('VACANCIES.EMAIL_COPIED'));
 }
 }

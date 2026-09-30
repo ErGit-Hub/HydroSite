@@ -10,11 +10,11 @@ import { TranslateModule } from '@ngx-translate/core';
 export class ReceptionComponent implements OnInit {
   isVisible = false;
 
-  /** Должность и график берутся из i18n по key; имя и время — как есть. */
+  /** Имя, должность и график берутся из i18n по key; время — как есть. */
   schedule = [
-    { key: 'bekniyaz', name: 'Бекнияз Болат Қабыкенұлы', time: '10:00 – 12:00' },
-    { key: 'ibraev', name: 'Ибраев Даир Зарапович', time: '15:00 – 17:00' },
-    { key: 'vakasova', name: 'Вакасова Гульданам Туглукжановна', time: '15:00 – 17:00' }
+    { key: 'bekniyaz', time: '10:00 – 12:00' },
+    { key: 'ibraev', time: '15:00 – 17:00' },
+    { key: 'vakasova', time: '15:00 – 17:00' }
   ];
 
   ngOnInit() {
