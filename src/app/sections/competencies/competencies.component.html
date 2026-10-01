@@ -1,0 +1,141 @@
+<section class="page-hero">
+  <div class="container">
+    <h1>{{ 'COMPETENCIES.TITLE' | translate }}</h1>
+    <p>{{ 'COMPETENCIES.SUBTITLE' | translate }}</p>
+  </div>
+  <section class="services fade-in" [class.show]="isVisible">
+  <div class="container">
+
+    <h2>{{ 'COMPETENCIES.TITLE' | translate }}</h2>
+
+    <div class="services-grid">
+
+      <div class="service-card" style="cursor: pointer;" [class.open]="openCard === 'research'" (click)="toggleCard('research')">
+        <h3>{{ 'COMPETENCIES.LIST.SERVICE_1_TITLE' | translate }}</h3>
+
+        <div class="teaser">
+          <div>
+            <p><em>{{ 'COMPETENCIES.RESEARCH.SHORT_DESC' | translate }}</em></p>
+          </div>
+        </div>
+
+        <div class="full-body">
+          <div>
+            <div class="service-card-body">
+              <p>{{ 'COMPETENCIES.RESEARCH.INTRO' | translate }}</p>
+
+              <div class="table-wrapper">
+                <table class="research-table">
+                  <thead>
+                    <tr>
+                      <th>{{ 'COMPETENCIES.RESEARCH.TH_NUM' | translate }}</th>
+                      <th>{{ 'COMPETENCIES.RESEARCH.TH_PUBLICATION' | translate }}</th>
+                      <th>{{ 'COMPETENCIES.RESEARCH.TH_NOTE' | translate }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (pub of publications; track pub.noteKey; let i = $index) {
+                      <tr>
+                        <td>{{ i + 1 }}</td>
+                        <td>
+                          <span [innerHTML]="pub.html"></span>
+                          @if (pub.doi) {
+                            <a [href]="pub.doi" target="_blank" rel="noopener" (click)="$event.stopPropagation()">{{ pub.doi }}</a>
+                          }
+                          @if (pub.tail) {
+                            {{ ' ' + pub.tail }}
+                          }
+                        </td>
+                        <td>{{ pub.noteKey | translate }}</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <h3>{{ 'COMPETENCIES.LIST.SERVICE_2_TITLE' | translate }}</h3>
+        <p>{{ 'COMPETENCIES.LIST.SERVICE_2_DESC' | translate }}</p>
+      </div>
+
+      <div class="service-card">
+        <h3>{{ 'COMPETENCIES.LIST.SERVICE_3_TITLE' | translate }}</h3>
+        <p>{{ 'COMPETENCIES.LIST.SERVICE_3_DESC' | translate }}</p>
+      </div>
+
+      <div class="service-card" style="cursor: pointer;" [class.open]="openCard === 'digitalization'" (click)="toggleCard('digitalization')">
+        <h3>{{ 'COMPETENCIES.LIST.SERVICE_4_TITLE' | translate }}</h3>
+
+        <div class="teaser">
+          <div>
+            <p><em>{{ 'COMPETENCIES.DIGITALIZATION.SHORT_DESC' | translate }}</em></p>
+          </div>
+        </div>
+
+        <div class="full-body">
+          <div>
+            <div class="service-card-body">
+              <h4 class="service-card-subhead">{{ 'COMPETENCIES.DIGITALIZATION.SEC1_TITLE' | translate }}</h4>
+              <pre class="list">{{ 'COMPETENCIES.DIGITALIZATION.SEC1_LIST' | translate }}</pre>
+
+              <h4 class="service-card-subhead">{{ 'COMPETENCIES.DIGITALIZATION.SEC2_TITLE' | translate }}</h4>
+              <pre class="list">{{ 'COMPETENCIES.DIGITALIZATION.SEC2_LIST' | translate }}</pre>
+
+              <h4 class="service-card-subhead">{{ 'COMPETENCIES.DIGITALIZATION.SEC3_TITLE' | translate }}</h4>
+              <pre class="list">{{ 'COMPETENCIES.DIGITALIZATION.SEC3_LIST' | translate }}</pre>
+
+              <h4 class="service-card-subhead">{{ 'COMPETENCIES.DIGITALIZATION.SEC4_TITLE' | translate }}</h4>
+              <pre class="list">{{ 'COMPETENCIES.DIGITALIZATION.SEC4_LIST' | translate }}</pre>
+
+              <h4 class="service-card-subhead">{{ 'COMPETENCIES.DIGITALIZATION.SEC5_TITLE' | translate }}</h4>
+              <pre class="list">{{ 'COMPETENCIES.DIGITALIZATION.SEC5_LIST' | translate }}</pre>
+
+              <h4 class="service-card-subhead">{{ 'COMPETENCIES.DIGITALIZATION.SEC6_TITLE' | translate }}</h4>
+              <pre class="list">{{ 'COMPETENCIES.DIGITALIZATION.SEC6_LIST' | translate }}</pre>
+
+              <h4 class="service-card-subhead">{{ 'COMPETENCIES.DIGITALIZATION.SEC7_TITLE' | translate }}</h4>
+              <pre class="list">{{ 'COMPETENCIES.DIGITALIZATION.SEC7_LIST' | translate }}</pre>
+
+              <p><strong>{{ 'COMPETENCIES.DIGITALIZATION.RESULT_LABEL' | translate }}</strong> {{ 'COMPETENCIES.DIGITALIZATION.RESULT_TEXT' | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+   <div class="service-card">
+        <h3>{{ 'COMPETENCIES.LIST.SERVICE_5_TITLE' | translate }}</h3>
+        <p>{{ 'COMPETENCIES.LIST.SERVICE_5_DESC' | translate }}</p>
+      </div>
+
+      <div class="service-card" style="cursor: pointer;" [class.open]="openCard === 'melioration'" (click)="toggleCard('melioration')">
+        <h3>{{ 'COMPETENCIES.MELIORATION.TITLE' | translate }}</h3>
+
+        <div class="teaser">
+          <div>
+            <p><em>{{ 'COMPETENCIES.MELIORATION.SHORT_DESC' | translate }}</em></p>
+          </div>
+        </div>
+
+        <div class="full-body">
+          <div>
+            <div class="service-card-body">
+              <p>{{ 'COMPETENCIES.MELIORATION.TEXT_1' | translate }}</p>
+              <p>{{ 'COMPETENCIES.MELIORATION.TEXT_2' | translate }}</p>
+              <p><strong>{{ 'COMPETENCIES.MELIORATION.MONITORING_LABEL' | translate }}</strong> {{ 'COMPETENCIES.MELIORATION.MONITORING_INTRO' | translate }}</p>
+              <pre class="list">{{ 'COMPETENCIES.MELIORATION.LIST' | translate }}</pre>
+              <p>{{ 'COMPETENCIES.MELIORATION.TEXT_3' | translate }}</p>
+              <p><strong>{{ 'COMPETENCIES.MELIORATION.HISTORY_LABEL' | translate }}</strong> {{ 'COMPETENCIES.MELIORATION.TEXT_4' | translate }}</p>
+              <p>{{ 'COMPETENCIES.MELIORATION.TEXT_5' | translate }}</p>
+              <p><strong>{{ 'COMPETENCIES.MELIORATION.GOAL_LABEL' | translate }}</strong> {{ 'COMPETENCIES.MELIORATION.GOAL_TEXT' | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

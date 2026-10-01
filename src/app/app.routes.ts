@@ -23,14 +23,21 @@ export const routes: Routes = [
     loadComponent: () => import('./sections/activity/activity.component').then(m => m.ActivityComponent)
   },
   {
-    path: 'services',
-    title: 'HEADER.SERVICES',
-    loadComponent: () => import('./sections/services/services.component').then(m => m.ServicesComponent)
+    path: 'competencies',
+    title: 'HEADER.COMPETENCIES',
+    loadComponent: () => import('./sections/competencies/competencies.component').then(m => m.CompetenciesComponent)
   },
+  // старый адрес раздела — чтобы не ломались сохранённые ссылки и закладки
+  { path: 'services', redirectTo: 'competencies', pathMatch: 'full' },
   {
     path: 'structure',
     title: 'HEADER.STRUCTURE',
     loadComponent: () => import('./sections/structure/structure.component').then(m => m.StructureComponent)
+  },
+  {
+    path: 'leadership',
+    title: 'HEADER.LEADERSHIP',
+    loadComponent: () => import('./sections/leadership/leadership.component').then(m => m.LeadershipComponent)
   },
   {
     path: 'reception',

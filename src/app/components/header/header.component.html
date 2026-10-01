@@ -28,14 +28,13 @@
 
         <div class="dropdown-menu" (click)="isDropdownSuppressed = true">
           <a routerLink="/about">{{ 'HEADER.ABOUT_PAGE' | translate }}</a>
-          <a routerLink="/activity">{{ 'HEADER.ACTIVITY' | translate }}</a>
+          <a routerLink="/structure">{{ 'HEADER.STRUCTURE' | translate }}</a>
+          <a routerLink="/leadership">{{ 'HEADER.LEADERSHIP' | translate }}</a>
           <a routerLink="/anti-corruption">{{ 'HEADER.ANTI_CORRUPTION' | translate }}</a>
           <a routerLink="/ombucmen">{{ 'HEADER.OMBUDSMAN' | translate }}</a>
           <a routerLink="/security">{{ 'HEADER.SECURITY' | translate }}</a>
         </div>
       </div>
-
-      <a routerLink="/services">{{ 'HEADER.SERVICES' | translate }}</a>
 
       <!-- DROPDOWN -->
       <div
@@ -45,15 +44,26 @@
         <span>{{ 'HEADER.WORK' | translate }} ▾</span>
 
         <div class="dropdown-menu" (click)="isDropdownSuppressed = true">
-          <a routerLink="/structure">{{ 'HEADER.STRUCTURE' | translate }}</a>
+          <a routerLink="/activity">{{ 'HEADER.ACTIVITY' | translate }}</a>
           <a routerLink="/projects">{{ 'HEADER.PROJECTS' | translate }}</a>
-          <a routerLink="/reception">{{ 'HEADER.RECEPTION' | translate }}</a>
+          <a routerLink="/competencies">{{ 'HEADER.COMPETENCIES' | translate }}</a>
           <a routerLink="/news">{{ 'HEADER.NEWS' | translate }}</a>
           <a routerLink="/vacancies">{{ 'HEADER.VACANCIES' | translate }}</a>
         </div>
       </div>
 
-      <a routerLink="/contacts">{{ 'HEADER.CONTACTS' | translate }}</a>
+      <!-- DROPDOWN -->
+      <div
+        class="dropdown"
+        [class.suppressed]="isDropdownSuppressed"
+        (mouseleave)="isDropdownSuppressed = false">
+        <span>{{ 'HEADER.CONTACTS' | translate }} ▾</span>
+
+        <div class="dropdown-menu" (click)="isDropdownSuppressed = true">
+          <a routerLink="/contacts">{{ 'HEADER.CONTACTS_INFO' | translate }}</a>
+          <a routerLink="/reception">{{ 'HEADER.RECEPTION' | translate }}</a>
+        </div>
+      </div>
 
     </nav>
 
@@ -76,19 +86,22 @@
       <a routerLink="/home" (click)="toggleMenu()">{{ 'HEADER.HOME' | translate }}</a>
       <div class="mobile-group">{{ 'HEADER.ABOUT' | translate }}</div>
       <a routerLink="/about" (click)="toggleMenu()">{{ 'HEADER.ABOUT_PAGE' | translate }}</a>
-      <a routerLink="/activity" (click)="toggleMenu()">{{ 'HEADER.ACTIVITY' | translate }}</a>
+      <a routerLink="/structure" (click)="toggleMenu()">{{ 'HEADER.STRUCTURE' | translate }}</a>
+      <a routerLink="/leadership" (click)="toggleMenu()">{{ 'HEADER.LEADERSHIP' | translate }}</a>
       <a routerLink="/anti-corruption" (click)="toggleMenu()">{{ 'HEADER.ANTI_CORRUPTION' | translate }}</a>
       <a routerLink="/ombucmen" (click)="toggleMenu()">{{ 'HEADER.OMBUDSMAN' | translate }}</a>
       <a routerLink="/security" (click)="toggleMenu()">{{ 'HEADER.SECURITY' | translate }}</a>
-      <a routerLink="/services" (click)="toggleMenu()">{{ 'HEADER.SERVICES' | translate }}</a>
       <!-- ГРУППА -->
       <div class="mobile-group">{{ 'HEADER.WORK' | translate }}</div>
-      <a routerLink="/structure" (click)="toggleMenu()">{{ 'HEADER.STRUCTURE' | translate }}</a>
+      <a routerLink="/activity" (click)="toggleMenu()">{{ 'HEADER.ACTIVITY' | translate }}</a>
       <a routerLink="/projects" (click)="toggleMenu()">{{ 'HEADER.PROJECTS' | translate }}</a>
-      <a routerLink="/reception" (click)="toggleMenu()">{{ 'HEADER.RECEPTION' | translate }}</a>
+      <a routerLink="/competencies" (click)="toggleMenu()">{{ 'HEADER.COMPETENCIES' | translate }}</a>
       <a routerLink="/news" (click)="toggleMenu()">{{ 'HEADER.NEWS' | translate }}</a>
       <a routerLink="/vacancies" (click)="toggleMenu()">{{ 'HEADER.VACANCIES' | translate }}</a>
-      <a routerLink="/contacts" (click)="toggleMenu()">{{ 'HEADER.CONTACTS' | translate }}</a>
+      <!-- ГРУППА -->
+      <div class="mobile-group">{{ 'HEADER.CONTACTS' | translate }}</div>
+      <a routerLink="/contacts" (click)="toggleMenu()">{{ 'HEADER.CONTACTS_INFO' | translate }}</a>
+      <a routerLink="/reception" (click)="toggleMenu()">{{ 'HEADER.RECEPTION' | translate }}</a>
 
       <div class="mobile-group">{{ 'HEADER.LANGUAGE' | translate }}</div>
       <app-lang-switcher class="on-dark"></app-lang-switcher>

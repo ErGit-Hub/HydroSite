@@ -2,20 +2,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { provideTranslateService } from '@ngx-translate/core';
 
-import { ServicesComponent } from './services.component';
+import { CompetenciesComponent } from './competencies.component';
 
-describe('ServicesComponent', () => {
-  let component: ServicesComponent;
-  let fixture: ComponentFixture<ServicesComponent>;
+describe('CompetenciesComponent', () => {
+  let component: CompetenciesComponent;
+  let fixture: ComponentFixture<CompetenciesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ServicesComponent],
+      imports: [CompetenciesComponent],
       providers: [provideTranslateService(), provideRouter([])]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ServicesComponent);
+    fixture = TestBed.createComponent(CompetenciesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,44 @@
+<section class="page-hero">
+  <div class="container">
+    <h1>{{ 'LEADERSHIP.TITLE' | translate }}</h1>
+    <p>{{ 'LEADERSHIP.SUBTITLE' | translate }}</p>
+  </div>
+</section>
+
+<section class="leaders fade-in" [class.show]="isVisible">
+
+  <div class="container">
+
+    <h2>{{ 'LEADERSHIP.TITLE' | translate }}</h2>
+    <p class="subtitle">{{ 'LEADERSHIP.CARD_HINT' | translate }}</p>
+
+    <div class="leaders-grid">
+
+      @for (key of leaderKeys; track key) {
+        <div class="leader-card" (click)="selectLeader(key)">
+          <img [src]="leaders[key].image" [style.object-position]="leaders[key].position || 'center'" [alt]="'LEADERS.' + key + '.NAME' | translate">
+          <h3>{{ 'LEADERS.' + key + '.NAME' | translate }}</h3>
+          <p>{{ 'LEADERS.' + key + '.POSITION' | translate }}</p>
+        </div>
+      }
+
+    </div>
+
+    <!-- ДЕТАЛИ -->
+    @if (selectedLeader) {
+      <div class="leader-details fade-in show">
+        <div class="leader-details-grid">
+          <img [src]="selectedLeader.image" [alt]="'LEADERS.' + selectedKey + '.NAME' | translate">
+          <div>
+            <h3>{{ 'LEADERS.' + selectedKey + '.NAME' | translate }}</h3>
+            <p class="position">{{ 'LEADERS.' + selectedKey + '.POSITION' | translate }}</p>
+            <pre class="bio">{{ 'LEADERS.' + selectedKey + '.DESCRIPTION' | translate }}</pre>
+          </div>
+        </div>
+      </div>
+    }
+
+  </div>
+
+
+</section>

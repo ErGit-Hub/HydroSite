@@ -5,10 +5,11 @@
   "HEADER": {
     "HOME": "Home",
     "ABOUT": "About",
-    "SERVICES": "Services",
+    "COMPETENCIES": "Competencies",
     "STRUCTURE": "Structure",
+    "LEADERSHIP": "Leadership",
     "CONTACTS": "Contacts",
-    "ABOUT_PAGE": "About the company",
+    "ABOUT_PAGE": "Company history",
     "ACTIVITY": "Areas of activity",
     "ANTI_CORRUPTION": "Anti-corruption compliance",
     "OMBUDSMAN": "Corporate ombudsman",
@@ -20,7 +21,8 @@
     "LOGIN": "Log in",
     "LANGUAGE": "Language",
     "SECURITY": "Security and safety service",
-    "ORG_NAME": "NJSC NHS\nKazhydrogeology"
+    "ORG_NAME": "NJSC NHS\nKazhydrogeology",
+    "CONTACTS_INFO": "Contact details"
   },
   "HERO": {
     "TITLE": "Non-commercial Joint-Stock Company National Hydrogeological Service",
@@ -193,7 +195,7 @@
       "User and role management"
     ]
   },
-  "SERVICES": {
+  "COMPETENCIES": {
     "TITLE": "Services and expertise",
     "SUBTITLE": "Main areas of activity",
     "LIST": {
@@ -207,6 +209,24 @@
       "SERVICE_4_DESC": "GIS, databases and analytical models.",
       "SERVICE_5_TITLE": "Reserve assessment",
       "SERVICE_5_DESC": "Evidence-based calculation of groundwater resources."
+    },
+    "RESEARCH": {
+      "SHORT_DESC": "Applied research, publications in peer-reviewed journals and presentations at specialised conferences.",
+      "INTRO": "Specialists of NJSC NHS Kazhydrogeology carry out research in hydrogeology, land reclamation and agroclimatology. The results are published in peer-reviewed international and domestic scientific journals and presented at scientific conferences, forums and seminars.",
+      "TH_NUM": "No.",
+      "TH_PUBLICATION": "Title of the article / presentation",
+      "TH_NOTE": "Note",
+      "PUB_1_NOTE": "Print, Scopus",
+      "PUB_2_NOTE": "Print, Scopus, jointly with KBTU",
+      "PUB_3_NOTE": "Print, Scopus, Almaty branch",
+      "PUB_4_NOTE": "Print, Scopus, Turkestan branch",
+      "PUB_5_NOTE": "Print, COKSNVO, jointly with A.I. Barayev RPC for Grain Farming",
+      "PUB_6_NOTE": "Print, COKSNVO, jointly with A.I. Barayev RPC for Grain Farming",
+      "PUB_7_NOTE": "Print, COKSNVO, Kyzylorda branch",
+      "PUB_8_NOTE": "Print, methodological document, Kyzylorda branch",
+      "PUB_9_NOTE": "Forum, presentation",
+      "PUB_10_NOTE": "Seminar, presentation",
+      "PUB_11_NOTE": "Conference, presentation"
     },
     "MELIORATION": {
       "TITLE": "Monitoring and assessment of the reclamation status of irrigated land",
@@ -265,8 +285,11 @@
   "STRUCTURE": {
     "TITLE": "Structure",
     "SUBTITLE": "Organisational structure of the company",
-    "SCHEME_ALT": "Organisational structure of the company",
-    "LEADERSHIP": "Leadership",
+    "SCHEME_ALT": "Organisational structure of the company"
+  },
+  "LEADERSHIP": {
+    "TITLE": "Leadership",
+    "SUBTITLE": "Senior management of NJSC NHS Kazhydrogeology",
     "CARD_HINT": "Select a card to see more information"
   },
   "LEADERS": {
@@ -284,6 +307,11 @@
       "NAME": "Guldanam Vakasova",
       "POSITION": "Deputy Chair",
       "DESCRIPTION": "Graduated from the K.I. Satpayev Kazakh National Technical University with a degree in Hydrogeology and Engineering Geology.\n\nEarned a master's degree in agricultural sciences from the Kazakh National Agrarian University, majoring in Water Resources and Water Use.\n\nContinued her studies at the Warsaw University of Life Sciences in environmental engineering, housing management and energy, earning an international master's degree in environmental engineering.\n\nHer professional career is linked to hydrogeology and water management. She has practical and managerial experience in hydrogeological research, the operation of water management systems, water use and hydrometry. She worked within the RSE Kazvodkhoz system, progressing from hydraulic engineer to head of a department responsible for water use and hydrometry. She has also worked as a geological engineer at a hydrogeological organisation.\n\nShe currently serves as Deputy Chair of the Management Board of NJSC National Hydrogeological Service Kazhydrogeology."
+    },
+    "tazhenova": {
+      "NAME": "Dinara Tazhenova",
+      "POSITION": "Deputy Chair",
+      "DESCRIPTION": "Deputy Chair of the Management Board of NJSC National Hydrogeological Service Kazhydrogeology.\n\nProfessional biography to be added."
     }
   },
   "RECEPTION": {
