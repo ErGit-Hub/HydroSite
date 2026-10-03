@@ -64,6 +64,16 @@
       </div>
     </div>
 
+    <div class="full-activities">
+      <h3>{{ 'ACTIVITIES.FULL_LIST_TITLE' | translate }}</h3>
+      <p class="full-activities-intro">{{ 'ACTIVITIES.FULL_LIST_INTRO' | translate }}</p>
+      <ol class="full-activities-list">
+        @for (key of fullListKeys; track key) {
+          <li>{{ 'ACTIVITIES.FULL_LIST.' + key | translate }}</li>
+        }
+      </ol>
+    </div>
+
   </div>
   
 

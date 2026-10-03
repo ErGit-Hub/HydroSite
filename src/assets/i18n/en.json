@@ -68,7 +68,7 @@
   },
   "ACTIVITIES": {
     "TITLE": "Areas of activity",
-    "INTRO": "Our main areas of work cover the key aspects of studying, using and protecting groundwater",
+    "INTRO": "The Service's main purpose is to ensure the rational management of the groundwater resources of the Republic of Kazakhstan: their study, exploration and reserve assessment, monitoring and accounting, digitalisation of management, creation and maintenance of databases and geoinformation systems, liquidation and conservation of ownerless self-flowing and emergency hydrogeological wells — in order to meet the needs of the population and sectors of the economy, as well as monitoring and assessing the reclamation status of irrigated land.",
     "IMAGE_ALT": "Hydrogeology",
     "LIST": {
       "MONITORING_TITLE": "State groundwater monitoring",
@@ -83,6 +83,22 @@
       "SCIENCE_DESC": "Research, expert review and analysis",
       "ENGINEERING_TITLE": "Engineering surveys",
       "ENGINEERING_DESC": "Engineering-geological and hydrogeological surveys"
+    },
+    "FULL_LIST_TITLE": "Full list of activities",
+    "FULL_LIST_INTRO": "In accordance with the Charter of NJSC NHS Kazhydrogeology, the Service carries out the following activities:",
+    "FULL_LIST": {
+      "ITEM_1": "Analysis and assessment of water availability from groundwater resources and reserves to meet the needs of the population and sectors of the economy.",
+      "ITEM_2": "Monitoring and assessment of the reclamation status of irrigated land.",
+      "ITEM_3": "Collecting and consolidating groundwater monitoring data, and its digitalisation and automation.",
+      "ITEM_4": "Prospecting and exploration work and assessment of exploitable groundwater reserves for the domestic and drinking water supply of settlements, irrigation of land, industrial water supply, and agricultural water supply, including watering of pastures.",
+      "ITEM_5": "Prospecting and exploration work and assessment of exploitable reserves of mineral groundwater for sanatorium and spa treatment, thermal waters for heat-power purposes, and industrial waters for extracting useful components.",
+      "ITEM_6": "Regional assessment of various types of groundwater resources, assessment of groundwater contamination sources, substantiation and development of treatment methods, assessment of the suitability of areas for disposing of industrial effluents in deep aquifers, and artificial recharge (storage) of groundwater.",
+      "ITEM_7": "Organising the digitalisation of groundwater resource management: creating databases and geoinformation systems in hydrogeology, geofiltration models and digital mapping systems using remote sensing data.",
+      "ITEM_8": "State monitoring of groundwater.",
+      "ITEM_9": "Participation in maintaining the state water cadastre with respect to groundwater.",
+      "ITEM_10": "State prospecting and assessment of groundwater.",
+      "ITEM_11": "Survey, liquidation and conservation of ownerless self-flowing and emergency hydrogeological wells.",
+      "ITEM_12": "Applied scientific research and development work in hydrogeology and engineering geology."
     }
   },
   "PROJECTS": {
