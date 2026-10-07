@@ -337,14 +337,41 @@
     "TH_POSITION": "Position",
     "TH_SCHEDULE": "Reception days",
     "TH_TIME": "Time",
-    "SCHEDULE": {
-      "bekniyaz": "First Friday of the month",
-      "ibraev": "Last Thursday of the month",
-      "vakasova": "Last Tuesday of the month"
-    },
     "ADDRESS": "13/3 Korgalzhyn Highway, Vion business centre, Astana",
     "PLACE_LABEL": "Reception venue",
-    "TH_EMAIL": "Email"
+    "TH_EMAIL": "Email",
+    "PEOPLE": {
+      "bekniyaz": {
+        "NAME": "Bolat Bekniyaz",
+        "POSITION": "Chair of the Management Board",
+        "SCHEDULE": "First Friday of each month",
+        "TIME": "10:00 – 12:00"
+      },
+      "ibraev": {
+        "NAME": "Dair Ibrayev",
+        "POSITION": "First Deputy Chair of the Management Board",
+        "SCHEDULE": "Last Thursday of each month",
+        "TIME": "16:00 – 18:00"
+      },
+      "mukhamediyev": {
+        "NAME": "Dastan Mukhamediyev",
+        "POSITION": "Deputy Chair of the Management Board",
+        "SCHEDULE": "Last Wednesday of each month",
+        "TIME": "16:00 – 18:00"
+      },
+      "vakasova": {
+        "NAME": "Guldanam Vakasova",
+        "POSITION": "Deputy Chair of the Management Board",
+        "SCHEDULE": "Last Tuesday of each month",
+        "TIME": "16:00 – 18:00"
+      },
+      "tazhenova": {
+        "NAME": "Dinara Tazhenova",
+        "POSITION": "Deputy Chair of the Management Board",
+        "SCHEDULE": "Last Monday of each month",
+        "TIME": "16:00 – 18:00"
+      }
+    }
   },
   "VACANCIES": {
     "TITLE": "Careers",
