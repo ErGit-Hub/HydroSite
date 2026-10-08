@@ -25,10 +25,10 @@
         <tbody>
           @for (row of schedule; track row.key) {
             <tr>
-              <td>{{ 'RECEPTION.PEOPLE.' + row.key + '.NAME' | translate }}</td>
-              <td>{{ 'RECEPTION.PEOPLE.' + row.key + '.POSITION' | translate }}</td>
-              <td>{{ 'RECEPTION.PEOPLE.' + row.key + '.SCHEDULE' | translate }}</td>
-              <td>{{ 'RECEPTION.PEOPLE.' + row.key + '.TIME' | translate }}</td>
+              <td [attr.data-label]="'RECEPTION.TH_NAME' | translate">{{ 'RECEPTION.PEOPLE.' + row.key + '.NAME' | translate }}</td>
+              <td [attr.data-label]="'RECEPTION.TH_POSITION' | translate">{{ 'RECEPTION.PEOPLE.' + row.key + '.POSITION' | translate }}</td>
+              <td [attr.data-label]="'RECEPTION.TH_SCHEDULE' | translate">{{ 'RECEPTION.PEOPLE.' + row.key + '.SCHEDULE' | translate }}</td>
+              <td [attr.data-label]="'RECEPTION.TH_TIME' | translate">{{ 'RECEPTION.PEOPLE.' + row.key + '.TIME' | translate }}</td>
             </tr>
           }
         </tbody>

@@ -39,6 +39,23 @@ function stripTags(html: string): string {
   return decodeEntities(html.replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 }
 
+/** Эмодзи из Telegram: в шрифте сайта их нет, вместо них рисуются «квадратики». © ® ™ не трогаем. */
+const EMOJI = /(?![\u00a9\u00ae\u2122])[\p{Extended_Pictographic}\p{Regional_Indicator}\u200d\ufe0f\u20e3]/gu;
+
+/** Убирает эмодзи; переводы строк и HTML-разметку не трогает — только схлопывает пробелы, оставшиеся на месте значка. */
+function stripEmoji(text: string): string {
+  return text.replace(EMOJI, '').replace(/[ \t]{2,}/g, ' ').replace(/^[ \t]+|[ \t]+$/gm, '');
+}
+
+function stripEmojiLocalized(value: LocalizedText): LocalizedText {
+  if (typeof value === 'string') {
+    return stripEmoji(value).trim();
+  }
+  return Object.fromEntries(
+    Object.entries(value).map(([lang, text]) => [lang, stripEmoji(text).trim()]),
+  ) as LocalizedText;
+}
+
 function parseI18n(raw: string | undefined): NewsI18n | null {
   if (!raw) {
     return null;
@@ -61,10 +78,10 @@ function mapPost(post: WpPost): NewsItem {
   const preview = i18n ? i18n.preview : stripTags(post.excerpt.rendered);
   return {
     id: post.id,
-    title: i18n ? i18n.title : decodeEntities(post.title.rendered),
-    preview,
-    content: i18n ? i18n.content : preview,
-    fullContent: i18n ? i18n.fullContent : post.content.rendered,
+    title: stripEmojiLocalized(i18n ? i18n.title : decodeEntities(post.title.rendered)),
+    preview: stripEmojiLocalized(preview),
+    content: stripEmojiLocalized(i18n ? i18n.content : preview),
+    fullContent: stripEmojiLocalized(i18n ? i18n.fullContent : post.content.rendered),
     image:
       i18n?.image ??
       post._embedded?.['wp:featuredmedia']?.[0]?.source_url ??

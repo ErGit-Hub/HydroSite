@@ -1,13 +1,7 @@
 
-/* колонки в телефон не влезают: прокручиваем таблицу внутри блока,
-   а не растягиваем всю страницу */
-.table-wrapper {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
+/* на широком экране — обычная таблица; на телефоне строки превращаются в карточки
+   (см. media ниже), поэтому горизонтальной прокрутки нет */
 .reception-table {
-  min-width: 640px;
   width: 100%;
   border-collapse: collapse;
   background: #fff;
@@ -36,6 +30,57 @@
   text-align: center;
   font-size: 15px;
 }
+
+.reception-info a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .reception-table,
+  .reception-table tbody,
+  .reception-table tr,
+  .reception-table td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .reception-table {
+    background: none;
+  }
+
+  .reception-table thead {
+    display: none;
+  }
+
+  .reception-table tr {
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 14px;
+    padding: 6px 0;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  }
+
+  .reception-table td {
+    border-bottom: none;
+    padding: 8px 16px;
+  }
+
+  .reception-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 12px;
+    color: #64748b;
+    margin-bottom: 2px;
+    font-weight: 400;
+  }
+
+  .reception-table td:first-child {
+    font-weight: 600;
+  }
+}
+
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
