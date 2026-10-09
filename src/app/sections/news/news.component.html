@@ -8,17 +8,13 @@
 
   <div class="container">
     @if (loading) {
-      <div class="news-grid">
-        @for (i of [1,2,3,4]; track i) {
-          <div class="news-card skeleton">
-            <div class="image"></div>
-            <div class="content">
-              <div class="date"></div>
-              <h3></h3>
-              <p class="preview"></p>
-            </div>
-          </div>
-        }
+      <div class="news-loader" role="status" aria-busy="true">
+        <span class="ring"></span>
+        <span class="ring"></span>
+        <span class="ring"></span>
+        <svg class="drop" viewBox="0 0 24 32" width="24" height="32" aria-hidden="true">
+          <path d="M12 1C12 1 2 13 2 21a10 10 0 0 0 20 0C22 13 12 1 12 1Z" fill="#38bdf8"/>
+        </svg>
       </div>
     } @else {
       @if (companyNews.length > 0) {

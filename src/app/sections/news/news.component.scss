@@ -42,6 +42,61 @@
   }
 }
 
+/* загрузка: капля падает в воду, от неё расходятся круги */
+.news-loader {
+  position: relative;
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 28px;
+  box-sizing: border-box;
+
+  .ring {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    width: 90px;
+    height: 24px;
+    margin-left: -45px;
+    border: 2px solid #38bdf8;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.1);
+    animation: loaderRipple 1.8s ease-out infinite;
+
+    &:nth-child(2) { animation-delay: 0.25s; }
+    &:nth-child(3) { animation-delay: 0.5s; }
+  }
+
+  .drop {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -12px;
+    animation: loaderDrop 1.8s cubic-bezier(0.5, 0, 1, 0.6) infinite;
+  }
+}
+
+@keyframes loaderDrop {
+  0%   { transform: translateY(-10px) scale(0.6); opacity: 0; }
+  15%  { opacity: 1; }
+  60%  { transform: translateY(100px) scale(1, 1.15); opacity: 1; }
+  66%  { transform: translateY(112px) scale(0.2); opacity: 0; }
+  100% { transform: translateY(112px) scale(0.2); opacity: 0; }
+}
+
+@keyframes loaderRipple {
+  0%, 58% { opacity: 0; transform: scale(0.1); }
+  64%     { opacity: 0.9; }
+  100%    { opacity: 0; transform: scale(1.5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .news-loader .drop { animation: none; top: 50px; }
+  .news-loader .ring { animation: none; opacity: 0.5; transform: none; }
+}
+
 .news-card {
   background: #1e293b;
   border-radius: 14px;
@@ -151,48 +206,5 @@
   font-weight: 500;
 }.news-card {
   cursor: pointer;
-}
-
-.news-card.skeleton {
-  cursor: default;
-  pointer-events: none;
-
-  .image {
-    aspect-ratio: 2/1;
-  }
-
-  .image,
-  .date,
-  h3,
-  .preview {
-    background: linear-gradient(90deg, #263449 25%, #2f3f58 37%, #263449 63%);
-    background-size: 400% 100%;
-    animation: skeletonShimmer 1.4s ease infinite;
-    border-radius: 6px;
-  }
-
-  .date {
-    width: 90px;
-    height: 12px;
-  }
-
-  h3 {
-    height: 17px;
-    width: 80%;
-  }
-
-  .preview {
-    height: 34px;
-  }
-
-  &:hover {
-    transform: none;
-    box-shadow: none;
-  }
-}
-
-@keyframes skeletonShimmer {
-  0% { background-position: 100% 0; }
-  100% { background-position: 0 0; }
 }
 }

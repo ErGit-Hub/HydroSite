@@ -29,13 +29,13 @@
   font-size: 15px;
 }
 .fade-in {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 0.6;
+  transform: translateY(16px);
 }
 
 /* когда активен */
 .fade-in.show {
-  animation: fadeIn 0.8s ease forwards;
+  animation: fadeIn 0.35s ease forwards;
 }
 
 @keyframes fadeIn {
