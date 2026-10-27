@@ -14,11 +14,12 @@ selectedLeader: any = null;
 selectedKey: string | null = null;
 
 /** Порядок карточек; имя/должность/описание лежат в i18n под LEADERS.<key>.*. */
-leaderKeys = ['bekniyaz', 'ibraev', 'vakasova', 'tazhenova'];
+leaderKeys = ['bekniyaz', 'ibraev', 'mukhamediyev', 'vakasova', 'tazhenova'];
 
 leaders: any = {
   bekniyaz: { image: 'assets/images/leader/leader1.jpeg' },
   ibraev: { image: 'assets/images/leader/leader2.png' },
+  mukhamediyev: { image: 'assets/images/leader/mukhamediyev.jpeg', position: 'center 25%' },
   vakasova: { image: 'assets/images/leader/leader6.png' },
   tazhenova: { image: 'assets/images/leader/tazhenova.jpeg', position: 'center 25%' }
 };
