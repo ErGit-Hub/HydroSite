@@ -45,6 +45,12 @@ publications = [
     noteKey: 'COMPETENCIES.RESEARCH.PUB_3_NOTE'
   },
   {
+    html: '<strong>Akshalov, K</strong>,. Zhunissova, M., <strong>Baisholanov, S.</strong>, <strong>Zhumabek, B.</strong>, <strong>Baimukanova, O.</strong> Assessment of moisture availability and dryness during the growing season in the Almaty region. Scientific reports. 2026.',
+    doi: 'https://doi.org/10.1038/s41598-026-77156-7',
+    tail: '(Scopus Q1, Percentile: 81, Cite Score: 6,7, WOS Impact Factor: 4,9)',
+    noteKey: 'COMPETENCIES.RESEARCH.PUB_13_NOTE'
+  },
+  {
     html: 'Kaimuldinova, K., Laiskhanov, S., Alimbekova, G., Sharapkhanova, Z., <strong>Kerimsheev, S.</strong> INTEGRAL ASSESSMENT OF SOIL SALINIZATION AND WATER RESOURCE USE CONDITION FOR THE PURPOSE OF SUSTAINABLE LAND USE. Journal of the Geographical Institute “Jovan Cvijić” SASA, 2026, 76(2), 225–242.',
     doi: 'https://ojs.gi.sanu.ac.rs/index.php/zbornik/article/view/1349',
     tail: '(Quartiles: Scopus Q2, Cite Score: 0.31, WOS Impact Factor: 1.4)',
