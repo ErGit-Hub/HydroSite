@@ -45,7 +45,7 @@ publications = [
     noteKey: 'COMPETENCIES.RESEARCH.PUB_3_NOTE'
   },
   {
-    html: '<strong>Akshalov, K</strong>,. Zhunissova, M., <strong>Baisholanov, S.</strong>, <strong>Zhumabek, B.</strong>, <strong>Baimukanova, O.</strong> Assessment of moisture availability and dryness during the growing season in the Almaty region. Scientific reports. 2026.',
+    html: 'Akshalov, K,. Zhunissova, M., <strong>Baisholanov, S.</strong>, Zhumabek, B., Baimukanova, O. Assessment of moisture availability and dryness during the growing season in the Almaty region. Scientific reports. 2026.',
     doi: 'https://doi.org/10.1038/s41598-026-77156-7',
     tail: '(Scopus Q1, Percentile: 81, Cite Score: 6,7, WOS Impact Factor: 4,9)',
     noteKey: 'COMPETENCIES.RESEARCH.PUB_13_NOTE'
@@ -70,6 +70,11 @@ publications = [
     html: 'Жұмабек Б., Ақшалов Қ.А., Баймуканова О.Н., Бисетаев К.С., Пилипчук А.П., <strong>Байшоланов С.С.</strong> Топырақ өңдеу жүйелеріне байланысты топырақтың физикалық қасиеттерінің өзгерісі // Еуразиялық агротехникалық журнал, 2026. 2(130), 182-192.',
     doi: 'https://doi.org/10.51452/eaj.2026.2(130).2136',
     noteKey: 'COMPETENCIES.RESEARCH.PUB_6_NOTE'
+  },
+  {
+    html: 'Акшалов К.А., Баймуканова О.Н., Жұмабек Б., Бисетаев К.С., <strong>Байшоланов С.С.</strong>, Пилипчук А.П. Выращивание чечевицы при атмосферных осадках 250-320 мм в год: система обработки почвы, плодородие почв, урожайность // Евразийский агротехнический журнал, 2026. 3(131). 281-292.',
+    doi: 'https://doi.org/10.51452/eaj.2026.3(131).2258',
+    noteKey: 'COMPETENCIES.RESEARCH.PUB_14_NOTE'
   },
   {
     html: '<strong>Баймаханов Ө.С.,</strong> Абдукодирова М.Н., Ақылбаев Қ.И., <strong>Шегенбаев А.Т.,</strong> Олжабаев А.О. Қызылорда қаласы мысалында төгінді суларды ауыл шаруашылығында пайдалануды ғылыми-технологиялық тұрғыдан зерттеу // «Ізденістер, нәтижелер – Исследования, результаты» Научный журнал КазНАИУ, Том 28, 3 (111), 2026. С. 136-146.',
