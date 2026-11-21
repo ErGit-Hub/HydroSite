@@ -1,6 +1,9 @@
 
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+
+import { LanguageService } from '../../core/language.service';
+import { Publication, PublicationsService } from '../../core/publications.service';
 
 @Component({
     selector: 'app-competencies',
@@ -8,7 +11,13 @@ import { TranslateModule } from '@ngx-translate/core';
     templateUrl: './competencies.component.html',
     styleUrl: './competencies.component.scss'
 })
-export class CompetenciesComponent {
+export class CompetenciesComponent implements OnInit {
+private readonly publicationsService = inject(PublicationsService);
+private readonly language = inject(LanguageService);
+
+/** Публикации из CMS; пока не загрузились или CMS пуст/недоступна — показывается `publications` ниже. */
+cmsPublications: Publication[] = [];
+
 isVisible = false;
 
 /** Раскрыта только одна карточка услуг одновременно. */
@@ -18,8 +27,15 @@ toggleCard(key: string) {
   this.openCard = this.openCard === key ? null : key;
 }
 
+/** Примечание на текущем языке, затем на русском, затем на любом заполненном. */
+cmsNote(pub: Publication): string {
+  const notes = pub.notes;
+  return (notes as Record<string, string | undefined>)[this.language.current] ?? notes.ru ?? notes.en ?? notes.kz ?? '';
+}
+
 /**
- * Список публикаций — наименования и DOI не переводятся, примечания берутся
+ * Запасной список публикаций (показывается, если CMS недоступна или пуста;
+ * основной ведётся в wp-admin) — наименования и DOI не переводятся, примечания берутся
  * из i18n (COMPETENCIES.RESEARCH.PUB_N_NOTE). `html` рендерится через
  * [innerHTML] — <strong> отмечает фамилии, выделенные жирным в исходном
  * документе (Материал для сайта ДНПИ.docx); содержимое статично и задаётся
@@ -100,6 +116,7 @@ publications = [
 ];
 
 ngOnInit() {
+  this.publicationsService.getPublications().subscribe(list => (this.cmsPublications = list));
   setTimeout(() => {
     this.isVisible = true;
   }, 50);

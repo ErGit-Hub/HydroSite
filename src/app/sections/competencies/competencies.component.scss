@@ -85,6 +85,11 @@
   color: #444;
 }
 
+.research-table .pub-doi,
+.research-table .pub-rating {
+  display: block;
+}
+
 .research-table td:first-child {
   text-align: center;
   white-space: nowrap;

@@ -34,20 +34,38 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @for (pub of publications; track pub.noteKey; let i = $index) {
-                      <tr>
-                        <td>{{ i + 1 }}</td>
-                        <td>
-                          <span [innerHTML]="pub.html"></span>
-                          @if (pub.doi) {
-                            <a [href]="pub.doi" target="_blank" rel="noopener" (click)="$event.stopPropagation()">{{ pub.doi }}</a>
-                          }
-                          @if (pub.tail) {
-                            {{ ' ' + pub.tail }}
-                          }
-                        </td>
-                        <td>{{ pub.noteKey | translate }}</td>
-                      </tr>
+                    @if (cmsPublications.length) {
+                      @for (pub of cmsPublications; track $index) {
+                        <tr>
+                          <td>{{ $index + 1 }}</td>
+                          <td>
+                            <span [innerHTML]="pub.html"></span>
+                            @if (pub.doi) {
+                              <a class="pub-doi" [href]="pub.doi" target="_blank" rel="noopener" (click)="$event.stopPropagation()">{{ pub.doi }}</a>
+                            }
+                            @if (pub.tail) {
+                              <span class="pub-rating">{{ pub.tail }}</span>
+                            }
+                          </td>
+                          <td>{{ cmsNote(pub) }}</td>
+                        </tr>
+                      }
+                    } @else {
+                      @for (pub of publications; track pub.noteKey; let i = $index) {
+                        <tr>
+                          <td>{{ i + 1 }}</td>
+                          <td>
+                            <span [innerHTML]="pub.html"></span>
+                            @if (pub.doi) {
+                              <a class="pub-doi" [href]="pub.doi" target="_blank" rel="noopener" (click)="$event.stopPropagation()">{{ pub.doi }}</a>
+                            }
+                            @if (pub.tail) {
+                              <span class="pub-rating">{{ pub.tail }}</span>
+                            }
+                          </td>
+                          <td>{{ pub.noteKey | translate }}</td>
+                        </tr>
+                      }
                     }
                   </tbody>
                 </table>
